@@ -1,10 +1,10 @@
 # SDLE Project
 
-SDLE Project for group T&lt;n&gt;G&lt;p&gt;&lt;q&gt;.
+SDLE Project for group T3G13.
 
 Group members:
 
-1. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-2. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-3. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
-4. &lt;first name&gt; &lt;family name&gt; (&lt;email address&gt;)
+1. Samuel Fernandes (up201806250@up.pt)
+2. Hugo Guimarães  (up201806490@up.pt)
+3. Paulo Ribeiro (up201806505@up.pt)
+4. Telmo Baptista (up201806554@up.pt)
