@@ -56,13 +56,36 @@ def create_bootstrap_node():
         loop.close()
 
 
+def create_node(ip,port):
+    loop = asyncio.get_event_loop()
+    loop.set_debug(True)
+    loop.run_until_complete(server.listen(port))
+
+    bootstrap_node = (ip, port)
+    loop.run_until_complete(server.bootstrap([bootstrap_node]))
+
+    try:
+        loop.run_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        server.stop()
+        loop.close()
+
+
+
 def main():
     args = parse_arguments()
 
-    if args.ip and args.port:
-        connect_to_bootstrap_node(args)
-    else:
-        create_bootstrap_node()
+    create_node(args.ip,args.port)
+
+    # bootstrap_node = (ip, porta)
+    # loop.run_until_complete(server.bootstrap([bootstrap_node]))
+
+    # if args.ip and args.port:
+    #     connect_to_bootstrap_node(args)
+    # else:
+    #     create_bootstrap_node()
 
 
 if __name__ == "__main__":

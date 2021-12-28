@@ -17,7 +17,7 @@ log.setLevel(logging.DEBUG)
 
 async def run():
     server = Server()
-    await server.listen(8469)
+    await server.listen(8001)
     bootstrap_node = (sys.argv[1], int(sys.argv[2]))
     await server.bootstrap([bootstrap_node])
 
@@ -25,4 +25,4 @@ async def run():
     print("Get result:", result)
     server.stop()
 
-asyncio.run(run())
+asyncio.get_event_loop().run_until_complete(run())
