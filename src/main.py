@@ -4,22 +4,23 @@ import sys
 import socket
 from contextlib import closing
 
-import api
+from authentication import Authentication
+import authentication
+from kadmeliaServer import KadServer
 
 def valid_ip(ip):
     try:
-        ip = ipaddress.ip_address(ip)
+        ipaddress.ip_address(ip)
     except ValueError:
         raise argparse.ArgumentTypeError(f'IP address is invalid: {ip}')
     return ip
 
 def valid_port(port):
-    print('aqui')
-    cond = (1 <= port <= 65535)
-    print('aqui2')
-    print(cond)
-    print(port.isdigit())
-    if port.isdigit() and 1 <= port <= 65535:
+    try:
+        port = int(port)
+    except:
+        raise argparse.ArgumentTypeError(f'Port number should be an integer: {port}')
+    if 1 <= port <= 65535:
         return port
     raise argparse.ArgumentTypeError(f'Invalid port: {port}')
 
@@ -36,7 +37,9 @@ def parse_arguments():
     # Optional arguments
     parser.add_argument("-i", "--ip", help="IP address", type=valid_ip, default=None)
     parser.add_argument("-p", "--port", help="Port number", type=valid_port, default=None)
-    parser.add_argument("-b", "--bootstrap", help="Bootstrap on or off", type=bool, default=False)
+    parser.add_argument('-b', '--bootstrap', dest='bootstrap', action='store_true')
+    parser.add_argument('--no-bootstrap', dest='bootstrap', action='store_false')
+    parser.set_defaults(bootstrap=False)
 
     arguments = None
 
@@ -52,11 +55,14 @@ if __name__ == "__main__":
     arguments = parse_arguments()
 
     print(f'IP: {arguments.ip}')
-    print(f'IP: {arguments.port}')
-    print(f'IP: {arguments.bootstrap}')
+    print(f'Port: {arguments.port}')
+    print(f'BS: {arguments.bootstrap}')
 
-    if not open_port(arguments.ip, arguments.port):
+    if open_port(arguments.ip, arguments.port):
         print(f'Port is occupied: {arguments.port}')
         sys.exit(1)
 
-    api.API()
+    server = KadServer(arguments.ip, arguments.port)
+
+    authentication = Authentication()
+    authentication.menu()

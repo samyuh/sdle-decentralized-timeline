@@ -1,4 +1,10 @@
+import logging
+import asyncio
+from threading import Thread
 
+from kademlia.network import Server
+
+BOOTSTRAP_NODES = [('127.0.0.1', 8001)] # TODO: read bootstrap nodes from file.ini, there might be more than one bootstrap node
 DEBUG = True
 
 class KadServer:
@@ -21,21 +27,13 @@ class KadServer:
 
         self.server = Server()
 
-
         loop = asyncio.get_event_loop()
         loop.set_debug(True)
 
         loop.run_until_complete(self.server.listen(interface=self.ip, port=self.port))
         loop.run_until_complete(self.server.bootstrap(bootstrap_nodes))
 
-        ### return the loop instead of permanently running it?
-        try:
-            loop.run_forever()
-        except KeyboardInterrupt:
-            pass
-        finally:
-            server.stop()
-            loop.close()
+        Thread(target=loop.run_forever, daemon=True).start()
 
     def close(self):
         self.server.stop()
@@ -48,9 +46,9 @@ class KadServer:
         if user is None:
             ### fill with the necessary data or create and object that contains all the info instead of a dictionary
             user_data = {
-                "followers": []
-                "following": []
-                "ip": self.ip
+                "followers": [],
+                "following": [],
+                "ip": self.ip,
                 "port":self.port
             }
             ### Should the response from set be analysed?
@@ -65,18 +63,18 @@ class KadServer:
 
         user = await self.server.get(username)
 
-         if user is not None:
+        if user is not None:
             ### fill with the necessary data or create and object that contains all the info instead of a dictionary
             user_data = {
-                "followers": user.followers
-                "following": user.following
-                "ip": user.ip
+                "followers": user.followers,
+                "following": user.following,
+                "ip": user.ip,
                 "port": user.port
             }
             ### Should the response from set be analysed?
             await self.server.set(username,user_data)
         else:
             ### Should an exception be raised instead?
-            print(f"User doens't exist")
+            print(f"User doesn't exist")
         
     ### Further methods with more specific getters can be created

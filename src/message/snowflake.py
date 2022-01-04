@@ -1,5 +1,7 @@
 import calendar
 import time
+from datetime import datetime
+
 
 class Snowflake:
     """
@@ -11,9 +13,15 @@ class Snowflake:
     """
 
     @staticmethod
-    def getId(host, sequence):
+    def get_id(host, sequence):
         epoch = calendar.timegm(time.gmtime())
         return f"{epoch}{host}{sequence}"
+
+    @staticmethod
+    def get_current_time():
+        ### change the final format using the datetime library
+        now = datetime.now()
+        return now
         
 
     
