@@ -1,21 +1,62 @@
-import asyncio
-from kademlia.network import Server
+import argparse
+import ipaddress
+import sys
+import socket
+from contextlib import closing
 
-async def run():
-    # Create a node and start listening on port 5678
-    node = Server()
-    await node.listen(interface='127.0.0.1', port=5678)
+import api
 
-    # Bootstrap the node by connecting to other known nodes, in this case
-    # replace 123.123.123.123 with the IP of another node and optionally
-    # give as many ip/port combos as you can for other nodes.
-    await node.bootstrap([("127.0.0.1", 5678)])
+def valid_ip(ip):
+    try:
+        ip = ipaddress.ip_address(ip)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f'IP address is invalid: {ip}')
+    return ip
 
-    # set a value for the key "my-key" on the network
-    await node.set("my-key", "my awesome value")
+def valid_port(port):
+    print('aqui')
+    cond = (1 <= port <= 65535)
+    print('aqui2')
+    print(cond)
+    print(port.isdigit())
+    if port.isdigit() and 1 <= port <= 65535:
+        return port
+    raise argparse.ArgumentTypeError(f'Invalid port: {port}')
 
-    # get the value associated with "my-key" from the network
-    result = await node.get("my-key")
-    print(result)
+def open_port(host, port):
+    with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
+        if sock.connect_ex((host, port)) == 0:
+            return True
+        else:
+            return False
 
-asyncio.get_event_loop().run_until_complete(run())
+def parse_arguments():
+    parser = argparse.ArgumentParser()
+
+    # Optional arguments
+    parser.add_argument("-i", "--ip", help="IP address", type=valid_ip, default=None)
+    parser.add_argument("-p", "--port", help="Port number", type=valid_port, default=None)
+    parser.add_argument("-b", "--bootstrap", help="Bootstrap on or off", type=bool, default=False)
+
+    arguments = None
+
+    try:
+        arguments = parser.parse_args()
+    except argparse.ArgumentTypeError as e:
+        print(str(e))
+        sys.exit(1)
+
+    return arguments
+
+if __name__ == "__main__":
+    arguments = parse_arguments()
+
+    print(f'IP: {arguments.ip}')
+    print(f'IP: {arguments.port}')
+    print(f'IP: {arguments.bootstrap}')
+
+    if not open_port(arguments.ip, arguments.port):
+        print(f'Port is occupied: {arguments.port}')
+        sys.exit(1)
+
+    api.API()
