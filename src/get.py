@@ -17,7 +17,7 @@ log.setLevel(logging.DEBUG)
 
 async def run():
     server = Server()
-    await server.listen(8001)
+    await server.listen(interface="127.0.0.1",port=8000)
     bootstrap_node = (sys.argv[1], int(sys.argv[2]))
     await server.bootstrap([bootstrap_node])
 
