@@ -2,21 +2,12 @@ SHELL := /bin/bash
 .ONESHELL:
 .SHELLFLAGS := -eu -o pipefail -c
 
-PYTHON = python.exe
+PYTHON = python
 
-.PHONY: proxy publisher subscriber put get sub unsub clean
+.PHONY: node
 
 RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 $(eval $(RUN_ARGS):;@:)
-
-# Run Proxy
-proxy:
-	@$(PYTHON) proxy_run.py
-
-# Run a publisher
-publisher:
-	@$(PYTHON) pub_run.py $(filter-out $@, $(MAKECMDGOALS))
-
 
 # Create a node in the network
 node:

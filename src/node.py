@@ -30,7 +30,8 @@ def connect_to_bootstrap_node(args):
     loop.set_debug(True)
 
     loop.run_until_complete(server.listen(interface=args.ip, port=args.port))
-    bootstrap_node = (args.ip, int(args.port))
+    
+    bootstrap_node = (args.ip, 8001)
     loop.run_until_complete(server.bootstrap([bootstrap_node]))
 
     try:
@@ -58,21 +59,21 @@ def create_bootstrap_node(args):
         loop.close()
 
 
-def create_node(ip,port):
-    loop = asyncio.get_event_loop()
-    loop.set_debug(True)
-    loop.run_until_complete(server.listen(interface="127.0.0.1", port=port))
+# def create_node(ip,port):
+#     loop = asyncio.get_event_loop()
+#     loop.set_debug(True)
+#     loop.run_until_complete(server.listen(interface="127.0.0.1", port=port))
 
-    bootstrap_node = (ip, port)
-    loop.run_until_complete(server.bootstrap([bootstrap_node]))
+#     bootstrap_node = (ip, port)
+#     loop.run_until_complete(server.bootstrap([bootstrap_node]))
 
-    try:
-        loop.run_forever()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        server.stop()
-        loop.close()
+#     try:
+#         loop.run_forever()
+#     except KeyboardInterrupt:
+#         pass
+#     finally:
+#         server.stop()
+#         loop.close()
 
 
 def main():
