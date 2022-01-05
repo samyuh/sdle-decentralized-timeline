@@ -2,7 +2,6 @@ import calendar
 import time
 from datetime import datetime
 
-
 class Snowflake:
     """
     Snowflake IDs, or snowflakes, are a form of unique identifier used in distributed computing. 
@@ -22,6 +21,7 @@ class Snowflake:
         ### change the final format using the datetime library
         now = datetime.now()
         return now
+
         
 
     

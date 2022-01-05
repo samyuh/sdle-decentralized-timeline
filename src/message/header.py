@@ -1,11 +1,10 @@
-from src.snowflake import Snowflake
+from .snowflake import Snowflake
 
 class Header:
-    def __init__(self, host, user, sequence):
-        self.id = Snowflake.getId(host, sequence)
-        self.host = host
+    def __init__(self, user, sequence):
+        self.id = Snowflake.getId(user, sequence)
         self.user = user
         self.sequence = sequence
 
     def dump(self):
-        return str(self.id) + str(self.host) + str(self.user) + str(self.sequence)
+        return str(self.id) + str(self.user) + str(self.sequence)

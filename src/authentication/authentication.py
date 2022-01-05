@@ -1,4 +1,5 @@
 from src.user import User
+import sys
 
 class Authentication:
     def __init__(self):
@@ -6,18 +7,20 @@ class Authentication:
 
     async def register(self, server, information):
         try:
-            state = await server.register(information['username'])
-            user = User(server, information['username'], information['password'])
+            user_data = await server.register(information['username'], information['password'])
+            user = User(server, information['username'], user_data)
         except Exception as e:
             print(e)
+            sys.exit(1)
 
-        return True
+        return user
 
     async def login(self, server, information):
         try:
-            state = server.setUser(information['username'])
-            user = User(server, information['username'], information['password'])
+            user_data = await server.login(information['username'], information['password'])
+            user = User(server, information['username'], user_data)
         except Exception as e:
             print(e)
+            sys.exit(1)
 
-        return True
+        return user

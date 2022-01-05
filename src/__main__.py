@@ -3,10 +3,12 @@ import ipaddress
 import sys
 import socket
 from contextlib import closing
+import asyncio
 
 from src.authentication import Authentication
-from src.menu.authenticationInterface import AuthenticationMenu
 from src.server.kademliaServer import KademliaServer
+from src.menu import AuthenticationMenu, MainMenu
+from src.utils import Logger
 
 def valid_ip(ip):
     try:
@@ -51,27 +53,78 @@ def parse_arguments():
 
     return arguments
 
+def register_coroutine(server, answers, authentication):
+    try:
+        loop = asyncio.get_event_loop()
+        future = asyncio.run_coroutine_threadsafe(authentication.register(server, answers['information']), loop)
+        return future.result()
+    except Exception as e:
+        print(e)
+
+def login_coroutine(server, answers, authentication):
+    try:
+        loop = asyncio.get_event_loop()
+        future = asyncio.run_coroutine_threadsafe(authentication.login(server, answers['information']), loop)
+        return future.result()
+    except Exception as e:
+        print(e)
+
+def post_coroutine(answers, user):
+    try:
+        loop = asyncio.get_event_loop()
+        future = asyncio.run_coroutine_threadsafe(user.post(answers['information']['message']), loop)
+        return future.result()
+    except Exception as e:
+        print(e)
+
+def follow_coroutine(answers, user):
+    try:
+        loop = asyncio.get_event_loop()
+        future = asyncio.run_coroutine_threadsafe(user.follow(answers['information']['username']), loop)
+        return future.result()
+    except Exception as e:
+        print(e)
+
+### This method should be called like this: coroutine_prototype(user.follow(answers['information']['username'])
+def coroutine_prorotype(routine):
+    try:
+        loop = asyncio.get_event_loop()
+        future = asyncio.run_coroutine_threadsafe(routine, loop)
+        return future.result()
+    except Exception as e:
+        print(e)
+
 if __name__ == "__main__":
     arguments = parse_arguments()
+    logger = Logger()
 
-    print(f'IP: {arguments.ip}')
-    print(f'Port: {arguments.port}')
-    print(f'BS: {arguments.bootstrap}')
+    logger.log('Unknown', 'info', f'IP: {arguments.ip}')
+    logger.log('Unknown', 'info', f'Port: {arguments.port}')
+    logger.log('Unknown', 'info', f'BS: {arguments.bootstrap}')
 
     if open_port(arguments.ip, arguments.port):
-        print(f'Port is occupied: {arguments.port}')
+        logger.log('Unknown', 'error', f'Port is occupied: {arguments.port}')
         sys.exit(1)
 
-    server = KademliaServer(arguments.ip, arguments.port)
+    server = KademliaServer(arguments.ip, arguments.port, arguments.bootstrap)
 
     authentication = Authentication()
-    method = AuthenticationMenu.menu()
+    answers = AuthenticationMenu.menu()
+    user = None
 
-    """
-    if method['type'] == 'register':
-        authentication.register()
-    elif method['type'] == 'login':
-        authentication.login()
-    """
+    if answers['method'] == 'register':
+        user = register_coroutine(server, answers, authentication)
+    elif answers['method'] == 'login':
+        user = login_coroutine(server, answers, authentication)
+        
+    print(user)
 
-    authentication.login(server, method['information'])
+    answers = MainMenu().menu()
+    if answers['action'] == 'post':
+        post_coroutine(server, answers, user)
+    if answers['action'] == 'follow':
+        follow_coroutine(server, answers, user)
+
+    # msg_header = Header(host, user, sequence)
+    # msg = Message(msg_header, "Send Message")
+    # return msg

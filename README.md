@@ -1,5 +1,14 @@
-# SDLE Project
-SDLE Project for group T3G13.
+# SDLE Project - Group T3G13
+
+### How to run
+
+From the root folder run the following command:
+
+```properties
+python -m src -h
+```
+
+A detailed help message is printed, describing all the possible arguments.
 
 ### Features
 #### General:
@@ -15,7 +24,7 @@ SDLE Project for group T3G13.
 - [ ] User is responsible of store it's own content
 - [ ] Limit the stored content in any way
 - [ ] Free use technology
-- 
+
 #### Evaluation:
 - [ ] Quality and Design Complexity
 - [ ] Presentation
@@ -30,6 +39,7 @@ SDLE Project for group T3G13.
 #### More extra:
 - [ ] Semi search engine
 - [ ] Search other users
+
 ### Group Members
 1. Samuel Fernandes (up201806250@up.pt)
 2. Hugo Guimarães  (up201806490@up.pt)
