@@ -4,9 +4,9 @@ import sys
 import socket
 from contextlib import closing
 
-from authentication import Authentication
-import authentication
-from kadmeliaServer import KadServer
+from src.authentication import Authentication
+from src.menu.authenticationInterface import AuthenticationMenu
+from src.server.kademliaServer import KademliaServer
 
 def valid_ip(ip):
     try:
@@ -35,10 +35,10 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
 
     # Optional arguments
-    parser.add_argument("-i", "--ip", help="IP address", type=valid_ip, default=None)
-    parser.add_argument("-p", "--port", help="Port number", type=valid_port, default=None)
-    parser.add_argument('-b', '--bootstrap', dest='bootstrap', action='store_true')
-    parser.add_argument('--no-bootstrap', dest='bootstrap', action='store_false')
+    parser.add_argument("-i", "--ip", help="IP address", type=valid_ip, default='127.0.0.1')
+    parser.add_argument("-p", "--port", help="Port number", type=valid_port, default=8000)
+    parser.add_argument('-b', '--bootstrap', help="Is bootstrap node", dest='bootstrap', action='store_true')
+    parser.add_argument('--no-bootstrap', help="Is regular node", dest='bootstrap', action='store_false')
     parser.set_defaults(bootstrap=False)
 
     arguments = None
@@ -62,7 +62,16 @@ if __name__ == "__main__":
         print(f'Port is occupied: {arguments.port}')
         sys.exit(1)
 
-    server = KadServer(arguments.ip, arguments.port)
+    server = KademliaServer(arguments.ip, arguments.port)
 
     authentication = Authentication()
-    authentication.menu()
+    method = AuthenticationMenu.menu()
+
+    """
+    if method['type'] == 'register':
+        authentication.register()
+    elif method['type'] == 'login':
+        authentication.login()
+    """
+
+    authentication.login(server, method['information'])

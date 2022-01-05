@@ -1,11 +1,10 @@
 from ..timeline import Timeline
 
 class User:
-    def __init__(self, username, password, ip, port):
+    def __init__(self, server, username, password):
         self.username = username
         self.password = password
-        self.ip = ip
-        self.port = port
+        self.server = server
         self.followers = []
         self.following = {} # { username : last_msg_received }
         self.timeline = Timeline()
