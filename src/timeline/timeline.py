@@ -61,14 +61,12 @@ class Timeline:
         self.mutex.release()
 
     def prune_messages(self) -> None:
-        expire_date = datetime.now() - relativedelta(
-                                                        years=MESSAGE_LIFESPAN['years'],
-                                                        months=MESSAGE_LIFESPAN['months'],
-                                                        days=MESSAGE_LIFESPAN['days'],
-                                                        hours=MESSAGE_LIFESPAN['hours'],
-                                                        minutes=MESSAGE_LIFESPAN['minutes'],
-                                                        seconds=MESSAGE_LIFESPAN['seconds']
-                                                    )
+        expire_date = datetime.now() - relativedelta(years=MESSAGE_LIFESPAN['years'],
+                                                    months=MESSAGE_LIFESPAN['months'],
+                                                    days=MESSAGE_LIFESPAN['days'],
+                                                    hours=MESSAGE_LIFESPAN['hours'],
+                                                    minutes=MESSAGE_LIFESPAN['minutes'],
+                                                    seconds=MESSAGE_LIFESPAN['seconds'])
 
         self.mutex.acquire()
         messages = []
@@ -104,7 +102,6 @@ class Timeline:
 
         except Exception:            
             self.logger.log("PROXY", "warning", "No previous state. New state initialize")
-
         self.mutex.release()
 
     def mark_messages_as_seen(self) -> None:
@@ -114,11 +111,9 @@ class Timeline:
             message['header']['seen'] = True
         
         self.save_messages()
-
         self.mutex.release()
 
     def __repr__(self) -> str:
-
         self.mark_messages_as_seen()
 
         messages = sorted(self.messages, key=lambda msg: msg['header']['time'], reverse=True)

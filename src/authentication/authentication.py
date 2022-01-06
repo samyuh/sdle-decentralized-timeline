@@ -1,4 +1,4 @@
-from src.user import User
+from src.server import User
 import sys
 
 class Authentication:
@@ -12,7 +12,6 @@ class Authentication:
         except Exception as e:
             print(e)
             sys.exit(1)
-
         return user
 
     async def login(self, server, information):
