@@ -1,5 +1,4 @@
 import inquirer
-from src.message import Header, Message
 
 class MainMenu:
     @staticmethod

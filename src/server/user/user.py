@@ -1,4 +1,4 @@
-from src.timeline import Timeline
+from src.client.timeline import Timeline
 import asyncio
 
 class User:

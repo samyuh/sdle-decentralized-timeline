@@ -1,4 +1,4 @@
-from src.server import User
+from src.server.user import User
 import asyncio
 import sys
 
