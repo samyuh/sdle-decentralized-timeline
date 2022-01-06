@@ -9,9 +9,7 @@ def post_coroutine(answers, user):
     try:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-
-        future = asyncio.run_coroutine_threadsafe(user.post(answers['information']['message']), loop)
-        return future.result()
+        return loop.run_until_complete(user.post(answers['information']['message']))
     except Exception as e:
         print(e)
 
@@ -19,20 +17,7 @@ def follow_coroutine(answers, user):
     try:
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-
-        future = asyncio.run_coroutine_threadsafe(user.follow(answers['information']['username']), loop)
-        return future.result()
-    except Exception as e:
-        print(e)
-
-### This method should be called like this: coroutine_prototype(user.follow(answers['information']['username'])
-def coroutine_prorotype(routine):
-    try:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-
-        future = asyncio.run_coroutine_threadsafe(routine, loop)
-        return future.result()
+        return loop.run_until_complete(user.follow(answers['information']['username']))
     except Exception as e:
         print(e)
 
@@ -61,9 +46,9 @@ if __name__ == "__main__":
 
     answers = MainMenu().menu()
     if answers['action'] == 'post':
-        post_coroutine(server, answers, user)
+        post_coroutine(answers, user)
     if answers['action'] == 'follow':
-        follow_coroutine(server, answers, user)
+        follow_coroutine(answers, user)
 
     # msg_header = Header(host, user, sequence)
     # msg = Message(msg_header, "Send Message")

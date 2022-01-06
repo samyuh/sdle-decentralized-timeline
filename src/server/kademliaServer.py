@@ -84,11 +84,13 @@ class KademliaServer:
         followed_info = await self.server.get(followed)
 
         if follower_info is not None:
-            follower_info['following'].append(followed)
+            follower_info = json.loads(follower_info)
+            follower_info['following'].append(follower)
         else:
             raise Exception(f"You ({follower}) don't exist on the server")
 
         if followed_info is not None:
+            followed_info = json.loads(followed_info)
             followed_info['followers'].append(follower)
         else:
             raise Exception(f"The user {followed} doesn't exist on the server")
