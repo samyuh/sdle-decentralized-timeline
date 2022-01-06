@@ -40,13 +40,13 @@ if __name__ == "__main__":
     arguments = Validation.parse_arguments()
     Logger.log('Unknown', 'info', f'IP: {arguments.ip}')
     Logger.log('Unknown', 'info', f'Port: {arguments.port}')
-    Logger.log('Unknown', 'info', f'BS: {arguments.bootstrap}')
+    Logger.log('Unknown', 'info', f'Init Node: {arguments.initial}')
 
     if Validation.open_port(arguments.ip, arguments.port):
         Logger.log('Unknown', 'error', f'Port is occupied: {arguments.port}')
         exit(1)
 
-    server = KademliaServer(arguments.ip, arguments.port, arguments.bootstrap)
+    server = KademliaServer(arguments.ip, arguments.port, arguments.initial)
 
     authentication = Authentication()
     answers = AuthenticationMenu.menu()

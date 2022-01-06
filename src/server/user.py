@@ -13,7 +13,6 @@ class User:
         self.timeline = Timeline(username)
 
     async def send_message(self, user, message):
-        
         connect = asyncio.open_connection(host=user.ip, port=user.port, loop=asyncio.get_event_loop())
         reader, writer = await connect
 
@@ -25,7 +24,6 @@ class User:
         ### Do we need to return any value?
 
     async def publish_message(self, users, message):
-        
         tasks = [self.send_message(user, message) for user in users]
         await asyncio.gather(*tasks) # a '*' to unpack the list into arguments for the gather method
         

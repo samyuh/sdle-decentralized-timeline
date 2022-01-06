@@ -74,9 +74,7 @@ class Timeline:
                     messages.append(message)
         
         self.messages = messages
-
         self.save_messages()
-
         self.mutex.release()
 
     def save_messages(self) -> None:
@@ -95,7 +93,7 @@ class Timeline:
                 self.__dict__.update(pickle.load(storage))
 
         except Exception:            
-            print("ERROR")
+            print("ERROR TIMELINE")
         self.mutex.release()
 
     def mark_messages_as_seen(self) -> None:

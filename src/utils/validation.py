@@ -37,9 +37,9 @@ class Validation:
         # Optional arguments
         parser.add_argument("-i", "--ip", help="IP address", type=Validation.valid_ip, default='127.0.0.1')
         parser.add_argument("-p", "--port", help="Port number", type=Validation.valid_port, default=8000)
-        parser.add_argument('-b', '--bootstrap', help="Is bootstrap node", dest='bootstrap', action='store_true')
-        parser.add_argument('--no-bootstrap', help="Is regular node", dest='bootstrap', action='store_false')
-        parser.set_defaults(bootstrap=False)
+        parser.add_argument('-init', '--initial-node', help="Is initial node", dest='initial', action='store_true')
+        parser.add_argument('--no-initial', help="Is regular node", dest='initial', action='store_false')
+        parser.set_defaults(initial=False)
 
         arguments = None
 
