@@ -40,6 +40,7 @@ A detailed help message is printed, describing all the possible arguments.
 - [ ] Semi search engine
 - [ ] Search other users
 
+#### Future work
 ### Group Members
 1. Samuel Fernandes (up201806250@up.pt)
 2. Hugo Guimarães  (up201806490@up.pt)

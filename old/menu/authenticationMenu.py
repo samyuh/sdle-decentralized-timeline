@@ -11,12 +11,6 @@ class AuthenticationMenu:
         answers = inquirer.prompt(questions)
         method = answers['authentication']
 
-        # TODO: para o register, fazer dupla verificação da password?
-        if method == 'register':
-            print('Escolheste register')
-        elif method == 'login':
-            print('Escolheste login')
-
         # TODO: guardar hash da password
         username = input('Enter your username: ')
         password = input('Enter your password: ')

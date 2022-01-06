@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TypedDict, List, Type
+from typing import TypedDict, List, Type, Optional
 
 import pickle
 import threading
@@ -7,15 +7,13 @@ import os
 from datetime import timedelta, datetime
 from dateutil.relativedelta import relativedelta
 
-# TODO: Put this in a config file later
-MESSAGE_LIFESPAN = {
-    "years": 0,
-    "months": 0,
-    "days": 0,
-    "hours": 0,
-    "minutes": 2,
-    "seconds": 0
-}
+class MessageLifespan(TypedDict, total=False):
+    years: int
+    months: int
+    days: int
+    hours: int
+    minutes: int
+    seconds: int
 class MessageHeader(TypedDict):
     id: int
     user: str
@@ -28,10 +26,21 @@ class TimelineMessage(TypedDict):
 class Timeline:
     username: str
     mutex: Type[threading._RLock]
+    message_lifespan: MessageLifespan
 
-    def __init__(self, username : str) -> None:
+    def __init__(self, username : str, message_lifespan : Optional[MessageLifespan] = {}) -> None:
         self.username : str = username
         self.messages : List[TimelineMessage] = []
+        
+        self.message_lifespan = { "years": 0, "months": 0, "days": 0, "hours": 0, "minutes": 0, "seconds": 0 }
+        if message_lifespan:
+            self.message_lifespan['years'] = message_lifespan.get('years', 0)
+            self.message_lifespan['months'] = message_lifespan.get('months', 0)
+            self.message_lifespan['days'] = message_lifespan.get('days', 0)
+            self.message_lifespan['hours'] = message_lifespan.get('hours', 0)
+            self.message_lifespan['minutes'] = message_lifespan.get('minutes', 0)
+            self.message_lifespan['seconds'] = message_lifespan.get('seconds', 0)
+
         self.mutex : Type[threading._RLock] = threading.RLock()
         self.storage_path : str = f'./storage/{self.username}'
         self.__load_messages()
@@ -48,19 +57,20 @@ class Timeline:
     def add_message(self, message : TimelineMessage) -> None:
         self.mutex.acquire()
 
-        message['header']['seen'] = False
+        newMessage = message.copy()
+        newMessage['header']['seen'] = False
 
-        self.messages.append(message)
+        self.messages.append(newMessage)
 
         self.mutex.release()
 
     def prune_messages(self) -> None:
-        expire_date = datetime.now() - relativedelta(years=MESSAGE_LIFESPAN['years'],
-                                                    months=MESSAGE_LIFESPAN['months'],
-                                                    days=MESSAGE_LIFESPAN['days'],
-                                                    hours=MESSAGE_LIFESPAN['hours'],
-                                                    minutes=MESSAGE_LIFESPAN['minutes'],
-                                                    seconds=MESSAGE_LIFESPAN['seconds'])
+        expire_date = datetime.now() - relativedelta(years=self.message_lifespan['years'],
+                                                    months=self.message_lifespan['months'],
+                                                    days=self.message_lifespan['days'],
+                                                    hours=self.message_lifespan['hours'],
+                                                    minutes=self.message_lifespan['minutes'],
+                                                    seconds=self.message_lifespan['seconds'])
 
         self.mutex.acquire()
         messages = []
@@ -68,8 +78,8 @@ class Timeline:
             if message['header']['user'] == self.username:
                 messages.append(message)
             else:
-                # TODO: Decide date format
-                # TODO: check if message was seen already?
+                # TODO: Date format decided: UNIX time
+                # TODO: check if message was seen already? No fim
                 if (datetime.strptime(message['header']['time'], "%Y/%m/%d %H:%M:%S") > expire_date):
                     messages.append(message)
         

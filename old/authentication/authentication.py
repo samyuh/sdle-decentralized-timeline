@@ -13,6 +13,7 @@ class Authentication:
         except Exception as e:
             print(e)
             sys.exit(1)
+        print('Register successful!')
         return user
 
     async def login(self, server, information):
@@ -22,6 +23,7 @@ class Authentication:
         except Exception as e:
             print(e)
             sys.exit(1)
+        print('Login successful!')
         return user
 
     def register_coroutine(self, server, answers):

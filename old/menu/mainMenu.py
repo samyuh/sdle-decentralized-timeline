@@ -25,7 +25,7 @@ class MainMenu:
             result['information']['username'] = username
         
         elif action == 'view':
-            print('View message')
+            print('View timeline')
         
         elif action == 'logout':
             print('Logout')
