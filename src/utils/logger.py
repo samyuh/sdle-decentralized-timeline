@@ -1,13 +1,8 @@
 from colorama import Fore, Style
 
 class Logger(object):
-    def __init__(self):
-        # TODO: Save
-        pass
-        #root_logger = logging.getLogger()
-        #root_logger.setLevel(logging.DEBUG)
-    
-    def log(self, origin, type_message, message):
+    @staticmethod
+    def log(origin, type_message, message):
         msg = f'{origin}: {message}'
         if (type_message == "debug"):
             logging.debug(log_message)

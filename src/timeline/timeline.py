@@ -16,13 +16,11 @@ MESSAGE_LIFESPAN = {
     "minutes": 2,
     "seconds": 0
 }
-
 class MessageHeader(TypedDict):
     id: int
     user: str
     time: str
     seen: bool
-
 class TimelineMessage(TypedDict):
     header: MessageHeader
     content: str
@@ -32,14 +30,10 @@ class Timeline:
     mutex: Type[threading._RLock]
 
     def __init__(self, username : str) -> None:
-
         self.username : str = username
         self.messages : List[TimelineMessage] = []
-
         self.mutex : Type[threading._RLock] = threading.RLock()
-
         self.storage_path : str = f'./storage/{self.username}'
-
         self.__load_messages()
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
@@ -101,7 +95,7 @@ class Timeline:
                 self.__dict__.update(pickle.load(storage))
 
         except Exception:            
-            self.logger.log("PROXY", "warning", "No previous state. New state initialize")
+            print("ERROR")
         self.mutex.release()
 
     def mark_messages_as_seen(self) -> None:
