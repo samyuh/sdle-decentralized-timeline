@@ -24,9 +24,9 @@ class Snowflake:
 
 
 class Header:
-    def __init__(self, user, sequence):
-        self.id = Snowflake.getId(user, sequence)
-        self.user = user
+    def __init__(self, username, sequence):
+        self.id = Snowflake.getId(username, sequence)
+        self.user = username
         self.sequence = sequence
 
     def dump(self):

@@ -2,7 +2,10 @@ import json
 import asyncio
 
 from src.server.postListener import Listener
+from src.api.timeline import Timeline
+
 import threading
+
 class User:
     def __init__(self, node, username, data):
         self.node = node
@@ -15,7 +18,7 @@ class User:
 
         self.listener = Listener(self)
         threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
-        #self.timeline = Timeline(username)
+        self.timeline = Timeline(username)
     
 
     def add_follower(self, user_followed):
@@ -57,8 +60,7 @@ class User:
 
         if user_info is None:
             raise Exception("User doesn't exist")
-        user = {'username': username, 'ip': user_info['ip'], 'port' :user_info['port'] }
-        return user
+        return user_info
 
     def get_followers(self):
         self.following = json.loads(asyncio.run(self.node.get(self.username)))['following']
@@ -84,8 +86,9 @@ class User:
     # async def view_timeline(self):
     #     print(self.timeline)
 
-    def update_timeline(self, message):
-        self.timeline.add_message(message)
+    def update_timeline(self, message_string):
+
+        self.timeline.add_message(message_string)
 
     # def get_suggestions(self):
     #     pass

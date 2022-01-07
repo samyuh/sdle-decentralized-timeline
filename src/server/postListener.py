@@ -1,5 +1,6 @@
 import zmq
 import time
+import json
 
 class Listener:
     def __init__(self, user):
@@ -12,9 +13,13 @@ class Listener:
 
     def recv_msg_loop(self):
         while True:
-            message = self.socket.recv_string()
+            message = self.socket.recv()
+            
+
+            msg = json.loads(message.decode("utf-8")) 
+
             print(f"Received string: {message}")
 
             ### Add the message to the timeline
-            # self.user.update_timeline(message)
+            self.user.update_timeline(message)
 

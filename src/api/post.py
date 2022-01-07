@@ -1,4 +1,5 @@
 from src.server import Sender
+from src.api.snowflake import Snowflake
 import asyncio
 
 
@@ -7,10 +8,23 @@ class PostMessage:
     
 
     @staticmethod
-    def publish_message(users, message):
+    def publish_message(username_sender, users, message):
+
+        snowflake_id = Snowflake.get_id(username_sender, 1)
+        snowflake_time = Snowflake.get_current_time()
+
+        msg = {
+            'header': {
+                'id': snowflake_id,
+                'user': username_sender,
+                'time': snowflake_time,
+                'seen': False,
+            },
+            'content' : message 
+        }
 
         try:
-            asyncio.run(publishing(users, message)) 
+            asyncio.run(publishing(users, msg)) 
         except Exception as e:
             print(e)
        
@@ -36,9 +50,13 @@ class PostMessage:
 
 
 async def send_message(user, message):
+
+    print("starting to send")
     
     sender = Sender(user['port'])
     sender.send_msg(message)
+
+    
     
 
     ### Do we need to receive any output to verify if the message was delivered?
