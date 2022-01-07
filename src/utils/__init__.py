@@ -1,2 +1,2 @@
-from .logger import Logger
 from .validation import Validation
+from .logger import Logger

@@ -1,2 +1,2 @@
-from .authenticationMenu import AuthenticationMenu
+from .authMenu import AuthMenu
 from .mainMenu import MainMenu

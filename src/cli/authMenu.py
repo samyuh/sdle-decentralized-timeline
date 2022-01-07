@@ -1,6 +1,6 @@
 import inquirer
 
-class AuthenticationMenu:
+class AuthMenu:
     @staticmethod
     def menu():
         print('--- Authentication Menu ---')
@@ -10,8 +10,6 @@ class AuthenticationMenu:
 
         answers = inquirer.prompt(questions)
         method = answers['authentication']
-
-        # TODO: guardar hash da password
         username = input('Enter your username: ')
         password = input('Enter your password: ')
         return {'method': method, 'information': {'username': username, 'password': password}}

@@ -1,9 +1,4 @@
-import logging
 import asyncio
-import sys
-import threading
-import argparse
-
 from kademlia.network import Server
 
 class KademliaNode:
@@ -13,20 +8,19 @@ class KademliaNode:
         self.bootstrap_ip = bootstrap_ip
         self.bootstrap_port = bootstrap_port
 
-        self.server = Server()
+        self.kademliaServer = Server()
         self.loop = asyncio.new_event_loop()
         asyncio.set_event_loop(self.loop)
 
     def run(self):
-        self.loop.run_until_complete(self.server.listen(int(self.port)))
+        self.loop.run_until_complete(self.kademliaServer.listen(int(self.port)))
         
         if self.bootstrap_ip != None:
-            print("true")
             bootstrap_node = (self.bootstrap_ip, int(self.bootstrap_port))
-            self.loop.run_until_complete(self.server.bootstrap([bootstrap_node]))
+            self.loop.run_until_complete(self.kademliaServer.bootstrap([bootstrap_node]))
         
         return self.loop
-
+    
     """ 
     This code takes soo much to update!
     Time to run: 10+ seconds somethings
@@ -48,6 +42,7 @@ class KademliaNode:
     async def set(self, key, value):
         server = Server()
         await server.listen(8469)
+
         bootstrap_node = (self.ip, int(self.port))
         await server.bootstrap([bootstrap_node])
         await server.set(key, value)
@@ -56,8 +51,10 @@ class KademliaNode:
     async def get(self, key):
         server = Server()
         await server.listen(8469)
+
         bootstrap_node = (self.ip, int(self.port))
         await server.bootstrap([bootstrap_node])
         result = await server.get(key)
-        print("Get result:", result)
         server.stop()
+        print("Get result:", result)
+        return result

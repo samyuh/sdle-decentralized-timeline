@@ -22,6 +22,20 @@ class Snowflake:
         now = datetime.now()
         return now
 
-        
 
-    
+class Header:
+    def __init__(self, user, sequence):
+        self.id = Snowflake.getId(user, sequence)
+        self.user = user
+        self.sequence = sequence
+
+    def dump(self):
+        return str(self.id) + str(self.user) + str(self.sequence)
+
+class Message:
+    def __init__(self, header, content):
+        self.header = header
+        self.content = content
+
+    def dump():
+        print(f"Message")
