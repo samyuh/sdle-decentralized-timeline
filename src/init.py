@@ -1,8 +1,8 @@
 import threading
 from src.server.kademliaNode import KademliaNode
 from src.cli import AuthMenu, MainMenu
-from .authentication import Authentication
-from .post import PostMessage
+from src.api.authentication import Authentication
+from src.api.post import PostMessage
 
 class InitAPI:
     def __init__(self, ip, port, initial):

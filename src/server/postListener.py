@@ -1,6 +1,7 @@
 import zmq
 import time
 import json
+from pprint import pprint
 
 class Listener:
     def __init__(self, user):
@@ -18,7 +19,8 @@ class Listener:
 
             msg = json.loads(message) 
 
-            print(f"Received string: {msg}")
+            print("Received message:")
+            pprint(msg)
 
             ### Add the message to the timeline
             self.user.update_timeline(msg)

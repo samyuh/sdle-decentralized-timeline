@@ -1,6 +1,6 @@
 from configparser import ConfigParser
 
-from src.api.init import InitAPI
+from .init import InitAPI
 from src.utils import Logger, Validation
 
 def load_configuration():

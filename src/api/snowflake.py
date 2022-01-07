@@ -24,23 +24,23 @@ class Snowflake:
 
     @staticmethod
     def get_time():
-        now = time.ctime()
+        now = time.time()
         return now
 
 
-class Header:
-    def __init__(self, username, sequence):
-        self.id = Snowflake.getId(username, sequence)
-        self.user = username
-        self.sequence = sequence
+# class Header:
+#     def __init__(self, username, sequence):
+#         self.id = Snowflake.getId(username, sequence)
+#         self.user = username
+#         self.sequence = sequence
 
-    def dump(self):
-        return str(self.id) + str(self.user) + str(self.sequence)
+#     def dump(self):
+#         return str(self.id) + str(self.user) + str(self.sequence)
 
-class Message:
-    def __init__(self, header, content):
-        self.header = header
-        self.content = content
+# class Message:
+#     def __init__(self, header, content):
+#         self.header = header
+#         self.content = content
 
-    def dump():
-        print(f"Message")
+#     def dump():
+#         print(f"Message")
