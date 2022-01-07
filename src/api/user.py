@@ -29,8 +29,8 @@ class User:
             print(f'You already follow the user {user_followed}')
             return None
 
-        user_info = asyncio.run(self.node.get(self.username))
-        user_followed_info = asyncio.run(self.node.get(user_followed))
+        user_info = self.node.get(self.username)
+        user_followed_info = self.node.get(user_followed)
         
         ### Update followers on user
         if user_info is not None:
@@ -46,16 +46,16 @@ class User:
         else:
             raise Exception(f"The user {user_followed} doesn't exist on the server")
 
-        asyncio.run(self.node.set(self.username, json.dumps(user_info)))
+        self.node.set(self.username, json.dumps(user_info))
 
         print("HERE")
         print(json.dumps(user_followed_info))
-        asyncio.run(self.node.set(user_followed, json.dumps(user_followed_info)))
+        self.node.set(user_followed, json.dumps(user_followed_info))
 
         self.following.append(user_followed)
 
     def get_user(self, username):
-        user_info = asyncio.run(self.node.get(username))
+        user_info = self.node.get(username)
         user_info = json.loads(user_info)
 
         if user_info is None:
@@ -63,7 +63,7 @@ class User:
         return user_info
 
     def get_followers(self):
-        self.following = json.loads(asyncio.run(self.node.get(self.username)))['following']
+        self.following = json.loads(self.node.get(self.username))['following']
 
         followers_info = {}
         for username in self.following:

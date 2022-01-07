@@ -21,40 +21,17 @@ class KademliaNode:
         
         return self.loop
     
-    """ 
-    This code takes soo much to update!
-    Time to run: 10+ seconds somethings
+    def set(self, key, value):
+        return asyncio.run_coroutine_threadsafe(self.__set(key, value), self.loop).result()
 
-    async def get(self, key):
-        result = await self.server.get(key)
-        print("Get result:", result)
+    def get(self, key):
+        return asyncio.run_coroutine_threadsafe(self.__get(key), self.loop).result()
 
-    async def set(self, key, value):
-        await self.server.set(key, value)
-    """
+    async def __set(self, key, value):
+        await self.kademliaServer.set(key, value)
+        return True
 
-    """
-    With this one bellow:
-    It is created a listner (We could create a listener using asyncio maybe?)
-    Launch listener loop each time a set or get is needed
-    Velocity: Instantly    
-    """
-    async def set(self, key, value):
-        server = Server()
-        await server.listen(8469)
-
-        bootstrap_node = (self.ip, int(self.port))
-        await server.bootstrap([bootstrap_node])
-        await server.set(key, value)
-        server.stop()
-
-    async def get(self, key):
-        server = Server()
-        await server.listen(8469)
-
-        bootstrap_node = (self.ip, int(self.port))
-        await server.bootstrap([bootstrap_node])
-        result = await server.get(key)
-        server.stop()
+    async def __get(self, key):
+        result = await self.kademliaServer.get(key)
         print("Get result:", result)
         return result

@@ -12,7 +12,7 @@ class Authentication:
         password = information['password']
         
         try:
-            user_info = asyncio.run(self.node.get(username))
+            user_info = self.node.get(username)
             if user_info is None:
                 user_data = {
                     "password": password,
@@ -22,8 +22,7 @@ class Authentication:
                     "port": self.node.port
                 }
 
-                asyncio.run(self.node.set(username, json.dumps(user_data)))
-                asyncio.run(self.node.get(username))
+                self.node.set(username, json.dumps(user_data))
                 user = User(self.node, username, user_data)
             else:
                 raise Exception(f'Registration failed. User {username} already exists')
@@ -38,7 +37,7 @@ class Authentication:
         password = information['password']
 
         try: 
-            user_info = asyncio.run(self.node.get(username))
+            user_info = self.node.get(username)
 
             if user_info is not None:
                 user_info = json.loads(user_info)
