@@ -2,6 +2,7 @@ import threading
 from src.server.kademliaNode import KademliaNode
 from src.cli import AuthMenu, MainMenu
 from .authentication import Authentication
+from .post import PostMessage
 
 class InitAPI:
     def __init__(self, ip, port, initial):
@@ -14,6 +15,9 @@ class InitAPI:
         self.loop = self.node.run()
 
     def run(self):
+        """
+        Start running kademlia loop
+        """
         threading.Thread(target=self.loop.run_forever, daemon=True).start()
 
     def cli(self):
@@ -30,7 +34,7 @@ class InitAPI:
                 case 'follow':
                     user.add_follower(answers['information']['username'])
                 case 'post':
-                    return 0
+                     PostMessage.publish_message(user.get_followers(), "Hello World!")
                 case 'match':
                     return 0
                 case 'logout':

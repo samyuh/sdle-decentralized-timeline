@@ -4,9 +4,9 @@ from src.api.init import InitAPI
 from src.utils import Logger, Validation
 
 def load_configuration():
-    configur = ConfigParser()
-    configur.read('./config.ini')
-    return configur
+    configuration = ConfigParser()
+    configuration.read('./config.ini')
+    return configuration
 
 if __name__ == "__main__":
     config = load_configuration()
