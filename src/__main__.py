@@ -1,6 +1,4 @@
 import asyncio
-
-from src.server.authentication import Authentication
 from src.server.kademliaServer import KademliaServer
 from src.client.listener import Listener
 from src.cli import AuthenticationMenu, MainMenu
@@ -59,18 +57,16 @@ if __name__ == "__main__":
         exit(1)
 
     server = KademliaServer(arguments.ip, arguments.port, arguments.initial)
-
-    authentication = Authentication()
     answers = AuthenticationMenu.menu()
     user = None
 
     if answers['method'] == 'register':
-        user = authentication.register_coroutine(server, answers)
+        user = server.authentication.register_coroutine(answers)
     elif answers['method'] == 'login':
-        user = authentication.login_coroutine(server, answers)
+        user = server.authentication.login_coroutine(answers)
         
     listener = Listener(user)
-    threading.Thread(target=listener.recv_msg_loop).start()
+    threading.Thread(target=listener.recv_msg_loop, daemon=True).start()
     while True:
         answers = MainMenu().menu()
         match answers['action']:

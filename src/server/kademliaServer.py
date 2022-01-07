@@ -4,6 +4,7 @@ import json
 from threading import Thread
 
 from kademlia.network import Server
+from src.server.authentication import Authentication
 
 # TODO: read bootstrap nodes from file.ini, there might be more than one bootstrap node
 BOOTSTRAP_NODES = [('127.0.0.1', 8000)]
@@ -13,58 +14,40 @@ class KademliaServer:
     def __init__(self, ip, port, initial):
         self.ip = ip
         self.port = port
-        self.loop = None
+        self.loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(self.loop)
         self.initial = initial
-        self.start(BOOTSTRAP_NODES)
 
-    def start(self, bootstrap_nodes):
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
+        self.__start(BOOTSTRAP_NODES)
+        self.__init_modules()
 
-        if DEBUG:
-            log = logging.getLogger('kademlia')
-            log.addHandler(handler)
-            log.setLevel(logging.DEBUG)
-
+    def __start(self, bootstrap_nodes):
+        # handler = logging.StreamHandler()
+        # formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        # handler.setFormatter(formatter)
+        # if DEBUG:
+        #     log = logging.getLogger('kademlia')
+        #     log.addHandler(handler)
+        #     log.setLevel(logging.DEBUG)
+        #     loop.set_debug(True)
+        
         self.server = Server()
+        self.loop.run_until_complete(self.server.listen(interface=self.ip, port=self.port))
+        if (not self.initial): self.loop.run_until_complete(self.server.bootstrap(bootstrap_nodes))
 
-        loop = asyncio.get_event_loop()
-        if DEBUG: loop.set_debug(True)
+        Thread(target=self.loop.run_forever, daemon=True).start()
+        
+    async def server(self):
+        self.server = await asyncio.start_server(
+            self.handle_request,
+            self.ip,
+            self.port
+        )
 
-        loop.run_until_complete(self.server.listen(interface=self.ip, port=self.port))
-        if (not self.initial): 
-            loop.run_until_complete(self.server.bootstrap(bootstrap_nodes))
+        await self.server.serve_forever()
 
-        Thread(target=loop.run_forever, daemon=True).start()
-
-    async def register(self, username, password):
-        user_info = await self.server.get(username)
-        if user_info is None:
-            user_data = {
-                "password": password,
-                "followers": [],
-                "following": [],
-                "ip": self.ip,
-                "port": self.port
-            }
-
-            ### Should the response from set be analysed?
-            await self.server.set(username, json.dumps(user_data))
-            return user_data
-        else:
-            raise Exception(f'Registration failed. User {username} already exists')
-            
-
-    async def login(self, username, password):
-        user_info = await self.server.get(username)
-
-        if user_info is not None:
-            if password != user_info['password']:
-                raise Exception(f"Login failed. Password is wrong!")
-            return json.loads(user_info)
-        else:
-            raise Exception(f"Login failed. User {username} doesn't exist")
+    def __init_modules(self):
+        self.authentication = Authentication(self.server)
 
     async def locate_user(self, username):
         user_info = await self.server.get(username)
