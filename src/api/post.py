@@ -11,7 +11,7 @@ class PostMessage:
     def publish_message(username_sender, users, message):
 
         snowflake_id = Snowflake.get_id(username_sender, 1)
-        snowflake_time = Snowflake.get_current_time()
+        snowflake_time = Snowflake.get_time()
 
         msg = {
             'header': {

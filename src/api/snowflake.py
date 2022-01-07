@@ -22,6 +22,11 @@ class Snowflake:
         now = datetime.now()
         return now
 
+    @staticmethod
+    def get_time():
+        now = time.ctime()
+        return now
+
 
 class Header:
     def __init__(self, username, sequence):

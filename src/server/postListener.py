@@ -13,13 +13,13 @@ class Listener:
 
     def recv_msg_loop(self):
         while True:
-            message = self.socket.recv()
+            message = self.socket.recv_string()
             
 
-            msg = json.loads(message.decode("utf-8")) 
+            msg = json.loads(message) 
 
-            print(f"Received string: {message}")
+            print(f"Received string: {msg}")
 
             ### Add the message to the timeline
-            self.user.update_timeline(message)
+            self.user.update_timeline(msg)
 
