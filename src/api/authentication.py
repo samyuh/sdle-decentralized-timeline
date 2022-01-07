@@ -33,7 +33,7 @@ class Authentication:
         print('Register successful!')
         return user
 
-    async def login(self, information):
+    def login(self, information):
         username = information['username']
         password = information['password']
 
