@@ -28,14 +28,26 @@ class InitAPI:
         elif answers['method'] == 'login':
             user = self.authentication.login(answers['information'])
 
+        
+
+
         while True:
             answers = MainMenu().menu()
-            match answers['action']:
-                case 'follow':
-                    user.add_follower(answers['information']['username'])
-                case 'post':
-                     PostMessage.publish_message(user.get_followers(), "Hello World!")
-                case 'match':
-                    return 0
-                case 'logout':
-                    return 0
+            # match answers['action']:
+            #     case 'follow':
+            #         user.add_follower(answers['information']['username'])
+            #     case 'post':
+            #          PostMessage.publish_message(user.get_followers(), "Hello World!")
+            #     case 'match':
+            #         return 0
+            #     case 'logout':
+            #         return 0
+
+            if answers['action'] == 'follow':
+                user.add_follower(answers['information']['username'])
+            elif answers['action'] == 'post':
+                PostMessage.publish_message(user.get_followers(), answers['information']['message'])
+            elif answers['action'] == 'match':
+                return 0
+            elif answers['action'] == 'logout':
+                return 0
