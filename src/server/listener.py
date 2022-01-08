@@ -2,7 +2,6 @@ import zmq
 import json
 
 from src.api.message import MessageType
-#from src.api.post import PostMessage
 
 class Listener:
     def __init__(self, user):
@@ -27,4 +26,3 @@ class Listener:
                 for message in msg['content']: self.user.update_timeline(message)
             elif msg['header']['type'] == MessageType.REQUEST_POSTS.value:
                 self.user.send_message(MessageType.SEND_POSTS, msg['header']['user'])
-                #PostMessage.send_message(self.user, MessageType.SEND_POSTS, msg['header']['user'])

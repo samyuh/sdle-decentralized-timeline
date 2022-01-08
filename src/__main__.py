@@ -1,6 +1,6 @@
 from configparser import ConfigParser
 
-from .init import InitAPI
+from .core import Core
 from src.utils import Logger, Validation
 
 def load_configuration():
@@ -20,8 +20,8 @@ if __name__ == "__main__":
         Logger.log('Unknown', 'error', f'Port is occupied: {arguments.port}')
         exit(1)
 
-    api = InitAPI(arguments.ip, int(arguments.port), arguments.initial)
-    
+    api = Core(arguments.ip, int(arguments.port), arguments.initial)
+
     if True: api.cli()
     else: pass # WebAPP
 

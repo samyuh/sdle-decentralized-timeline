@@ -47,39 +47,35 @@ class User:
             print(f'You already follow the user {user_followed}')
             return None
 
-        user_info = self.node.get(self.username)
-        user_followed_info = self.node.get(user_followed)
-        print(f"User INFO: {user_info}")
-        print(f"Followed INFO: {user_followed_info}")
-        ### Update followers on user
-        if user_info is not None:
-            user_info = json.loads(user_info)
+        ### Update follower list
+        try:
+            user_info = self.get_user(user_followed)
             user_info['followers'].append(user_followed)
-        else:
-            raise Exception(f"You ({self.username}) don't exist on the server")
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
 
         ### Update following list on follower
-        if user_followed_info is not None:
-            user_followed_info = json.loads(user_followed_info)
+        try:
+            user_followed_info = self.get_user(user_followed)
             user_followed_info['following'].append(self.username)
-        else:
-            raise Exception(f"The user {user_followed} doesn't exist on the server")
+        except Exception as e:
+            print(f"Error: {e}")
+            return None
 
         self.node.set(self.username, json.dumps(user_info))
-
-        print("HERE")
-        print(json.dumps(user_followed_info))
         self.node.set(user_followed, json.dumps(user_followed_info))
 
+        print(json.dumps(user_followed_info))
         self.following.append(user_followed)
         return user_followed
 
     def get_user(self, username):
         user_info = self.node.get(username)
-        user_info = json.loads(user_info)
-
         if user_info is None:
             raise Exception("User doesn't exist")
+
+        user_info = json.loads(user_info)
         return user_info
 
     def get_followers(self):

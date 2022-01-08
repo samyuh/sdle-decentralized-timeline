@@ -1,14 +1,10 @@
 import threading
 
 from src.cli import AuthMenu, MainMenu
-
-from src.api.authentication import Authentication
-from src.api.post import PostMessage
-from src.api.message import MessageType
-
+from src.api import Authentication, PostMessage, MessageType
 from src.server import KademliaNode, Listener
 
-class InitAPI:
+class Core:
     def __init__(self, ip, port, initial):
         if initial: 
             self.node = KademliaNode(ip, port)
