@@ -21,8 +21,7 @@ if __name__ == "__main__":
         exit(1)
 
     api = InitAPI(arguments.ip, int(arguments.port), arguments.initial)
-    api.run()
-
+    
     if True: api.cli()
     else: pass # WebAPP
 

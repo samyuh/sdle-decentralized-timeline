@@ -1,9 +1,7 @@
 import json
-
-from src.server.listener import Listener
 from src.api.timeline import Timeline
 
-import threading
+from src.api.post import PostMessage
 
 class User:
     def __init__(self, node, username, data):
@@ -14,19 +12,22 @@ class User:
         self.port = data['port']
         self.followers = data['followers']
         self.following = data['following']
-
-        self.listener = Listener(self)
-        threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
         self.timeline = Timeline(username)
+
+    # --------------------------
+    # -- Listener Loop Action --
+    # --------------------------
+    def update_timeline(self, message):
+        self.timeline.add_message(message)
+
+    def send_message(self, type_message, message):
+        PostMessage.send_message(self, type_message, message)
 
     # ------------
     # - TimeLine -
     # ------------
     def view_timeline(self):
         print(self.timeline)
-
-    def update_timeline(self, message):
-        self.timeline.add_message(message)
 
     def get_own_timeline(self):
         return self.timeline.get_messages_from_user(self.username)
@@ -37,7 +38,7 @@ class User:
     # -------------
     # - Followers -
     # -------------
-    # ### TODO: followers/following shouldn't be on the network
+    # ### TODO: followers/following On another file maybe?
     def add_follower(self, user_followed):
         if user_followed == self.username:
             print(f"You can't follow yourself")

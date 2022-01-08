@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TypedDict, List, Type, Optional
+from typing import List, Type, Optional
 
 import pickle
 import threading

@@ -1,10 +1,12 @@
 import threading
 
-from src.server.kademlia_node import KademliaNode
 from src.cli import AuthMenu, MainMenu
+
 from src.api.authentication import Authentication
 from src.api.post import PostMessage
-from src.api.message import *
+from src.api.message import MessageType
+
+from src.server import KademliaNode, Listener
 
 class InitAPI:
     def __init__(self, ip, port, initial):
@@ -13,38 +15,47 @@ class InitAPI:
         else: 
             self.node = KademliaNode(ip, port, ("127.0.0.1", 8000))
 
-        self.authentication = Authentication(self.node)
+        self.user = None
         self.loop = self.node.run()
-
-    def run(self):
+        self._run_kademlia_loop()
+        
+    def _run_kademlia_loop(self):
         """
         Start running kademlia loop
         """
         threading.Thread(target=self.loop.run_forever, daemon=True).start()
 
-    def close(self):
-        pass
+    def _run_listener(self):
+        self.listener = Listener(self.user)
+        threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
 
     def cli(self):
+        self.authentication = Authentication(self.node)
+
         ### TODO: Comand pattern here!
         answers = AuthMenu.menu()
-        user = None
         if answers['method'] == 'register':
-            user = self.authentication.register(answers['information'])
+            self.user = self.authentication.register(answers['information'])
         elif answers['method'] == 'login':
-            user = self.authentication.login(answers['information'])
+            self.user = self.authentication.login(answers['information'])
+
+        if self.user != None:
+            self._run_listener()
+        else:
+            print("Error while creating a user")
+            exit(1)
 
         while True:
             answers = MainMenu().menu()
 
             if answers['action'] == 'follow':
-                user_followed = user.add_follower(answers['information']['username'])
+                user_followed = self.user.add_follower(answers['information']['username'])
                 if user_followed != None: 
-                    PostMessage.send_message(user, MessageType.REQUEST_POSTS, user_followed)
+                    PostMessage.send_message(self.user, MessageType.REQUEST_POSTS, user_followed)
             elif answers['action'] == 'post':
-                PostMessage.send_message(user, MessageType.POST_MESSAGE, answers['information']['message'])
+                PostMessage.send_message(self.user, MessageType.POST_MESSAGE, answers['information']['message'])
             elif answers['action'] == 'view':
-                user.view_timeline()
+                self.user.view_timeline()
             elif answers['action'] == 'logout':
                 self.node.close()
                 return 0

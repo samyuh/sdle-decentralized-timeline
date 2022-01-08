@@ -2,7 +2,7 @@ import zmq
 import json
 
 from src.api.message import MessageType
-from src.api.post import PostMessage
+#from src.api.post import PostMessage
 
 class Listener:
     def __init__(self, user):
@@ -22,11 +22,9 @@ class Listener:
             print(msg)
 
             if msg['header']['type'] == MessageType.POST_MESSAGE.value:
-                ### Add the message to the timeline
-                self.user.update_timeline(msg)
+                self.user.update_timeline(msg) 
             elif msg['header']['type'] == MessageType.SEND_POSTS.value:
-                for message in msg['content']:
-                    self.user.update_timeline(message)
+                for message in msg['content']: self.user.update_timeline(message)
             elif msg['header']['type'] == MessageType.REQUEST_POSTS.value:
-                ### Send back the list of messages from your timeline
-                PostMessage.send_message(self.user, MessageType.SEND_POSTS, msg['header']['user'])
+                self.user.send_message(MessageType.SEND_POSTS, msg['header']['user'])
+                #PostMessage.send_message(self.user, MessageType.SEND_POSTS, msg['header']['user'])

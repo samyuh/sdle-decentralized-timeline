@@ -1,6 +1,6 @@
 import asyncio
 
-from src.api.message import *
+from src.api.message import MessageType
 from src.api.snowflake import Snowflake
 from src.server.sender import Sender
 
