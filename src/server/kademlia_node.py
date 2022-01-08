@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import Union
 
 import asyncio
-
 from kademlia.network import Server
 
 class KademliaNode:
@@ -80,11 +79,11 @@ class KademliaNode:
 
     async def __set(self, key: str, value: str) -> None:
         await self.server.set(key, value)
+        print("SET: ", value)
 
     async def __get(self, key: str) -> Union[str, None]:
         result = await self.server.get(key)
-        # TODO: remover print
-        print("Get result:", result)
+        print("GET: ", result)
         return result
     
     async def __close(self) -> None:

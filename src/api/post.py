@@ -1,18 +1,10 @@
-from src.server import Sender
-from src.api.snowflake import Snowflake
 import asyncio
-from enum import Enum
 
-class MessageType(Enum):
-    POST_MESSAGE = 1
-    REQUEST_POSTS = 2
-    SEND_POSTS = 3
-
+from src.api.message import *
+from src.api.snowflake import Snowflake
 class PostMessage:
-
     @staticmethod
     def send_message(user, message_type, content):
-
         if message_type == MessageType.POST_MESSAGE:
             PostMessage.publish_message(user, content)
         elif message_type == MessageType.REQUEST_POSTS:
@@ -41,7 +33,7 @@ class PostMessage:
         }
 
         try:
-            asyncio.run(publishing(users, msg)) 
+            asyncio.run(user.publishing(users, msg)) 
         except Exception as e:
             print(e)
 
@@ -49,7 +41,6 @@ class PostMessage:
 
     @staticmethod
     def request_posts(user, followed_user):
-
         msg = {
             'header': {
                 'user': user.username,
@@ -57,13 +48,12 @@ class PostMessage:
                 'type': MessageType.REQUEST_POSTS.value
             },
         }
-        followed_info = user.get_user(followed_user)
 
-        asyncio.run(send_to_user(followed_info, msg))
+        followed_info = user.get_user(followed_user)
+        asyncio.run(user.send_to_user(followed_info, msg))
 
     @staticmethod
     def send_posts(user, follower_user):
-
         follower_info = user.get_user(follower_user)
         timeline = user.get_own_timeline()
 
@@ -75,18 +65,5 @@ class PostMessage:
             'content' : timeline
         }
         
-        asyncio.run(send_to_user(follower_info, msg))
+        asyncio.run(user.send_to_user(follower_info, msg))
 
-async def send_to_user(user, message):
-    print("Starting to send to {user.username}")
-    
-    sender = Sender(user['port'])
-    sender.send_msg(message)
-
-    ### Do we need to receive any output to verify if the message was delivered?
-    ### Do we need to return any value?
-
-async def publishing(users, message):
-
-    tasks = [send_to_user(user, message) for user in users.values()]
-    await asyncio.gather(*tasks)

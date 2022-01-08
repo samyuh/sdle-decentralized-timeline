@@ -5,26 +5,10 @@ import pickle
 import threading
 import os
 import time
-from datetime import timedelta, datetime
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-class MessageLifespan(TypedDict, total=False):
-    years: int
-    months: int
-    days: int
-    hours: int
-    minutes: int
-    seconds: int
-
-class MessageHeader(TypedDict):
-    id: int
-    user: str
-    time: str
-    seen: bool
-
-class TimelineMessage(TypedDict):
-    header: MessageHeader
-    content: str
+from src.api.message import *
 
 class Timeline:
     username: str

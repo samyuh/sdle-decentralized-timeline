@@ -1,8 +1,7 @@
-from src.api.user import User
-import asyncio
 import sys
 import json
 
+from src.api.user import User
 class Authentication:
     def __init__(self, node):
         self.node = node

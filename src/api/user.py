@@ -1,9 +1,11 @@
 import json
 import asyncio
 
-from src.server.postListener import Listener
+from src.server.listener import Listener
+from src.server.sender import Sender
 from src.api.timeline import Timeline
-from src.api.post import MessageType, PostMessage
+from src.api.message import MessageType
+from src.api.post import PostMessage
 
 import threading
 
@@ -21,7 +23,24 @@ class User:
         threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
         self.timeline = Timeline(username)
     
-    # Timeline
+    # ----------
+    # - Sender -
+    # ----------
+    async def send_to_user(self, user, message):
+        print("Starting to send to {user.username}")
+        sender = Sender(user['port'])
+        sender.send_msg(message)
+
+        ### Do we need to receive any output to verify if the message was delivered?
+        ### Do we need to return any value?
+
+    async def publishing(self, users, message):
+        tasks = [self.send_to_user(user, message) for user in users.values()]
+        await asyncio.gather(*tasks)
+
+    # ----------
+    # - TimeLine -
+    # ----------
     def view_timeline(self):
         print(self.timeline)
 
@@ -34,7 +53,10 @@ class User:
     # def get_suggestions(self):
     #     pass
 
-    # Followers  ### TODO: followers/following shouldn't be on the network
+    # -------------
+    # - Followers -
+    # -------------
+    # ### TODO: followers/following shouldn't be on the network
     def add_follower(self, user_followed):
         if user_followed == self.username:
             print(f"You can't follow yourself")
@@ -45,7 +67,8 @@ class User:
 
         user_info = self.node.get(self.username)
         user_followed_info = self.node.get(user_followed)
-        
+        print(f"User INFO: {user_info}")
+        print(f"Followed INFO: {user_followed_info}")
         ### Update followers on user
         if user_info is not None:
             user_info = json.loads(user_info)
@@ -88,6 +111,9 @@ class User:
 
         return followers_info
 
+    # -----------
+    # - Special -
+    # -----------
     def __str__(self) -> str:
         res = f'User {self.username}:\n'
         res += f'\tPassword: {self.password}\n'
