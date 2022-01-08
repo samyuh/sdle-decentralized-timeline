@@ -1,11 +1,7 @@
 import json
-import asyncio
 
 from src.server.listener import Listener
-from src.server.sender import Sender
 from src.api.timeline import Timeline
-from src.api.message import MessageType
-from src.api.post import PostMessage
 
 import threading
 
@@ -22,25 +18,10 @@ class User:
         self.listener = Listener(self)
         threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
         self.timeline = Timeline(username)
-    
-    # ----------
-    # - Sender -
-    # ----------
-    async def send_to_user(self, user, message):
-        print("Starting to send to {user.username}")
-        sender = Sender(user['port'])
-        sender.send_msg(message)
 
-        ### Do we need to receive any output to verify if the message was delivered?
-        ### Do we need to return any value?
-
-    async def publishing(self, users, message):
-        tasks = [self.send_to_user(user, message) for user in users.values()]
-        await asyncio.gather(*tasks)
-
-    # ----------
+    # ------------
     # - TimeLine -
-    # ----------
+    # ------------
     def view_timeline(self):
         print(self.timeline)
 
@@ -90,9 +71,7 @@ class User:
         self.node.set(user_followed, json.dumps(user_followed_info))
 
         self.following.append(user_followed)
-
-        ### Get the posts from the followed user
-        PostMessage.send_message(self, MessageType.REQUEST_POSTS, user_followed)
+        return user_followed
 
     def get_user(self, username):
         user_info = self.node.get(username)

@@ -26,6 +26,7 @@ class InitAPI:
         pass
 
     def cli(self):
+        ### TODO: Comand pattern here!
         answers = AuthMenu.menu()
         user = None
         if answers['method'] == 'register':
@@ -35,21 +36,13 @@ class InitAPI:
 
         while True:
             answers = MainMenu().menu()
-            # match answers['action']:
-            #     case 'follow':
-            #         user.add_follower(answers['information']['username'])
-            #     case 'post':
-            #          PostMessage.publish_message(user.get_followers(), "Hello World!")
-            #     case 'match':
-            #         return 0
-            #     case 'logout':
-            #         return 0
 
             if answers['action'] == 'follow':
-                user.add_follower(answers['information']['username'])
+                user_followed = user.add_follower(answers['information']['username'])
+                if user_followed != None: 
+                    PostMessage.send_message(user, MessageType.REQUEST_POSTS, user_followed)
             elif answers['action'] == 'post':
                 PostMessage.send_message(user, MessageType.POST_MESSAGE, answers['information']['message'])
-                # PostMessage.publish_message(user, answers['information']['message'])
             elif answers['action'] == 'view':
                 user.view_timeline()
             elif answers['action'] == 'logout':

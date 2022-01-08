@@ -2,6 +2,22 @@ import asyncio
 
 from src.api.message import *
 from src.api.snowflake import Snowflake
+from src.server.sender import Sender
+
+class Publish:
+    @staticmethod
+    async def send_to_user(user, message):
+        print("Starting to send to {user.username}")
+        sender = Sender(user['port'])
+        sender.send_msg(message)
+        ### Do we need to receive any output to verify if the message was delivered?
+        ### Do we need to return any value?
+
+    @staticmethod
+    async def publishing(users, message):
+        tasks = [Publish.send_to_user(user, message) for user in users.values()]
+        await asyncio.gather(*tasks)
+
 class PostMessage:
     @staticmethod
     def send_message(user, message_type, content):
@@ -33,7 +49,7 @@ class PostMessage:
         }
 
         try:
-            asyncio.run(user.publishing(users, msg)) 
+            asyncio.run(Publish.publishing(users, msg)) 
         except Exception as e:
             print(e)
 
@@ -50,7 +66,7 @@ class PostMessage:
         }
 
         followed_info = user.get_user(followed_user)
-        asyncio.run(user.send_to_user(followed_info, msg))
+        asyncio.run(Publish.send_to_user(followed_info, msg))
 
     @staticmethod
     def send_posts(user, follower_user):
@@ -65,5 +81,5 @@ class PostMessage:
             'content' : timeline
         }
         
-        asyncio.run(user.send_to_user(follower_info, msg))
+        asyncio.run(Publish.send_to_user(follower_info, msg))
 

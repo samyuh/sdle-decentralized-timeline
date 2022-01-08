@@ -1,6 +1,5 @@
 import zmq
 import json
-from pprint import pprint
 
 from src.api.message import MessageType
 from src.api.post import PostMessage
