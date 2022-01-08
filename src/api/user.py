@@ -3,6 +3,7 @@ import asyncio
 
 from src.server.postListener import Listener
 from src.api.timeline import Timeline
+from src.api.post import MessageType, PostMessage
 
 import threading
 
@@ -20,7 +21,20 @@ class User:
         threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
         self.timeline = Timeline(username)
     
+    # Timeline
+    def view_timeline(self):
+        print(self.timeline)
 
+    def update_timeline(self, message):
+        self.timeline.add_message(message)
+
+    def get_own_timeline(self):
+        return self.timeline.get_messages_from_user(self.username)
+
+    # def get_suggestions(self):
+    #     pass
+
+    # Followers  ### TODO: followers/following shouldn't be on the network
     def add_follower(self, user_followed):
         if user_followed == self.username:
             print(f"You can't follow yourself")
@@ -54,6 +68,9 @@ class User:
 
         self.following.append(user_followed)
 
+        ### Get the posts from the followed user
+        PostMessage.send_message(self, MessageType.REQUEST_POSTS, user_followed)
+
     def get_user(self, username):
         user_info = self.node.get(username)
         user_info = json.loads(user_info)
@@ -69,7 +86,6 @@ class User:
         for username in self.following:
             followers_info[username] = self.get_user(username)
 
-        print(followers_info)
         return followers_info
 
     def __str__(self) -> str:
@@ -82,16 +98,3 @@ class User:
         for username in self.following:
             res += f'\t\t> {username}'
         return res
-
-    # async def view_timeline(self):
-    #     print(self.timeline)
-
-    def update_timeline(self, message_string):
-
-        self.timeline.add_message(message_string)
-
-    # def get_suggestions(self):
-    #     pass
-
-
-

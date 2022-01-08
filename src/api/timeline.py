@@ -4,6 +4,7 @@ from typing import TypedDict, List, Type, Optional
 import pickle
 import threading
 import os
+import time
 from datetime import timedelta, datetime
 from dateutil.relativedelta import relativedelta
 
@@ -14,11 +15,13 @@ class MessageLifespan(TypedDict, total=False):
     hours: int
     minutes: int
     seconds: int
+
 class MessageHeader(TypedDict):
     id: int
     user: str
     time: str
     seen: bool
+
 class TimelineMessage(TypedDict):
     header: MessageHeader
     content: str
@@ -28,7 +31,7 @@ class Timeline:
     mutex: Type[threading._RLock]
     message_lifespan: MessageLifespan
 
-    def __init__(self, username : str, message_lifespan : Optional[MessageLifespan] = {}) -> None:
+    def __init__(self, username: str, message_lifespan: Optional[MessageLifespan] = {}) -> None:
         self.username : str = username
         self.messages : List[TimelineMessage] = []
         
@@ -43,10 +46,9 @@ class Timeline:
 
         self.mutex : Type[threading._RLock] = threading.RLock()
         self.storage_path : str = f'./storage/{self.username}'
-        self.__load_messages()
+        # self.__load_messages()
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
-
         messages = []
         for message in self.messages:
             if message['header']['user'] == user: 
@@ -78,9 +80,8 @@ class Timeline:
             if message['header']['user'] == self.username:
                 messages.append(message)
             else:
-                # TODO: Date format decided: UNIX time
                 # TODO: check if message was seen already? No fim
-                if (datetime.strptime(message['header']['time'], "%Y/%m/%d %H:%M:%S") > expire_date):
+                if (message['header']['time'] > time.mktime(expire_date.timetuple())):
                     messages.append(message)
         
         self.messages = messages
@@ -112,17 +113,14 @@ class Timeline:
         for message in self.messages:
             message['header']['seen'] = True
         
-        self.save_messages()
+        # self.save_messages()
         self.mutex.release()
 
     def __repr__(self) -> str:
         self.mark_messages_as_seen()
-
         messages = sorted(self.messages, key=lambda msg: msg['header']['time'], reverse=True)
-
         messages_str = ""
-
-        for message in self.messages:
-            messages_str += f"\n{message['header']['user']} · {message['header']['time']}\n" + f"> {message['content']}\n"
+        for message in messages:
+            messages_str += f"\n{message['header']['user']} \u00b7 {message['header']['time']}\n" + f"> {message['content']}\n"
 
         return f"{self.username}'s timeline\n{messages_str}"

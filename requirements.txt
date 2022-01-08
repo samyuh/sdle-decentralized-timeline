@@ -1,0 +1,14 @@
+ansicon==1.89.0
+blessed==1.19.0
+colorama==0.4.4
+inquirer==2.9.1
+jinxed==1.1.0
+kademlia==2.2.2
+python-editor==1.0.4
+pyzmq==22.3.0
+readchar==3.0.5
+rpcudp==4.0.2
+six==1.16.0
+u-msgpack-python==2.7.1
+wcwidth==0.2.5
+zmq==0.0.0

@@ -20,9 +20,11 @@ if __name__ == "__main__":
         Logger.log('Unknown', 'error', f'Port is occupied: {arguments.port}')
         exit(1)
 
-    api = InitAPI(arguments.ip, arguments.port, arguments.initial)
+    api = InitAPI(arguments.ip, int(arguments.port), arguments.initial)
     api.run()
 
     if True: api.cli()
     else: pass # WebAPP
+
+    exit(0)
     

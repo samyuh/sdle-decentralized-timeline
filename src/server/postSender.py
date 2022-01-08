@@ -10,8 +10,7 @@ class Sender:
         self.socket.connect(f'tcp://127.0.0.1:{self.connection_port}')
     
     def send_msg(self, message):
-        
         json_message = json.dumps(message)
-        print(f"ready to send {json_message}")
+        print(f"Ready to send {json_message}")
         self.socket.send_string(json_message)
         print(f"Sent Message: {message}")

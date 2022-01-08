@@ -27,6 +27,6 @@ class MainMenu:
             print('View timeline')
         
         elif action == 'logout':
-            print('Logout')
+            print('Logout! See you soon on Kamellia!')
 
         return result
