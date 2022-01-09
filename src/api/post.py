@@ -20,7 +20,7 @@ class Publish:
         tasks = [Publish.send_to_user(user, message) for user in users.values()]
         await asyncio.gather(*tasks)
 
-class PostMessage:
+class MessageDispatcher:
     def __init__(self, user):
         self.action_dict = {
             MessageType.POST_MESSAGE: PostMessageType(user),
@@ -31,7 +31,7 @@ class PostMessage:
     def send(self, action, message):
         self.action_dict[action].send(message)
         
-class PostMessageType(PostMessage):
+class PostMessageType:
     def __init__(self, user):
         self.user = user
 
@@ -61,7 +61,7 @@ class PostMessageType(PostMessage):
 
         self.user.update_timeline(msg)
 
-class RequestPostType(PostMessage):
+class RequestPostType:
     def __init__(self, user):
         self.user = user
 
@@ -79,7 +79,7 @@ class RequestPostType(PostMessage):
 
         asyncio.run(Publish.send_to_user(followed_info, msg))
 
-class SendPostType(PostMessage):
+class SendPostType:
     def __init__(self, user):
         self.user = user
 

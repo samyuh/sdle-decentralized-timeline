@@ -1,8 +1,12 @@
 import json
+import threading
+
 from src.api.timeline import Timeline
 
 from src.api.message import MessageType
-from src.api.post import PostMessage
+from src.api.post import MessageDispatcher
+
+from src.server.listener import Listener
 
 class User:
     def __init__(self, node, username, data):
@@ -14,11 +18,28 @@ class User:
         self.followers = data['followers']
         self.following = data['following']
 
+        # Follower Module
+        # TODO FOLLOWER
+
+        # Timeline Module
         self.timeline = Timeline(username)
 
-        self.build_message = PostMessage(self) # TODO: mudar de PostMessage para ...
+        # Send Messages Module
+        self.message_dispatcher = MessageDispatcher(self) 
+
+        # Listener Module
+        self.listener = Listener(self)
+        threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
+
+        self.listener_action_list = {
+            MessageType.POST_MESSAGE.value: self.update_timeline,
+            MessageType.SEND_POSTS.value: self.many_update_timeline,
+            MessageType.REQUEST_POSTS.value: self.send_message,
+        }
+
+        # Actions
         self.action_list = {
-            'post': self.post_action, # TODO: mudar para post()
+            'post': self.post,
             'follow': self.follow,
             'unfollow': self.unfollow,
             'view': self.view,
@@ -31,13 +52,13 @@ class User:
     def action(self, action, information):
         self.action_list[action](information)
     
-    def post_action(self, information):
-        self.build_message.send(MessageType.POST_MESSAGE, information['message'])
+    def post(self, information):
+        self.message_dispatcher.send(MessageType.POST_MESSAGE, information['message'])
 
     def follow(self, information):
         user_followed = self.add_follower(information['username'])
         if user_followed != None:
-            self.build_message.send(MessageType.REQUEST_POSTS, user_followed)
+            self.message_dispatcher.send(MessageType.REQUEST_POSTS, user_followed)
 
     def unfollow(self, information):
         user_unfollowed = self.remove_follower(information['username'])
@@ -45,34 +66,36 @@ class User:
             self.delete_posts(user_unfollowed)
 
     def view(self, _):
-        self.view_timeline()
+        print(self.timeline)
 
     def logout(self, _):
         self.node.close()
+        exit(0)
         
     # --------------------------
     # -- Listener Loop Action --
     # --------------------------
+    def listener_action(self, action, message):
+        self.listener_action_list[action](message)
+
     def update_timeline(self, message):
         self.timeline.add_message(message)
 
-    def send_message(self, action, message):
-        self.build_message.send(action, message)
+    def many_update_timeline(self, messages):
+        for message in messages['content']: 
+            self.timeline.add_message(message)
+
+    def send_message(self, message):
+        self.message_dispatcher.send(MessageType.SEND_POSTS, message['header']['user'])
 
     # ------------
     # - TimeLine -
     # ------------
-    def view_timeline(self):
-        print(self.timeline)
-
     def get_own_timeline(self):
         return self.timeline.get_messages_from_user(self.username)
 
     def delete_posts(self, user_unfollowed):
         self.timeline.delete_posts(user_unfollowed)
-
-    # def get_suggestions(self):
-    #     pass
 
     # -------------
     # - Followers -

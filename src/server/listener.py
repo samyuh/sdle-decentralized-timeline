@@ -1,7 +1,7 @@
+from __future__ import annotations
+
 import zmq
 import json
-
-from src.api.message import MessageType
 
 class Listener:
     def __init__(self, user):
@@ -9,8 +9,9 @@ class Listener:
         self.ctx = zmq.Context()
         self.socket = self.ctx.socket(zmq.PAIR)
 
+        self.listening_ip = "127.0.0.1"
         self.listening_port = self.user.port - 1000
-        self.socket.bind(f'tcp://127.0.0.1:{self.listening_port}')
+        self.socket.bind(f'tcp://{self.listening_ip}:{self.listening_port}')
 
     def recv_msg_loop(self):
         while True:
@@ -20,9 +21,4 @@ class Listener:
             print("Received message:")
             print(msg)
 
-            if msg['header']['type'] == MessageType.POST_MESSAGE.value:
-                self.user.update_timeline(msg) 
-            elif msg['header']['type'] == MessageType.SEND_POSTS.value:
-                for message in msg['content']: self.user.update_timeline(message)
-            elif msg['header']['type'] == MessageType.REQUEST_POSTS.value:
-                self.user.send_message(MessageType.SEND_POSTS, msg['header']['user'])
+            self.user.listener_action(msg['header']['type'], msg) 
