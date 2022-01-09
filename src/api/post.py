@@ -5,9 +5,11 @@ from src.api.snowflake import Snowflake
 from src.server.sender import Sender
 
 class Publish:
+    def __init__(self):
+        self.sender = Sender()        
+
     @staticmethod
     async def send_to_user(user, message):
-        print("Starting to send to {user.username}")
         sender = Sender(user['port'])
         sender.send_msg(message)
         ### Do we need to receive any output to verify if the message was delivered?
@@ -19,17 +21,21 @@ class Publish:
         await asyncio.gather(*tasks)
 
 class PostMessage:
-    @staticmethod
-    def send_message(user, message_type, content):
-        if message_type == MessageType.POST_MESSAGE:
-            PostMessage.publish_message(user, content)
-        elif message_type == MessageType.REQUEST_POSTS:
-            PostMessage.request_posts(user, content)
-        elif message_type == MessageType.SEND_POSTS:
-            PostMessage.send_posts(user, content)
+    def __init__(self):
+        self.action_dict = {
+            MessageType.POST_MESSAGE: PostMessageType(),
+            MessageType.REQUEST_POSTS: RequestPostType(),
+            MessageType.SEND_POSTS: SendPostType(),
+        }
 
-    @staticmethod
-    def publish_message(user, message):
+    def send(self, action, user, message):
+        self.action_dict[action].send(user, message)
+        
+class PostMessageType(PostMessage):
+    def __init__(self):
+        pass
+
+    def send(self, user, message):
         username = user.username
         users = user.get_followers()
 
@@ -41,9 +47,9 @@ class PostMessage:
             'header': {
                 'id': snowflake_id,
                 'user': username,
-                'type': MessageType.POST_MESSAGE.value,
                 'time': snowflake_time,
                 'seen': False,
+                'type': MessageType.POST_MESSAGE.value,
             },
             'content' : message
         }
@@ -55,8 +61,11 @@ class PostMessage:
 
         user.update_timeline(msg)
 
-    @staticmethod
-    def request_posts(user, followed_user):
+class RequestPostType(PostMessage):
+    def __init__(self):
+        pass
+
+    def send(self, user, followed_user):
         msg = {
             'header': {
                 'user': user.username,
@@ -68,8 +77,11 @@ class PostMessage:
         followed_info = user.get_user(followed_user)
         asyncio.run(Publish.send_to_user(followed_info, msg))
 
-    @staticmethod
-    def send_posts(user, follower_user):
+class SendPostType(PostMessage):
+    def __init__(self):
+        pass
+
+    def send(self, user, follower_user):
         follower_info = user.get_user(follower_user)
         timeline = user.get_own_timeline()
 

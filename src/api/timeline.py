@@ -40,6 +40,14 @@ class Timeline:
 
         return messages
 
+    def delete_posts(self, user : str) -> List[TimelineMessage]:
+        messages = []
+        for message in self.messages:
+            if message['header']['user'] != user: 
+                messages.append(message)
+
+        self.messages = messages
+
     def add_message(self, message : TimelineMessage) -> None:
         self.mutex.acquire()
 
@@ -47,7 +55,6 @@ class Timeline:
         newMessage['header']['seen'] = False
 
         self.messages.append(newMessage)
-
         self.mutex.release()
 
     def prune_messages(self) -> None:
@@ -74,7 +81,6 @@ class Timeline:
 
     def save_messages(self) -> None:
         self.mutex.acquire()
-
         with open(f'{self.storage_path}/timeline.pickle', 'wb') as storage:
             pickle.dump(self.__dict__, storage, protocol=pickle.HIGHEST_PROTOCOL)
 
