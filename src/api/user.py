@@ -25,7 +25,7 @@ class User:
         self.timeline = Timeline(username)
 
         # Send Messages Module
-        self.message_dispatcher = MessageDispatcher(self) 
+        self.message_dispatcher = MessageDispatcher(self)
 
         # Listener Module
         self.listener = Listener(self)

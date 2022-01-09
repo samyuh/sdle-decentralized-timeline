@@ -21,4 +21,5 @@ class Listener:
             print("Received message:")
             print(msg)
 
+            # Parsing in a new thread?
             self.user.listener_action(msg['header']['type'], msg) 
