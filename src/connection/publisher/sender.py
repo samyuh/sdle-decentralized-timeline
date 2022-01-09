@@ -7,6 +7,7 @@ class Sender:
         self.socket = self.ctx.socket(zmq.PAIR)
 
     def set_port(self, port):
+        self.connection_ip = "127.0.0.1"
         self.connection_port = port - 1000
         self.socket.connect(f'tcp://127.0.0.1:{self.connection_port}')
 

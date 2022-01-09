@@ -3,10 +3,9 @@ import threading
 
 from .timeline import Timeline
 
-from src.publisher import MessageDispatcher
-from src.publisher.message import MessageType
-
-from src.server.listener import Listener
+from src.connection.publisher import MessageDispatcher
+from src.connection import MessageReceiver
+from src.connection.message import MessageType
 
 class User:
     def __init__(self, node, username, data):
@@ -25,14 +24,8 @@ class User:
         self.message_dispatcher = MessageDispatcher(self)
 
         # Listener Module
-        self.listener = Listener(self)
-        threading.Thread(target=self.listener.recv_msg_loop, daemon=True).start()
+        self.message_receiver = MessageReceiver(self, "127.0.0.1", self.port - 1000)
 
-        self.listener_action_list = {
-            MessageType.POST_MESSAGE.value: self.update_timeline,
-            MessageType.SEND_POSTS.value: self.many_update_timeline,
-            MessageType.REQUEST_POSTS.value: self.send_message,
-        }
 
         # Actions
         self.action_list = {
@@ -56,15 +49,18 @@ class User:
         self.action_list[action](information)
     
     def post(self, information):
-        self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
+        message = self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
+        self.timeline.add_message(message)
 
     def follow(self, information):
         user_followed = self.add_follower(information['username'])
+
         if user_followed != None:
             self.message_dispatcher.action(MessageType.REQUEST_POSTS, user_followed)
 
     def unfollow(self, information):
         user_unfollowed = self.remove_follower(information['username'])
+        
         if user_unfollowed != None:
             self.delete_posts(user_unfollowed)
 
@@ -78,15 +74,6 @@ class User:
     # --------------------------
     # -- Listener Loop Action --
     # --------------------------
-    def listener_action(self, action, message):
-        self.listener_action_list[action](message)
-
-    def send_message(self, message):
-        self.message_dispatcher.action(MessageType.SEND_POSTS, message['header']['user'])
-
-    # ------------
-    # - TimeLine -
-    # ------------
     def update_timeline(self, message):
         self.timeline.add_message(message)
 
@@ -94,6 +81,12 @@ class User:
         for message in messages['content']:
             self.timeline.add_message(message)
 
+    def send_message(self, message):
+        self.message_dispatcher.action(MessageType.SEND_POSTS, message['header']['user'])
+
+    # ------------
+    # - TimeLine -
+    # ------------
     def get_own_timeline(self):
         return self.timeline.get_messages_from_user(self.username)
 

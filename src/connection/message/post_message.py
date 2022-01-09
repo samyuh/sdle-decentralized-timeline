@@ -27,7 +27,6 @@ class PostMessageType(MessageInterface):
             'content' : message
         }
 
-        self.user.update_timeline(msg) # TODO: do this in other place?
         return (users, msg)
 
     def send(self, users, message_built):

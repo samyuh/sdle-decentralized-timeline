@@ -1,5 +1,8 @@
-from src.publisher.message import MessageType, PostMessageType, RequestPostType, SendPostType
+from src.connection.message import MessageType, PostMessageType, RequestPostType, SendPostType
 from .sender import Sender
+
+import zmq
+import json
 
 class MessageDispatcher:
     def __init__(self, user):
@@ -16,5 +19,15 @@ class MessageDispatcher:
         message_built = self.action_dict[action].build(message)
 
         # Send Message
-        # Integrate with Publish
         self.action_dict[action].send(*message_built)
+
+        # Return message Sent
+        return message_built[1]
+
+    # def set_port(self, ip, port):
+
+    #     self.socket.connect(f'tcp://{ip}:{port}')
+
+    # def send_msg(self, message):
+    #     json_message = json.dumps(message)
+    #     self.socket.send_string(json_message)

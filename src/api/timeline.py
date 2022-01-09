@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from zmq.eventloop.ioloop import PeriodicCallback
 from pathlib import Path
 
-from src.publisher.message import MessageHeader
+from src.connection.message import MessageHeader
 
 class MessageLifespan(TypedDict, total=False):
     years: int
@@ -22,7 +22,7 @@ class MessageLifespan(TypedDict, total=False):
 class TimelineMessage(TypedDict):
     header: MessageHeader
     content: str
-    
+
 class Timeline:
     username: str
     messages: List[TimelineMessage]

@@ -1,5 +1,4 @@
 import threading
-import pickle
 
 from src.cli import AuthMenu, MainMenu
 from src.api import Authentication, User
