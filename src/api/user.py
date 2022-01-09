@@ -21,9 +21,6 @@ class User:
         # Follower Module
         # TODO FOLLOWER
 
-        # Timeline Module
-        self.timeline = Timeline(username)
-
         # Send Messages Module
         self.message_dispatcher = MessageDispatcher(self)
 
@@ -45,6 +42,12 @@ class User:
             'view': self.view,
             'logout': self.logout
         }
+
+        # Timeline Module
+        self.timeline = Timeline(username)
+        # TODO: Update timeline with posts from when the user node was offline
+        # ZMQ already restores these posts O.O
+        # self.update_state()
 
     # --------------------------
     #  Action Menu Command
@@ -100,6 +103,7 @@ class User:
     def update_state(self):
         for followed_user in self.following:
             self.timeline.delete_posts(followed_user)
+            self.message_dispatcher.action(MessageType.REQUEST_POSTS, followed_user)
 
     # -------------
     # - Followers -
