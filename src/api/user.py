@@ -1,6 +1,7 @@
 import json
 from src.api.timeline import Timeline
 
+from src.api.message import MessageType
 from src.api.post import PostMessage
 
 class User:
@@ -14,9 +15,41 @@ class User:
         self.following = data['following']
 
         self.timeline = Timeline(username)
-        self.post = PostMessage(self)
-        self.action_list = {}
 
+        self.build_message = PostMessage(self) # TODO: mudar de PostMessage para ...
+        self.action_list = {
+            'post': self.post_action, # TODO: mudar para post()
+            'follow': self.follow,
+            'unfollow': self.unfollow,
+            'view': self.view,
+            'logout': self.logout
+        }
+
+    # --------------------------
+    #  Action Menu Command
+    # --------------------------
+    def action(self, action, information):
+        self.action_list[action](information)
+    
+    def post_action(self, information):
+        self.build_message.send(MessageType.POST_MESSAGE, information['message'])
+
+    def follow(self, information):
+        user_followed = self.add_follower(information['username'])
+        if user_followed != None:
+            self.build_message.send(MessageType.REQUEST_POSTS, user_followed)
+
+    def unfollow(self, information):
+        user_unfollowed = self.remove_follower(information['username'])
+        if user_unfollowed != None:
+            self.delete_posts(user_unfollowed)
+
+    def view(self, _):
+        self.view_timeline()
+
+    def logout(self, _):
+        self.node.close()
+        
     # --------------------------
     # -- Listener Loop Action --
     # --------------------------
@@ -24,7 +57,7 @@ class User:
         self.timeline.add_message(message)
 
     def send_message(self, action, message):
-        self.post.send(action, message)
+        self.build_message.send(action, message)
 
     # ------------
     # - TimeLine -
