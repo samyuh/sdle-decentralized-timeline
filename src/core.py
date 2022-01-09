@@ -44,17 +44,17 @@ class Core:
             print("Error while creating a user")
             exit(1)
 
-        postMessage = PostMessage()
+        postMessage = PostMessage(self.user)
         while True:
             answers = MainMenu().menu()
 
             if answers['action'] == 'post':
-                postMessage.send(MessageType.POST_MESSAGE, self.user, answers['information']['message'])
+                postMessage.send(MessageType.POST_MESSAGE, answers['information']['message'])
 
             elif answers['action'] == 'follow':
                 user_followed = self.user.add_follower(answers['information']['username'])
                 if user_followed != None:
-                    postMessage.send(MessageType.REQUEST_POSTS, self.user, user_followed)
+                    postMessage.send(MessageType.REQUEST_POSTS, user_followed)
 
             elif answers['action'] == 'unfollow':
                 user_unfollowed = self.user.remove_follower(answers['information']['username'])

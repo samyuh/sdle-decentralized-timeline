@@ -21,23 +21,23 @@ class Publish:
         await asyncio.gather(*tasks)
 
 class PostMessage:
-    def __init__(self):
+    def __init__(self, user):
         self.action_dict = {
-            MessageType.POST_MESSAGE: PostMessageType(),
-            MessageType.REQUEST_POSTS: RequestPostType(),
-            MessageType.SEND_POSTS: SendPostType(),
+            MessageType.POST_MESSAGE: PostMessageType(user),
+            MessageType.REQUEST_POSTS: RequestPostType(user),
+            MessageType.SEND_POSTS: SendPostType(user),
         }
 
-    def send(self, action, user, message):
-        self.action_dict[action].send(user, message)
+    def send(self, action, message):
+        self.action_dict[action].send(message)
         
 class PostMessageType(PostMessage):
-    def __init__(self):
-        pass
+    def __init__(self, user):
+        self.user = user
 
-    def send(self, user, message):
-        username = user.username
-        users = user.get_followers()
+    def send(self, message):
+        username = self.user.username
+        users = self.user.get_followers()
 
         snowflake_id = Snowflake.get_id(username, 1)
         snowflake_time = Snowflake.get_time()
@@ -59,33 +59,34 @@ class PostMessageType(PostMessage):
         except Exception as e:
             print(e)
 
-        user.update_timeline(msg)
+        self.user.update_timeline(msg)
 
 class RequestPostType(PostMessage):
-    def __init__(self):
-        pass
+    def __init__(self, user):
+        self.user = user
 
-    def send(self, user, followed_user):
+    def send(self, followed_user):
+        username = self.user.username
+        followed_info = self.user.get_user(followed_user)
+
         msg = {
             'header': {
-                'user': user.username,
+                'user': username,
                 'followed' : followed_user,
                 'type': MessageType.REQUEST_POSTS.value
             },
         }
 
-        followed_info = user.get_user(followed_user)
         asyncio.run(Publish.send_to_user(followed_info, msg))
 
 class SendPostType(PostMessage):
-    def __init__(self):
-        pass
+    def __init__(self, user):
+        self.user = user
 
-    def send(self, user, follower_user):
-        follower_info = user.get_user(follower_user)
-        timeline = user.get_own_timeline()
+    def send(self, follower_user):
+        follower_info = self.user.get_user(follower_user)
+        timeline = self.user.get_own_timeline()
 
-        ### Creating Message
         msg = {
             'header': {
                 'type': MessageType.SEND_POSTS.value,

@@ -14,7 +14,7 @@ class User:
         self.following = data['following']
 
         self.timeline = Timeline(username)
-        self.post = PostMessage()
+        self.post = PostMessage(self)
         self.action_list = {}
 
     # --------------------------
@@ -24,7 +24,7 @@ class User:
         self.timeline.add_message(message)
 
     def send_message(self, action, message):
-        self.post.send(action, self, message)
+        self.post.send(action, message)
 
     # ------------
     # - TimeLine -
