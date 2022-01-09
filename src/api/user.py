@@ -47,18 +47,19 @@ class User:
             print(f'You already follow the user {user_followed}')
             return None
 
-        ### Update follower list
+        ### Update following list of the current user
         try:
-            user_info = self.get_user(user_followed)
-            user_info['followers'].append(user_followed)
+            user_info = self.get_user(self.username)
+            user_info['following'].append(user_followed)
+            self.following = user_info['following']
         except Exception as e:
             print(f"Error: {e}")
             return None
 
-        ### Update following list on follower
+        ### Update follower list on followed
         try:
             user_followed_info = self.get_user(user_followed)
-            user_followed_info['following'].append(self.username)
+            user_followed_info['followers'].append(self.username)
         except Exception as e:
             print(f"Error: {e}")
             return None
@@ -66,23 +67,21 @@ class User:
         self.node.set(self.username, json.dumps(user_info))
         self.node.set(user_followed, json.dumps(user_followed_info))
 
-        print(json.dumps(user_followed_info))
-        self.following.append(user_followed)
         return user_followed
 
     def get_user(self, username):
         user_info = self.node.get(username)
         if user_info is None:
-            raise Exception("User doesn't exist")
+            raise Exception(f"User {username} doesn't exist")
 
         user_info = json.loads(user_info)
         return user_info
 
     def get_followers(self):
-        self.following = json.loads(self.node.get(self.username))['following']
+        self.followers = json.loads(self.node.get(self.username))['followers']
 
         followers_info = {}
-        for username in self.following:
+        for username in self.followers:
             followers_info[username] = self.get_user(username)
 
         return followers_info

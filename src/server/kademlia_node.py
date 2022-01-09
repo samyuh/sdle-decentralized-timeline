@@ -73,7 +73,7 @@ class KademliaNode:
 
     def close(self) -> None:
         """
-        Stop kadmelia server
+        Stop Kademlia server
         """
         asyncio.run_coroutine_threadsafe(self.__close(), self.loop).result()
 

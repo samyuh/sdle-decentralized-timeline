@@ -82,4 +82,3 @@ class PostMessage:
         }
         
         asyncio.run(Publish.send_to_user(follower_info, msg))
-
