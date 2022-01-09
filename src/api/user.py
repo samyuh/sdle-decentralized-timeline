@@ -78,24 +78,28 @@ class User:
     def listener_action(self, action, message):
         self.listener_action_list[action](message)
 
-    def update_timeline(self, message):
-        self.timeline.add_message(message)
-
-    def many_update_timeline(self, messages):
-        for message in messages['content']: 
-            self.timeline.add_message(message)
-
     def send_message(self, message):
         self.message_dispatcher.action(MessageType.SEND_POSTS, message['header']['user'])
 
     # ------------
     # - TimeLine -
     # ------------
+    def update_timeline(self, message):
+        self.timeline.add_message(message)
+
+    def many_update_timeline(self, messages):
+        for message in messages['content']:
+            self.timeline.add_message(message)
+
     def get_own_timeline(self):
         return self.timeline.get_messages_from_user(self.username)
 
     def delete_posts(self, user_unfollowed):
         self.timeline.delete_posts(user_unfollowed)
+
+    def update_state(self):
+        for followed_user in self.following:
+            self.timeline.delete_posts(followed_user)
 
     # -------------
     # - Followers -

@@ -7,6 +7,8 @@ import os
 import time
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+from zmq.eventloop.ioloop import PeriodicCallback
+from pathlib import Path
 
 from src.api.message import *
 
@@ -29,8 +31,12 @@ class Timeline:
             self.message_lifespan['seconds'] = message_lifespan.get('seconds', 0)
 
         self.mutex : Type[threading._RLock] = threading.RLock()
-        self.storage_path : str = f'./storage/{self.username}'
-        # self.__load_messages()
+        self.storage_path : str = './storage'
+
+        self.__load_messages()
+
+        self.periodic_callback = PeriodicCallback(self.save_messages, 1000)
+        self.periodic_callback.start()
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
         messages = []
@@ -81,20 +87,27 @@ class Timeline:
 
     def save_messages(self) -> None:
         self.mutex.acquire()
-        with open(f'{self.storage_path}/timeline.pickle', 'wb') as storage:
-            pickle.dump(self.__dict__, storage, protocol=pickle.HIGHEST_PROTOCOL)
+        with open(f'{self.storage_path}/{self.username}.pickle', 'wb') as storage:
+            timeline_state = {
+                'timeline' : self.messages
+            }
+            pickle.dump(timeline_state, storage, protocol=pickle.HIGHEST_PROTOCOL)
 
         self.mutex.release()
 
     def __load_messages(self) -> None:
         self.mutex.acquire()
-        try:
-            os.makedirs(self.storage_path, exist_ok=True)
-            with open(f'{self.storage_path}/timeline.pickle', 'rb') as storage:
-                self.__dict__.update(pickle.load(storage))
 
-        except Exception:            
-            print("ERROR TIMELINE")
+        try:
+            output_file = open(f"{self.storage_path}/{self.username}.pickle", 'rb')
+            timeline_state = pickle.load(output_file)
+            # self.__dict__.update(pickle.load(timeline_state))
+            self.messages = timeline_state['timeline']
+            output_file.close()
+        except Exception:
+            # self.logger.log("PROXY", "warning", "No previous state. New state initialize") # TODO: meter no logger
+            Path("./storage").mkdir(parents=True, exist_ok=True)
+        
         self.mutex.release()
 
     def mark_messages_as_seen(self) -> None:
