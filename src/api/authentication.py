@@ -1,4 +1,3 @@
-import sys
 import json
 
 class Authentication:
@@ -33,7 +32,7 @@ class Authentication:
                 raise Exception(f'Registration failed. User {username} already exists')
         except Exception as e:
             print(e)
-            sys.exit(1)
+            exit(1)
         print('Register successful!')
         return user_args
 
@@ -56,6 +55,6 @@ class Authentication:
                 
         except Exception as e:
             print(e)
-            sys.exit(1)
+            exit(1)
         print('Login successful!')
         return user_args

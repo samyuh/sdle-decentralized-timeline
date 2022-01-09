@@ -53,12 +53,12 @@ class User:
         self.action_list[action](information)
     
     def post(self, information):
-        self.message_dispatcher.send(MessageType.POST_MESSAGE, information['message'])
+        self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
 
     def follow(self, information):
         user_followed = self.add_follower(information['username'])
         if user_followed != None:
-            self.message_dispatcher.send(MessageType.REQUEST_POSTS, user_followed)
+            self.message_dispatcher.action(MessageType.REQUEST_POSTS, user_followed)
 
     def unfollow(self, information):
         user_unfollowed = self.remove_follower(information['username'])
@@ -86,7 +86,7 @@ class User:
             self.timeline.add_message(message)
 
     def send_message(self, message):
-        self.message_dispatcher.send(MessageType.SEND_POSTS, message['header']['user'])
+        self.message_dispatcher.action(MessageType.SEND_POSTS, message['header']['user'])
 
     # ------------
     # - TimeLine -

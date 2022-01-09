@@ -4,22 +4,7 @@ from src.api.message import MessageType
 from src.api.snowflake import Snowflake
 from src.server.sender import Sender
 
-class Publish:
-    def __init__(self):
-        self.sender = Sender()        
-
-    @staticmethod
-    async def send_to_user(user, message):
-        sender = Sender(user['port'])
-        sender.send_msg(message)
-        ### Do we need to receive any output to verify if the message was delivered?
-        ### Do we need to return any value?
-
-    @staticmethod
-    async def publishing(users, message):
-        tasks = [Publish.send_to_user(user, message) for user in users.values()]
-        await asyncio.gather(*tasks)
-
+# MESSAGE DISPATCHER
 class MessageDispatcher:
     def __init__(self, user):
         self.action_dict = {
@@ -28,14 +13,39 @@ class MessageDispatcher:
             MessageType.SEND_POSTS: SendPostType(user),
         }
 
-    def send(self, action, message):
-        self.action_dict[action].send(message)
-        
-class PostMessageType:
+    def action(self, action, message):
+        # Build message
+        message_built = self.action_dict[action].build(message)
+
+        # Send Message
+        # Integrate with Publish
+        self.action_dict[action].send(*message_built)
+
+
+# MESSAGE BUILDER   
+class MessageInterface:
+    def __init__(self, user):
+        self.user = user
+    
+    def build(self, info):
+        pass
+
+    def send(self, message):
+        pass
+
+    async def publish_one(self, user, message):
+        sender = Sender(user['port'])
+        sender.send_msg(message)
+
+    async def publish_many(self, users, message):
+        tasks = [self.publish_one(user, message) for user in users.values()]
+        await asyncio.gather(*tasks)
+
+class PostMessageType(MessageInterface):
     def __init__(self, user):
         self.user = user
 
-    def send(self, message):
+    def build(self, message):
         username = self.user.username
         users = self.user.get_followers()
 
@@ -54,18 +64,20 @@ class PostMessageType:
             'content' : message
         }
 
+        self.user.update_timeline(msg) # TODO: do this in other place?
+        return (users, msg)
+
+    def send(self, users, message_built):
         try:
-            asyncio.run(Publish.publishing(users, msg)) 
+            asyncio.run(self.publish_many(users, message_built)) 
         except Exception as e:
             print(e)
 
-        self.user.update_timeline(msg)
-
-class RequestPostType:
+class RequestPostType(MessageInterface):
     def __init__(self, user):
         self.user = user
 
-    def send(self, followed_user):
+    def build(self, followed_user):
         username = self.user.username
         followed_info = self.user.get_user(followed_user)
 
@@ -77,13 +89,19 @@ class RequestPostType:
             },
         }
 
-        asyncio.run(Publish.send_to_user(followed_info, msg))
+        return (followed_info, msg)
 
-class SendPostType:
+    def send(self, followed_info, msg):
+        try:
+            asyncio.run(self.publish_one(followed_info, msg))
+        except Exception as e:
+            print(e)
+
+class SendPostType(MessageInterface):
     def __init__(self, user):
         self.user = user
 
-    def send(self, follower_user):
+    def build(self, follower_user):
         follower_info = self.user.get_user(follower_user)
         timeline = self.user.get_own_timeline()
 
@@ -94,4 +112,10 @@ class SendPostType:
             'content' : timeline
         }
         
-        asyncio.run(Publish.send_to_user(follower_info, msg))
+        return (follower_info, msg)
+    
+    def send(self, follower_info, msg):
+        try:
+            asyncio.run(self.publish_one(follower_info, msg))
+        except Exception as e:
+            print(e)

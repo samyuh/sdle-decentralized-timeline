@@ -23,9 +23,11 @@ class Core:
 
     def cli(self):
         self.authentication = Authentication(self.node)
+        # print(self.authentication.actions)
         answers = AuthMenu.menu()
         self.user = User(*self.authentication.action(answers['method'], answers['information']))
 
+        # print(self.user.actions)
         while True:
             answers = MainMenu().menu()
             self.user.action(answers['action'], answers['information'])
