@@ -1,10 +1,10 @@
 import json
 import threading
 
-from src.api.timeline import Timeline
+from .timeline import Timeline
 
-from src.api.message import MessageType
-from src.api.post import MessageDispatcher
+from src.publisher import MessageDispatcher
+from src.publisher.message import MessageType
 
 from src.server.listener import Listener
 

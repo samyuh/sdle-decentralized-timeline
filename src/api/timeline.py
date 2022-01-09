@@ -1,25 +1,37 @@
 from __future__ import annotations
-from typing import List, Type, Optional
+from typing import List, Type, Optional, TypedDict
 
 import pickle
 import threading
-import os
 import time
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from zmq.eventloop.ioloop import PeriodicCallback
 from pathlib import Path
 
-from src.api.message import *
+from src.publisher.message import MessageHeader
 
+class MessageLifespan(TypedDict, total=False):
+    years: int
+    months: int
+    days: int
+    hours: int
+    minutes: int
+    seconds: int
+
+class TimelineMessage(TypedDict):
+    header: MessageHeader
+    content: str
+    
 class Timeline:
     username: str
+    messages: List[TimelineMessage]
     mutex: Type[threading._RLock]
     message_lifespan: MessageLifespan
 
     def __init__(self, username: str, message_lifespan: Optional[MessageLifespan] = {}) -> None:
-        self.username : str = username
-        self.messages : List[TimelineMessage] = []
+        self.username: str = username
+        self.messages: List[TimelineMessage] = []
         
         self.message_lifespan = { "years": 0, "months": 0, "days": 0, "hours": 0, "minutes": 0, "seconds": 0 }
         if message_lifespan:

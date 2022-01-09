@@ -2,13 +2,14 @@ import zmq
 import json
 
 class Sender:
-    def __init__(self, port):
+    def __init__(self):
         self.ctx = zmq.Context()
         self.socket = self.ctx.socket(zmq.PAIR)
 
+    def set_port(self, port):
         self.connection_port = port - 1000
         self.socket.connect(f'tcp://127.0.0.1:{self.connection_port}')
-    
+
     def send_msg(self, message):
         json_message = json.dumps(message)
         self.socket.send_string(json_message)
