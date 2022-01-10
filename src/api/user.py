@@ -1,12 +1,38 @@
 import json
+from typing import TypedDict
+from typing_extensions import NotRequired
 
-from .timeline import Timeline
+from src.server.kademlia_node import KademliaNode
+
+from .timeline import Timeline, TimelineMessage
 
 from src.connection import MessageDispatcher, MessageReceiver
 from src.connection.message import MessageType
 
+class UserData(TypedDict):
+    password: str
+    followers: list
+    following: list
+    ip : str
+    port : int
+
+class UserActionInfo(TypedDict, total=False):
+    username: NotRequired[str]
+    message: NotRequired[str]
+
 class User:
-    def __init__(self, node, username, data):
+    node : KademliaNode
+    username : str
+    password : str
+    ip : str
+    port : int
+    followers : list
+    following : list
+    listening_ip : str
+    listening_port : int
+    message_dispatcher : MessageDispatcher
+    message_receiver : MessageReceiver
+    def __init__(self, node, username : str, data : UserData):
         self.node = node
         self.username = username
         self.password = data['password']
@@ -45,36 +71,36 @@ class User:
     # --------------------------
     #  Action Menu Command
     # --------------------------
-    def action(self, action, information):
+    def action(self, action, information : UserActionInfo) -> None:
         self.action_list[action](information)
     
-    def post(self, information):
+    def post(self, information : UserActionInfo) -> None:
         message = self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
         self.timeline.add_message(message)
 
-    def follow(self, information):
+    def follow(self, information : UserActionInfo) -> None:
         user_followed = self.add_follower(information['username'])
 
         if user_followed != None:
             self.message_dispatcher.action(MessageType.REQUEST_POSTS, user_followed)
 
-    def unfollow(self, information):
+    def unfollow(self, information : UserActionInfo) -> None:
         user_unfollowed = self.remove_follower(information['username'])
         
         if user_unfollowed != None:
             self.delete_posts(user_unfollowed)
 
-    def view(self, _):
+    def view(self, _) -> None:
         print(self.timeline)
 
-    def logout(self, _):
+    def logout(self, _) -> None:
         self.node.close()
         exit(0)
         
     # --------------------------
     # -- Listener Loop Action --
     # --------------------------
-    def update_timeline(self, message):
+    def update_timeline(self, message : TimelineMessage) -> None:
         self.timeline.add_message(message)
 
     def many_update_timeline(self, messages):
@@ -93,7 +119,7 @@ class User:
     def delete_posts(self, user_unfollowed):
         self.timeline.delete_posts(user_unfollowed)
 
-    def update_state(self):
+    def update_state(self) -> None:
         for followed_user in self.following:
             self.timeline.delete_posts(followed_user)
             self.message_dispatcher.action(MessageType.REQUEST_POSTS, followed_user)
@@ -155,7 +181,7 @@ class User:
         self.node.set(user_unfollowed, json.dumps(user_unfollowed_info))
         return user_unfollowed
 
-    def get_user(self, username):
+    def get_user(self, username : str):
         user_info = self.node.get(username)
         if user_info is None:
             raise Exception(f'User {username} doesn\'t exist')

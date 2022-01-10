@@ -5,7 +5,7 @@ import zmq
 import json
 
 class MessageDispatcher:
-    def __init__(self, user):
+    def __init__(self, user) -> None:
         self.ctx = zmq.Context()
         self.socket = self.ctx.socket(zmq.PAIR)
 
@@ -21,17 +21,17 @@ class MessageDispatcher:
 
         return message_built[1]
 
-    async def publish_one(self, user, message):
+    async def publish_one(self, user : dict, message : dict) -> None:
         self.set_port(user['ip'], user['port'] - 1000)
         self.send_msg(message)
 
-    async def publish_many(self, users, message):
+    async def publish_many(self, users, message) -> None:
         tasks = [self.publish_one(user, message) for user in users.values()]
         await asyncio.gather(*tasks)
     
-    def set_port(self, dispatcher_ip, dispatcher_port):
+    def set_port(self, dispatcher_ip : str, dispatcher_port : int) -> None:
         self.socket.connect(f'tcp://{dispatcher_ip}:{dispatcher_port}')
 
-    def send_msg(self, message):
+    def send_msg(self, message : dict) -> None:
         json_message = json.dumps(message)
         self.socket.send_string(json_message)

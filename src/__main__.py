@@ -3,7 +3,7 @@ from configparser import ConfigParser
 from .core import Core
 from src.utils import Logger, Validation
 
-def load_configuration():
+def load_configuration() -> ConfigParser:
     configuration = ConfigParser()
     configuration.read('./config.ini')
     return configuration

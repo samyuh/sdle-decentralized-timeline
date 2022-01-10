@@ -6,9 +6,10 @@ import json
 import threading
 
 from src.connection.message import MessageType
+from src.utils.logger import Logger
 
 class MessageReceiver:
-    def __init__(self, user, listening_ip, listening_port):
+    def __init__(self, user, listening_ip : str, listening_port : int) -> None:
         self.user = user
 
         self.ctx = zmq.Context()
@@ -25,19 +26,18 @@ class MessageReceiver:
     # --------------------------
     # -- Listener Loop Action --
     # --------------------------
-    def listener_action(self, action, message):
+    def listener_action(self, action : int, message) -> None:
         self.listener_action_list[action](message)
 
     # --------------------------
     # -- Listener Loop 
     # --------------------------
-    def recv_msg_loop(self):
+    def recv_msg_loop(self) -> None:
         while True:
             message = self.socket.recv_string()
 
             msg = json.loads(message)
-            print("Received message:")
-            print(msg)
+            Logger.log("MessageReceiver", "info", f"RECV {msg}")
 
             # Parsing in a new thread?
             self.listener_action(msg['header']['type'], msg) 

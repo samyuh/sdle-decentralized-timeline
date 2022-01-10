@@ -1,11 +1,16 @@
+from configparser import ConfigParser
+from typing import Union
+
 import argparse
 import ipaddress
 import socket
 from contextlib import closing
 
+from src.utils.logger import Logger
+
 class Validation:
     @staticmethod
-    def valid_ip(ip):
+    def valid_ip(ip : str) -> str:
         try:
             ipaddress.ip_address(ip)
         except ValueError:
@@ -13,7 +18,7 @@ class Validation:
         return ip
 
     @staticmethod
-    def valid_port(port):
+    def valid_port(port : Union[int, str]) -> None:
         try:
             port = int(port)
         except:
@@ -23,7 +28,7 @@ class Validation:
         raise argparse.ArgumentTypeError(f'Invalid port: {port}')
 
     @staticmethod
-    def open_port(host, port):
+    def open_port(host : str, port : int) -> bool:
         with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
             if sock.connect_ex((host, port)) == 0:
                 return True
@@ -31,7 +36,7 @@ class Validation:
                 return False
     
     @staticmethod
-    def parse_arguments(config):
+    def parse_arguments(config : ConfigParser) -> argparse.Namespace:
         parser = argparse.ArgumentParser()
 
         # Optional arguments
@@ -45,7 +50,7 @@ class Validation:
         try:
             arguments = parser.parse_args()
         except argparse.ArgumentTypeError as e:
-            print(str(e))
+            Logger.log("ArgParser", "error", str(e))
             exit(1)
 
         return arguments

@@ -5,7 +5,7 @@ from src.api import Authentication, User
 from src.server import KademliaNode
 
 class Core:
-    def __init__(self, ip, port, initial):
+    def __init__(self, ip : str, port : int, initial) -> None:
         if initial: 
             self.node = KademliaNode(ip, port)
         else: 
@@ -15,13 +15,13 @@ class Core:
         self.loop = self.node.run()
         self._run_kademlia_loop()
         
-    def _run_kademlia_loop(self):
+    def _run_kademlia_loop(self) -> None:
         """
         Start running kademlia loop
         """
         threading.Thread(target=self.loop.run_forever, daemon=True).start()
 
-    def cli(self):
+    def cli(self) -> None:
         self.authentication = Authentication(self.node)
 
         answers = AuthMenu.menu()

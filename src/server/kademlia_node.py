@@ -4,6 +4,8 @@ from typing import Union
 import asyncio
 from kademlia.network import Server
 
+from src.utils.logger import Logger
+
 class KademliaNode:
     """
     Kademlia Node instance.  
@@ -27,12 +29,12 @@ class KademliaNode:
     server: Server = Server()
     loop: asyncio.AbstractEventLoop = asyncio.new_event_loop()
 
-    def __init__(self, ip: str, port: int, bootstrap_node: tuple[str, int] = None):
+    def __init__(self, ip: str, port: int, bootstrap_node: tuple[str, int] = None) -> None:
         self.ip = ip
         self.port = port
         self.bootstrap_node = bootstrap_node
 
-    def run(self):
+    def run(self) -> asyncio.AbstractEventLoop:
         """
         Start listening on the given port.
         Connect to a bootstrap node, if one is given.
@@ -60,7 +62,7 @@ class KademliaNode:
         """
         asyncio.run_coroutine_threadsafe(self.__set(key, value), self.loop).result()
 
-    def get(self, key) -> str:
+    def get(self, key : str) -> str:
         """
         Get a key if the network has it.
 
@@ -79,11 +81,11 @@ class KademliaNode:
 
     async def __set(self, key: str, value: str) -> None:
         await self.server.set(key, value)
-        print("SET: ", value)
+        Logger.log("Kademlia", "success", f"SET {value}")
 
     async def __get(self, key: str) -> Union[str, None]:
         result = await self.server.get(key)
-        print("GET: ", result)
+        Logger.log("Kademlia", "success", f"GET {result}")
         return result
     
     async def __close(self) -> None:

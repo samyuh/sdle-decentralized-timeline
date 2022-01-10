@@ -1,17 +1,29 @@
 import json
+from typing import Callable, Tuple, TypedDict
+from src.api.user import UserData
+from src.cli.main import MainMenuAnswer
+
+from src.server.kademlia_node import KademliaNode
+from src.utils.logger import Logger
+
+class ActionList(TypedDict):
+    register: Callable[[dict], Tuple[KademliaNode, str, UserData]]
+    login: Callable[[dict], Tuple[KademliaNode, str, UserData]]
 
 class Authentication:
-    def __init__(self, node):
+    node : KademliaNode
+    action_list : ActionList
+    def __init__(self, node : KademliaNode) -> None:
         self.node = node
         self.action_list = {
             'register': self.register,
             'login': self.login,
         }
 
-    def action(self, action, information):
+    def action(self, action : str, information : MainMenuAnswer) -> Callable[[dict], Tuple[KademliaNode, str, UserData]]:
         return self.action_list[action](information)
     
-    def register(self, information):
+    def register(self, information : MainMenuAnswer) -> Tuple[KademliaNode, str, UserData]:
         username = information['username']
         password = information['password']
         
@@ -31,12 +43,13 @@ class Authentication:
             else:
                 raise Exception(f'Registration failed. User {username} already exists')
         except Exception as e:
-            print(e)
+            Logger.log("Register", "error", str(e))
             exit(1)
-        print('Register successful!')
+
+        Logger.log("Register", "success", "user registered successfully")
         return user_args
 
-    def login(self, information):
+    def login(self, information : MainMenuAnswer) -> Tuple[KademliaNode, str, UserData]:
         username = information['username']
         password = information['password']
 
@@ -54,7 +67,8 @@ class Authentication:
                 raise Exception(f"Login failed. User {username} doesn't exist")
                 
         except Exception as e:
-            print(e)
+            Logger.log("Register", "error", str(e))
             exit(1)
-        print('Login successful!')
+
+        Logger.log("Login", "success", "success")
         return user_args

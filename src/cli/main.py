@@ -1,9 +1,16 @@
+from typing import TypedDict
 import inquirer
+
+from src.api.user import UserActionInfo
+
+class MainMenuAnswer(TypedDict):
+    action: str
+    information: UserActionInfo
 
 class MainMenu:
     @staticmethod
-    def menu():
-        print('--- Main Menu ---')
+    def menu() -> MainMenuAnswer:
+        print('\n--- Main Menu ---')
         questions = [
             inquirer.List('action', message="Please choose an action", choices=['post', 'follow', 'unfollow', 'view', 'logout'],),
         ]
