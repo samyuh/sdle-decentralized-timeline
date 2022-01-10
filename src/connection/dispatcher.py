@@ -1,5 +1,6 @@
 from src.connection.message import MessageType, PostMessageType, RequestPostType, SendPostType
 
+import asyncio
 import zmq
 import json
 
@@ -18,9 +19,16 @@ class MessageDispatcher:
         message_built = self.action_dict[action].build(message)
         self.action_dict[action].send(*message_built)
 
-        # Return message Sent
         return message_built[1]
 
+    async def publish_one(self, user, message):
+        self.set_port(user['ip'], user['port'] - 1000)
+        self.send_msg(message)
+
+    async def publish_many(self, users, message):
+        tasks = [self.publish_one(user, message) for user in users.values()]
+        await asyncio.gather(*tasks)
+    
     def set_port(self, dispatcher_ip, dispatcher_port):
         self.socket.connect(f'tcp://{dispatcher_ip}:{dispatcher_port}')
 

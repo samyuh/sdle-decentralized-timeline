@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import abc
-import asyncio
 from typing import TypedDict
 from enum import Enum
 
@@ -28,11 +27,3 @@ class MessageInterface(abc.ABC):
     @abc.abstractclassmethod
     def send(self, message):
         pass
-
-    async def publish_one(self, user, message):
-        self.sender.set_port(user['ip'], user['port'] - 1000)
-        self.sender.send_msg(message)
-
-    async def publish_many(self, users, message):
-        tasks = [self.publish_one(user, message) for user in users.values()]
-        await asyncio.gather(*tasks)

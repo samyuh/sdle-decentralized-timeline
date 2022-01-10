@@ -4,8 +4,7 @@ from .message import MessageType, MessageInterface
 
 class RequestPostType(MessageInterface):
     def __init__(self, user, sender):
-        self.user = user
-        self.sender = sender
+        super().__init__(user, sender)
 
     def build(self, followed_user):
         username = self.user.username
@@ -23,6 +22,6 @@ class RequestPostType(MessageInterface):
 
     def send(self, followed_info, msg):
         try:
-            asyncio.run(self.publish_one(followed_info, msg))
+            asyncio.run(self.sender.publish_one(followed_info, msg))
         except Exception as e:
             print(e)

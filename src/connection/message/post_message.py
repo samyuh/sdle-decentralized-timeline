@@ -5,8 +5,7 @@ from .snowflake import Snowflake
 
 class PostMessageType(MessageInterface):
     def __init__(self, user, sender):
-        self.user = user
-        self.sender = sender
+        super().__init__(user, sender)
 
     def build(self, message):
         username = self.user.username
@@ -31,6 +30,6 @@ class PostMessageType(MessageInterface):
 
     def send(self, users, message_built):
         try:
-            asyncio.run(self.publish_many(users, message_built)) 
+            asyncio.run(self.sender.publish_many(users, message_built)) 
         except Exception as e:
             print(e)

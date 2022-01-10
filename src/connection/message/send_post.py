@@ -4,8 +4,7 @@ from .message import MessageType, MessageInterface
 
 class SendPostType(MessageInterface):
     def __init__(self, user, sender):
-        self.user = user
-        self.sender = sender
+        super().__init__(user, sender)
 
     def build(self, follower_user):
         follower_info = self.user.get_user(follower_user)
@@ -22,6 +21,6 @@ class SendPostType(MessageInterface):
     
     def send(self, follower_info, msg):
         try:
-            asyncio.run(self.publish_one(follower_info, msg))
+            asyncio.run(self.sender.publish_one(follower_info, msg))
         except Exception as e:
             print(e)
