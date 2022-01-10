@@ -1,10 +1,8 @@
 import json
-import threading
 
 from .timeline import Timeline
 
-from src.connection.publisher import MessageDispatcher
-from src.connection import MessageReceiver
+from src.connection import MessageDispatcher, MessageReceiver
 from src.connection.message import MessageType
 
 class User:
@@ -17,6 +15,9 @@ class User:
         self.followers = data['followers']
         self.following = data['following']
 
+        self.listening_ip = data['ip']
+        self.listening_port = data['port'] - 1000
+
         # Follower Module
         # TODO FOLLOWER
 
@@ -24,8 +25,7 @@ class User:
         self.message_dispatcher = MessageDispatcher(self)
 
         # Listener Module
-        self.message_receiver = MessageReceiver(self, "127.0.0.1", self.port - 1000)
-
+        self.message_receiver = MessageReceiver(self, self.listening_ip, self.listening_port)
 
         # Actions
         self.action_list = {

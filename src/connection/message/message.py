@@ -30,7 +30,7 @@ class MessageInterface(abc.ABC):
         pass
 
     async def publish_one(self, user, message):
-        self.sender.set_port(user['port'])
+        self.sender.set_port(user['ip'], user['port'] - 1000)
         self.sender.send_msg(message)
 
     async def publish_many(self, users, message):
