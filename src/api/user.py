@@ -1,6 +1,8 @@
 import json
-from typing import TypedDict
+from typing import Callable, Dict, List, TypedDict
 from typing_extensions import NotRequired
+from src.connection.message.request_post import RequestPostMessage
+from src.connection.message.send_post import SendPostMessage, SendPostType
 
 from src.server.kademlia_node import KademliaNode
 
@@ -11,8 +13,8 @@ from src.connection.message import MessageType
 
 class UserData(TypedDict):
     password: str
-    followers: list
-    following: list
+    followers: List[str]
+    following: List[str]
     ip : str
     port : int
 
@@ -32,7 +34,10 @@ class User:
     listening_port : int
     message_dispatcher : MessageDispatcher
     message_receiver : MessageReceiver
-    def __init__(self, node, username : str, data : UserData):
+    action_list: Dict[str, Callable[[UserActionInfo], None]]
+    timeline: Timeline
+
+    def __init__(self, node, username : str, data : UserData) -> None:
         self.node = node
         self.username = username
         self.password = data['password']
@@ -71,7 +76,7 @@ class User:
     # --------------------------
     #  Action Menu Command
     # --------------------------
-    def action(self, action, information : UserActionInfo) -> None:
+    def action(self, action : str, information : UserActionInfo) -> None:
         self.action_list[action](information)
     
     def post(self, information : UserActionInfo) -> None:
@@ -103,11 +108,11 @@ class User:
     def update_timeline(self, message : TimelineMessage) -> None:
         self.timeline.add_message(message)
 
-    def many_update_timeline(self, messages):
+    def many_update_timeline(self, messages : SendPostMessage):
         for message in messages['content']:
             self.timeline.add_message(message)
 
-    def send_message(self, message):
+    def send_message(self, message : RequestPostMessage):
         self.message_dispatcher.action(MessageType.SEND_POSTS, message['header']['user'])
 
     # ------------
@@ -157,7 +162,7 @@ class User:
 
         return user_followed
 
-    def remove_follower(self, user_unfollowed):
+    def remove_follower(self, user_unfollowed : str):
         if user_unfollowed not in self.following:
             print(f'You don\'t follow the user {user_unfollowed}')
             return None
@@ -181,7 +186,7 @@ class User:
         self.node.set(user_unfollowed, json.dumps(user_unfollowed_info))
         return user_unfollowed
 
-    def get_user(self, username : str):
+    def get_user(self, username : str) -> UserData:
         user_info = self.node.get(username)
         if user_info is None:
             raise Exception(f'User {username} doesn\'t exist')
@@ -189,7 +194,7 @@ class User:
         user_info = json.loads(user_info)
         return user_info
 
-    def get_followers(self):
+    def get_followers(self) -> Dict[str, UserData]:
         self.followers = json.loads(self.node.get(self.username))['followers']
 
         followers_info = {}

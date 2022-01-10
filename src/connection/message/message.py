@@ -3,20 +3,26 @@ from __future__ import annotations
 import abc
 from typing import TypedDict
 from enum import Enum
+from src.api.user import User
 
-class MessageHeader(TypedDict):
-    id: int
-    user: str
-    time: str
-    seen: bool
+from src.connection.dispatcher import MessageDispatcher
 
 class MessageType(Enum):
     POST_MESSAGE = 1
     REQUEST_POSTS = 2
     SEND_POSTS = 3
 
+class MessageHeader(TypedDict, total=False):
+    id: int
+    user: str
+    time: str
+    seen: bool
+    type: int
+
 class MessageInterface(abc.ABC):
-    def __init__(self, user, sender):
+    user: User 
+    sender: MessageDispatcher
+    def __init__(self, user : User, sender : MessageDispatcher) -> None:
         self.user = user
         self.sender = sender
     

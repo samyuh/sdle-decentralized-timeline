@@ -7,22 +7,6 @@ from kademlia.network import Server
 from src.utils.logger import Logger
 
 class KademliaNode:
-    """
-    Kademlia Node instance.  
-    This is object should be created to listen on the network.
-
-    Attributes:
-        ip: IP address of the user connecting interface
-        port: Open port of the user connecting interface
-        bootstrap_node (optional): tuple containing IP address and port of the bootstrap node
-        server: server that will be running kademlia server
-        loop: loop that will be running server listener
-
-    Args:
-        ip: IP address of the user connecting interface
-        port: Open port of the user connecting interface
-        bootstrap_node (optional): tuple containing IP address and port of the bootstrap node
-    """
     ip: str = None
     port: int = None
     bootstrap_node: tuple[str, int] = None
@@ -30,6 +14,22 @@ class KademliaNode:
     loop: asyncio.AbstractEventLoop = asyncio.new_event_loop()
 
     def __init__(self, ip: str, port: int, bootstrap_node: tuple[str, int] = None) -> None:
+        """
+        Kademlia Node instance.  
+        This is object should be created to listen on the network.
+
+        Attributes:
+            ip: IP address of the user connecting interface
+            port: Open port of the user connecting interface
+            bootstrap_node (optional): tuple containing IP address and port of the bootstrap node
+            server: server that will be running kademlia server
+            loop: loop that will be running server listener
+
+        Args:
+            ip: IP address of the user connecting interface
+            port: Open port of the user connecting interface
+            bootstrap_node (optional): tuple containing IP address and port of the bootstrap node
+        """
         self.ip = ip
         self.port = port
         self.bootstrap_node = bootstrap_node

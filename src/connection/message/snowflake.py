@@ -10,10 +10,10 @@ class Snowflake:
     Source: https://en.wikipedia.org/wiki/Snowflake_ID
     """
     @staticmethod
-    def get_id(host, sequence):
+    def get_id(host : str, sequence : int) -> str:
         epoch = calendar.timegm(time.gmtime())
         return f"{epoch}{host}{sequence}"
 
     @staticmethod
-    def get_time():
+    def get_time() -> int:
         return calendar.timegm(time.gmtime())

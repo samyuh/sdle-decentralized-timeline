@@ -1,10 +1,16 @@
+from asyncio.events import AbstractEventLoop
 import threading
+from typing import Union
 
 from src.cli import AuthMenu, MainMenu
 from src.api import Authentication, User
 from src.server import KademliaNode
 
 class Core:
+    node : KademliaNode
+    user : Union[User, None]
+    loop : AbstractEventLoop
+    
     def __init__(self, ip : str, port : int, initial) -> None:
         if initial: 
             self.node = KademliaNode(ip, port)

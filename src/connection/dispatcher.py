@@ -15,7 +15,7 @@ class MessageDispatcher:
             MessageType.SEND_POSTS: SendPostType(user, self),
         }
 
-    def action(self, action, message):
+    def action(self, action : int, message : str):
         message_built = self.action_dict[action].build(message)
         self.action_dict[action].send(*message_built)
 
@@ -32,6 +32,6 @@ class MessageDispatcher:
     def set_port(self, dispatcher_ip : str, dispatcher_port : int) -> None:
         self.socket.connect(f'tcp://{dispatcher_ip}:{dispatcher_port}')
 
-    def send_msg(self, message : dict) -> None:
+    def send_msg(self, message) -> None:
         json_message = json.dumps(message)
         self.socket.send_string(json_message)
