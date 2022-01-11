@@ -8,6 +8,7 @@ class MessageDispatcher:
     def __init__(self, user) -> None:
         self.ctx = zmq.Context()
         self.socket = self.ctx.socket(zmq.PAIR)
+        self.socket.linger = 0
 
         self.action_dict = {
             MessageType.POST_MESSAGE: PostMessageType(user, self),

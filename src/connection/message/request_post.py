@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import Tuple, TypedDict, TYPE_CHECKING
 
+import os
 import asyncio
 
 from src.connection.message.message import MessageInterface, MessageType
@@ -20,13 +21,17 @@ class RequestPostType(MessageInterface):
     def build(self, followed_user : str) -> Tuple[UserData, RequestPostMessage]:
         username = self.user.username
         followed_info = self.user.get_user(followed_user)
+        random_check = str(os.urandom(32))
+        signature = self.user.sign(random_check)
 
         message = {
             'header': {
                 'user': username,
-                'followed' : followed_user,
+                'signature': signature,
+                'followed': followed_user,
                 'type': MessageType.REQUEST_POSTS.value
             },
+            'content': random_check,
         }
 
         return (followed_info, message)

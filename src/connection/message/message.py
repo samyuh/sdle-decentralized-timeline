@@ -27,7 +27,7 @@ class MessageInterface(abc.ABC):
     def __init__(self, user : User, sender : MessageDispatcher) -> None:
         self.user = user
         self.sender = sender
-    
+
     @abc.abstractclassmethod
     def build(self, info):
         pass

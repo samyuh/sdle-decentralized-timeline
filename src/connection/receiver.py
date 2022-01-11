@@ -11,6 +11,7 @@ class MessageReceiver:
 
         self.ctx = zmq.Context()
         self.socket = self.ctx.socket(zmq.PAIR)
+        self.socket.linger = 0
         self.socket.bind(f'tcp://{listening_ip}:{listening_port}')
         threading.Thread(target=self.recv_msg_loop, daemon=True).start()
 
@@ -24,7 +25,8 @@ class MessageReceiver:
     # -- Listener Loop Action --
     # --------------------------
     def listener_action(self, action : int, message) -> None:
-        self.listener_action_list[action](message)
+        if self.user.verify_signature(message['content'], message['header']['user'], message['header']['signature']):
+            self.listener_action_list[action](message)
 
     # --------------------------
     # -- Listener Loop 
@@ -38,4 +40,3 @@ class MessageReceiver:
 
             # Parsing in a new thread?
             self.listener_action(msg['header']['type'], msg) 
-    

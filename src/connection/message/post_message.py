@@ -23,16 +23,17 @@ class PostMessageType(MessageInterface):
         snowflake_id = Snowflake.get_id(username, 1)
         snowflake_time = Snowflake.get_time()
 
-        ### Creating Message
+        signature = self.user.sign(message)
         msg = {
             'header': {
                 'id': snowflake_id,
                 'user': username,
+                'signature': signature,
                 'time': snowflake_time,
                 'seen': False,
                 'type': MessageType.POST_MESSAGE.value,
             },
-            'content' : message
+            'content': message
         }
 
         return (users, msg)

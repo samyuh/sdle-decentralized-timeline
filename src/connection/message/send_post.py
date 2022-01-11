@@ -21,14 +21,18 @@ class SendPostType(MessageInterface):
         super().__init__(user, sender)
 
     def build(self, follower_user : str) -> Tuple[any, SendPostMessage]:
+        username = self.user.username
         follower_info = self.user.get_user(follower_user)
         timeline = self.user.get_own_timeline()
+        signature = self.user.sign(timeline)
 
         message = {
             'header': {
+                'user': username,
+                'signature': signature,
                 'type': MessageType.SEND_POSTS.value,
             },
-            'content' : timeline
+            'content': timeline
         }
         
         return (follower_info, message)
