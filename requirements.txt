@@ -4,3 +4,4 @@ kademlia==2.2.2
 python_dateutil==2.8.2
 pyzmq==22.3.0
 setuptools==58.1.0
+typing_extensions==4.0.1
