@@ -1,11 +1,13 @@
 from __future__ import annotations
+from typing import TypedDict, TYPE_CHECKING
 
 import abc
-from typing import TypedDict
 from enum import Enum
-from src.api.user import User
 
-from src.connection.dispatcher import MessageDispatcher
+if TYPE_CHECKING:
+    from src.api.user import User
+    from src.connection.dispatcher import MessageDispatcher
+
 
 class MessageType(Enum):
     POST_MESSAGE = 1

@@ -1,10 +1,14 @@
+from __future__ import annotations
+from typing import Tuple, TypedDict, TYPE_CHECKING
+
 import asyncio
-from typing import Tuple, TypedDict
-from src.api.user import User, UserData
 
-from src.connection.dispatcher import MessageDispatcher
+from src.connection.message.message import MessageInterface, MessageType
 
-from .message import MessageHeader, MessageType, MessageInterface
+if TYPE_CHECKING:
+    from src.connection.message.message import MessageHeader
+    from src.connection.dispatcher import MessageDispatcher
+    from src.api.user import User, UserData
 
 class RequestPostMessage(TypedDict):
     header: MessageHeader

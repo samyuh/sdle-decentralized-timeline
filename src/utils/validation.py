@@ -1,6 +1,6 @@
-from configparser import ConfigParser
 from typing import Union
 
+from configparser import ConfigParser
 import argparse
 import ipaddress
 import socket

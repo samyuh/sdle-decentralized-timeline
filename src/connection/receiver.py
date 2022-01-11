@@ -1,8 +1,5 @@
-from __future__ import annotations
-
 import zmq
 import json
-
 import threading
 
 from src.connection.message import MessageType

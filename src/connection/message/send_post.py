@@ -1,13 +1,16 @@
+from __future__ import annotations
+from typing import List, Tuple, TypedDict, TYPE_CHECKING
+
 import asyncio
-from typing import List, Tuple, TypedDict
 
-from src.api.timeline import TimelineMessage
-from src.api.user import User
-from src.connection.dispatcher import MessageDispatcher
-
+from src.connection.message.message import MessageInterface, MessageType
 from src.utils.logger import Logger
 
-from .message import MessageHeader, MessageType, MessageInterface
+if TYPE_CHECKING:
+    from src.connection.message.message import MessageHeader
+    from src.connection.dispatcher import MessageDispatcher
+    from src.api.user import User
+    from src.api.timeline import TimelineMessage
 
 class SendPostMessage(TypedDict):
     header: MessageHeader

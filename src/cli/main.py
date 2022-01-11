@@ -1,7 +1,10 @@
-from typing import TypedDict
+from __future__ import annotations
+from typing import TypedDict, TYPE_CHECKING
+
 import inquirer
 
-from src.api.user import UserActionInfo
+if TYPE_CHECKING:
+    from src.api.user import UserActionInfo
 
 class MainMenuAnswer(TypedDict):
     action: str

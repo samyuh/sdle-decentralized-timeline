@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import List, Type, Optional, TypedDict
+from typing import List, Type, Optional, TypedDict, TYPE_CHECKING
 
 import pickle
 import threading
@@ -9,7 +9,8 @@ from dateutil.relativedelta import relativedelta
 from zmq.eventloop.ioloop import PeriodicCallback
 from pathlib import Path
 
-from src.connection.message import MessageHeader
+if TYPE_CHECKING:
+    from src.connection.message import MessageHeader
 
 class MessageLifespan(TypedDict, total=False):
     years: int

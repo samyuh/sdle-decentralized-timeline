@@ -1,10 +1,14 @@
-import json
-from typing import Callable, Tuple, TypedDict
-from src.api.user import UserData
-from src.cli.main import MainMenuAnswer
+from __future__ import annotations
+from typing import Callable, Tuple, TypedDict, TYPE_CHECKING
 
-from src.server.kademlia_node import KademliaNode
+import json
+
 from src.utils.logger import Logger
+
+if TYPE_CHECKING:
+    from src.server.kademlia_node import KademliaNode
+    from src.api.user import UserData
+    from src.cli.main import MainMenuAnswer
 
 class ActionList(TypedDict):
     register: Callable[[dict], Tuple[KademliaNode, str, UserData]]

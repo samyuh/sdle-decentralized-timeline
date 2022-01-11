@@ -1,15 +1,19 @@
-import json
-from typing import Callable, Dict, List, TypedDict
+from __future__ import annotations
+from typing import Callable, Dict, List, TypedDict, TYPE_CHECKING
 from typing_extensions import NotRequired
-from src.connection.message.request_post import RequestPostMessage
-from src.connection.message.send_post import SendPostMessage, SendPostType
 
-from src.server.kademlia_node import KademliaNode
+import json
 
-from .timeline import Timeline, TimelineMessage
+from src.api.timeline import Timeline
+from src.connection.dispatcher import MessageDispatcher
+from src.connection.message.message import MessageType
+from src.connection.receiver import MessageReceiver
 
-from src.connection import MessageDispatcher, MessageReceiver
-from src.connection.message import MessageType
+if TYPE_CHECKING:
+    from src.server.kademlia_node import KademliaNode
+    from src.api.timeline import TimelineMessage
+    from src.connection.message.send_post import SendPostMessage
+    from src.connection.message.request_post import RequestPostMessage
 
 class UserData(TypedDict):
     password: str

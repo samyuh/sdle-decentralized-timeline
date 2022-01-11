@@ -1,8 +1,8 @@
-from src.connection.message import MessageType, PostMessageType, RequestPostType, SendPostType
-
 import asyncio
 import zmq
 import json
+
+from src.connection.message import MessageType, PostMessageType, RequestPostType, SendPostType
 
 class MessageDispatcher:
     def __init__(self, user) -> None:

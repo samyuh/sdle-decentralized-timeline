@@ -1,4 +1,5 @@
 from typing import TypedDict
+
 import inquirer
 
 class AuthMenuUserInfo(TypedDict):

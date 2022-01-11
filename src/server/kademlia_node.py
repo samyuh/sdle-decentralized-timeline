@@ -1,5 +1,4 @@
-from __future__ import annotations
-from typing import Union
+from typing import Tuple, Union
 
 import asyncio
 from kademlia.network import Server
@@ -9,11 +8,11 @@ from src.utils.logger import Logger
 class KademliaNode:
     ip: str = None
     port: int = None
-    bootstrap_node: tuple[str, int] = None
+    bootstrap_node: Tuple[str, int] = None
     server: Server = Server()
     loop: asyncio.AbstractEventLoop = asyncio.new_event_loop()
 
-    def __init__(self, ip: str, port: int, bootstrap_node: tuple[str, int] = None) -> None:
+    def __init__(self, ip: str, port: int, bootstrap_node: Tuple[str, int] = None) -> None:
         """
         Kademlia Node instance.  
         This is object should be created to listen on the network.

@@ -1,13 +1,16 @@
-import asyncio
-from typing import Dict, Tuple
-from src.api.timeline import TimelineMessage
+from __future__ import annotations
+from typing import Dict, Tuple, TYPE_CHECKING
 
-from src.api.user import User, UserData
-from src.connection.dispatcher import MessageDispatcher
+import asyncio
+
+from src.connection.message.message import MessageInterface, MessageType
+from src.connection.message.snowflake import Snowflake
 from src.utils.logger import Logger
 
-from .message import MessageType, MessageInterface
-from .snowflake import Snowflake
+if TYPE_CHECKING:
+    from src.api.user import User, UserData
+    from src.connection.dispatcher import MessageDispatcher
+    from src.api.timeline import TimelineMessage
 
 class PostMessageType(MessageInterface):
     def __init__(self, user : User, sender : MessageDispatcher) -> None:
