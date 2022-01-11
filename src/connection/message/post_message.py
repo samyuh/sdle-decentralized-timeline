@@ -20,9 +20,12 @@ class PostMessageType(MessageInterface):
         username = self.user.username
         users = self.user.get_followers()
 
-        snowflake_id = Snowflake.get_id(username, 1)
-        snowflake_time = Snowflake.get_time()
-
+        snowflake_id, snowflake_time = Snowflake.get_id(username, 1)
+        
+        print(f"snowflake_id. {snowflake_id}")
+        print(f"snowflake_time: {snowflake_time}")
+        
+        
         signature = self.user.sign(message)
         msg = {
             'header': {

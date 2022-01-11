@@ -1,5 +1,13 @@
+from typing import Tuple
+
 import calendar
 import time
+import ntplib
+from datetime import datetime
+
+
+
+
 
 class Snowflake:
     """
@@ -10,10 +18,17 @@ class Snowflake:
     Source: https://en.wikipedia.org/wiki/Snowflake_ID
     """
     @staticmethod
-    def get_id(host : str, sequence : int) -> str:
-        epoch = calendar.timegm(time.gmtime())
-        return f"{epoch}{host}{sequence}"
+    def get_id(host : str, sequence : int) -> Tuple[str,int]:
+        
+        epoch = Snowflake.get_time()
+        return f"{epoch}{host}{sequence}", epoch
 
     @staticmethod
     def get_time() -> int:
-        return calendar.timegm(time.gmtime())
+        client = ntplib.NTPClient()
+        server = '0.pool.ntp.org'
+        resp = client.request(server, version=3)
+        
+        return int(resp.tx_time)
+    
+    
