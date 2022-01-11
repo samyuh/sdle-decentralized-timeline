@@ -1,6 +1,5 @@
 from __future__ import annotations
 from typing import Callable, Dict, List, TypedDict, TYPE_CHECKING
-from typing_extensions import NotRequired
 
 import json
 from hashlib import sha512
@@ -24,8 +23,8 @@ class UserData(TypedDict):
     port : int
 
 class UserActionInfo(TypedDict, total=False):
-    username: NotRequired[str]
-    message: NotRequired[str]
+    username: str
+    message: str
 
 class User:
     node : KademliaNode
