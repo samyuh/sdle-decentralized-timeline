@@ -84,7 +84,7 @@ class KademliaNode:
 
     async def __get(self, key: str) -> Union[str, None]:
         result = await self.server.get(key)
-        Logger.log("Kademlia", "debug", f"GET {result}")
+        Logger.log("Kademlia", "deb", f"GET {result}")
         return result
     
     async def __close(self) -> None:

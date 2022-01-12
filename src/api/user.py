@@ -17,12 +17,21 @@ if TYPE_CHECKING:
     from src.connection.message.send_post import SendPostMessage
     from src.connection.message.request_post import RequestPostMessage
 
-class UserData(TypedDict):
-    password: str
+class UserPrivateData(TypedDict):
+    salt: int
+    hash_password: str
+    public_key_n: int
+    public_key_e: int
+
+class UserPublicData(TypedDict):
     followers: List[str]
+
+class UserConnectionsData(TypedDict):
     following: List[str]
     ip : str
     port : int
+    listening_ip : str
+    listening_port : int
 
 class UserActionInfo(TypedDict, total=False):
     username: str
@@ -43,25 +52,27 @@ class User:
     action_list: Dict[str, Callable[[UserActionInfo], None]]
     timeline: Timeline
 
-    def __init__(self, node, username : str, data : UserData) -> None:
+    def __init__(self, node, username, private: UserPrivateData, public: UserPublicData, connection: UserConnectionsData):
         self.node = node
         self.username = username
-        self.hash_password = data['hash_password']
-        self.salt = data['salt']
-        self.ip = data['ip']
-        self.port = data['port']
-        self.followers = data['followers']
-        self.following = data['following']
-        self.listening_ip = data['listening_ip']
-        self.listening_port = data['listening_port']
-        
-        self.public_key_n = data['public_key_n']
-        self.public_key_e = data['public_key_e']
 
+        # Private Fields
+        self.hash_password = private['hash_password']
+        self.salt = private['salt']
+        self.public_key_n = private['public_key_n']
+        self.public_key_e = private['public_key_e']
         self.__read_private_keys()
 
-        # Follower Module
-        # TODO FOLLOWER
+        # Public Fields
+        self.followers = public['followers']
+        self.following = public['following']
+
+        # Connection Fields
+        self.ip = connection['ip']
+        self.port = connection['port']
+        self.listening_ip = connection['listening_ip']
+        self.listening_port = connection['listening_port']
+        
         # Send Messages Module
         self.message_dispatcher = MessageDispatcher(self)
 
@@ -90,6 +101,7 @@ class User:
     
     def post(self, information : UserActionInfo) -> None:
         message = self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
+
         self.timeline.add_message(message)
 
     def follow(self, information : UserActionInfo) -> None:
@@ -110,7 +122,7 @@ class User:
         print(f'FOLLOWERS: {self.followers}')
 
         for follower in self.followers:
-            follower_info = self.get_user(follower)
+            follower_info = self.get_user(follower, 'public')
             print(follower_info)
             suggestions.update(follower_info['followers'])
 
@@ -151,13 +163,12 @@ class User:
         return signature
 
     def verify_signature(self, message, user, signature):
-        user_original = self.get_user(user)
+        user_original = self.get_user(user, 'private')
 
         hash = int.from_bytes(sha512(str(message).encode('utf-8')).digest(), byteorder='big')
         hashFromSignature = pow(signature, int(user_original['public_key_e']), int(user_original['public_key_n']))
 
         signature_valid = (hash == hashFromSignature)
-
 
         Logger.log("success", "success", f"Valid signature: {signature_valid}")
         return signature_valid
@@ -197,7 +208,7 @@ class User:
         self.timeline.delete_posts(user_unfollowed)
 
     def update_state(self) -> None:
-        user_info = self.get_user(self.username)
+        user_info = self.get_user(self.username, 'public')
         self.followers = user_info['followers']
         self.following = user_info['following']
 
@@ -217,7 +228,7 @@ class User:
 
         ### Update following list of the current user
         try:
-            user_info = self.get_user(self.username)
+            user_info = self.get_user(self.username, 'public')
             user_info['following'].append(user_followed)
             self.following = user_info['following']
         except Exception as e:
@@ -226,18 +237,18 @@ class User:
 
         ### Update follower list on followed
         try:
-            user_followed_info = self.get_user(user_followed)
+            user_followed_info = self.get_user(user_followed, 'public')
             user_followed_info['followers'].append(self.username)
             print(f"AQUIII: {user_followed_info['followers']}")
         except Exception as e:
             Logger.log("Add Follower", "error", str(e))
             return None
 
-        self.node.set(self.username, json.dumps(user_info))
-        self.node.set(user_followed, json.dumps(user_followed_info))
+        self.node.set(self.username + ':public', json.dumps(user_info))
+        self.node.set(user_followed + ':public', json.dumps(user_followed_info))
 
         print('AQUIIII ----------------------------')
-        self.node.get(user_followed) # apagar
+        self.node.get(user_followed + ':public') # apagar
 
         return user_followed
 
@@ -247,7 +258,7 @@ class User:
             return None
 
         try:
-            user_info = self.get_user(self.username)
+            user_info = self.get_user(self.username, 'public')
             user_info['following'].remove(user_unfollowed)
             self.following = user_info['following']
         except Exception as e:
@@ -255,31 +266,32 @@ class User:
             return None
 
         try:
-            user_unfollowed_info = self.get_user(user_unfollowed)
+            user_unfollowed_info = self.get_user(user_unfollowed, 'public')
             if self.username in user_unfollowed_info['followers']:
                 user_unfollowed_info['followers'].remove(self.username)
         except Exception as e:
             Logger.log("Remove Follower", "error", str(e))
             return None
 
-        self.node.set(self.username, json.dumps(user_info))
-        self.node.set(user_unfollowed, json.dumps(user_unfollowed_info))
+        self.node.set(self.username + ':public', json.dumps(user_info))
+        self.node.set(user_unfollowed + ':public', json.dumps(user_unfollowed_info))
         return user_unfollowed
 
-    def get_user(self, username : str) -> UserData:
-        user_info = self.node.get(username)
+    def get_user(self, username : str, scope : str):
+        user_info = self.node.get(username + ':' + scope)
         if user_info is None:
             raise Exception(f'User {username} doesn\'t exist')
 
         user_info = json.loads(user_info)
         return user_info
 
-    def get_followers(self) -> Dict[str, UserData]:
-        self.followers = json.loads(self.node.get(self.username))['followers']
+    def get_followers(self, scope):
+        self.followers = self.get_user(self.username, 'public')['followers']
 
         followers_info = {}
         for username in self.followers:
-            followers_info[username] = self.get_user(username)
+            print(username)
+            followers_info[username] = self.get_user(username, scope)
 
         return followers_info
     

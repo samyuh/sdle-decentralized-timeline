@@ -21,7 +21,6 @@ class RequestPostType(MessageInterface):
 
     def build(self, followed_user : str) -> Tuple[UserData, RequestPostMessage]:
         username = self.user.username
-        followed_info = self.user.get_user(followed_user)
         random_check = str(os.urandom(32))
         signature = self.user.sign(random_check)
 
@@ -35,10 +34,6 @@ class RequestPostType(MessageInterface):
             'content': random_check,
         }
 
-        return (followed_info, message)
+        return message
 
-    def send(self, followed_info, msg):
-        try:
-            asyncio.run(self.sender.publish_one(followed_info, msg))
-        except Exception as e:
-             Logger.log("RequestPost","error",str(e))
+    

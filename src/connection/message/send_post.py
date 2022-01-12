@@ -22,7 +22,6 @@ class SendPostType(MessageInterface):
 
     def build(self, follower_user : str) -> Tuple[any, SendPostMessage]:
         username = self.user.username
-        follower_info = self.user.get_user(follower_user)
         timeline = self.user.get_own_timeline()
         signature = self.user.sign(timeline)
 
@@ -35,10 +34,4 @@ class SendPostType(MessageInterface):
             'content': timeline
         }
         
-        return (follower_info, message)
-    
-    def send(self, follower_info, message) -> None:
-        try:
-            asyncio.run(self.sender.publish_one(follower_info, message))
-        except Exception as e:
-            Logger.log("SendPost", "error", str(e))
+        return message

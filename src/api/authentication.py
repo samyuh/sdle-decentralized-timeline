@@ -37,7 +37,7 @@ class Authentication:
         password = information['password']
         
         try:
-            user_info = self.node.get(username)
+            user_info = self.node.get(username + ':private')
             
             if user_info is None:
                 salt = os.urandom(32)
@@ -50,22 +50,32 @@ class Authentication:
                 with open(f'./key/{username}.key', 'w') as storage_key:
                     storage_key.write(f"{RSA_key.n}\n{RSA_key.d}")
 
-                print(self.listening)
-                user_data = {
+                # key = 'user:private', content = everything that can be only changed by the current user
+                user_private = {
                     'salt': salt.hex(),
                     'hash_password': key.hex(),
                     'public_key_n': RSA_key.n,
                     'public_key_e': RSA_key.e,
-                    "followers": [],
-                    "following": [],
+                }
+
+                # key = 'user:public', content = everything that can be changed by other users
+                user_public = {
+                    'followers': [],
+                    'following': [],
+                }
+
+                # key = 'user:connections', content = user open ports
+                user_connections = {
                     "ip": self.node.ip,
                     "port": self.node.port,
                     'listening_ip': self.listening[0],
                     'listening_port': self.listening[1],
                 }
 
-                self.node.set(username, json.dumps(user_data))
-                user_args = (self.node, username, user_data)
+                self.node.set(username + ':private', json.dumps(user_private))
+                self.node.set(username + ':public', json.dumps(user_public))
+                self.node.set(username + ':connections', json.dumps(user_connections))
+                user_args = (self.node, username, user_private, user_public, user_connections)
             else:
                 raise Exception(f'Registration failed. User {username} already exists')
         except Exception as e:
@@ -82,7 +92,7 @@ class Authentication:
         user_args = None
 
         try: 
-            user_info = self.node.get(username)
+            user_info = self.node.get(username + ':private')
 
             if user_info is not None:
                 user_info = json.loads(user_info)

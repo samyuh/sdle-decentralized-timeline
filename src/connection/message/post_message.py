@@ -18,13 +18,10 @@ class PostMessageType(MessageInterface):
 
     def build(self, message : str) -> Tuple[Dict[str, UserData], TimelineMessage]:
         username = self.user.username
-        users = self.user.get_followers()
-
         snowflake_id, snowflake_time = Snowflake.get_id(username, 1)
         
         print(f"snowflake_id. {snowflake_id}")
         print(f"snowflake_time: {snowflake_time}")
-        
         
         signature = self.user.sign(message)
         msg = {
@@ -39,10 +36,6 @@ class PostMessageType(MessageInterface):
             'content': message
         }
 
-        return (users, msg)
+        return msg
 
-    def send(self, users, message_built) -> None:
-        try:
-            asyncio.run(self.sender.publish_many(users, message_built)) 
-        except Exception as e:
-            Logger.log("PostMessage", "error", str(e))
+    
