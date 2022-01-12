@@ -8,6 +8,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from zmq.eventloop.ioloop import PeriodicCallback
 from pathlib import Path
+from src.utils.logger import Logger
 
 if TYPE_CHECKING:
     from src.connection.message import MessageHeader
@@ -118,7 +119,7 @@ class Timeline:
             self.messages = timeline_state['timeline']
             output_file.close()
         except Exception:
-            # self.logger.log("PROXY", "warning", "No previous state. New state initialize") # TODO: meter no logger
+            Logger.log("Timeline", "warning", "No previous state. New state initialized")
             Path("./storage").mkdir(parents=True, exist_ok=True)
         
         self.mutex.release()

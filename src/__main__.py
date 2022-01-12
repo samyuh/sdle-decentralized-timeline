@@ -12,22 +12,28 @@ if __name__ == "__main__":
     config = load_configuration()
 
     arguments = Validation.parse_arguments(config)
-    Logger.log('Unknown', 'info', f'Kademlia IP: {arguments.ip}')
-    Logger.log('Unknown', 'info', f'Kademlia Port: {arguments.port}')
-    if arguments.init:
-        Logger.log('Unknown', 'info', f'Init Node')
-    else:
-        Logger.log('Unknown', 'info', f'Bootstrap IP: {arguments.bootstrap_ip}')
-        Logger.log('Unknown', 'info', f'Bootstrap Port: {arguments.bootstrap_port}')
-
-
     if Validation.open_port(arguments.ip, arguments.port):
-        Logger.log('Unknown', 'error', f'Port is occupied: {arguments.port}')
+        Logger.log('Initialization', 'error', f'Port is occupied: {arguments.port}')
         exit(1)
 
-    api = Core(arguments.ip, int(arguments.port), arguments.init)
+    if Validation.open_port(arguments.listener_ip, arguments.listener_port):
+        Logger.log('Initialization', 'error', f'Listener Port is occupied: {arguments.listener_port}')
+        exit(1)
 
+    Logger.log('Initialization', 'info', f'Kademlia IP: {arguments.ip}')
+    Logger.log('Initialization', 'info', f'Kademlia Port: {arguments.port}')
+    Logger.log('Initialization', 'info', f'Listener Port: {arguments.listener_ip}')
+    Logger.log('Initialization', 'info', f'Listener Port: {arguments.listener_port}')
+
+    listener = (arguments.listener_ip, int(arguments.listener_port))
+    if arguments.init:
+        Logger.log('Initialization', 'info', f'Init Node')
+        bootstrap_node = None
+    else:
+        Logger.log('Initialization', 'info', f'Bootstrap IP: {arguments.bootstrap_ip}')
+        Logger.log('Initialization', 'info', f'Bootstrap Port: {arguments.bootstrap_port}')
+        bootstrap_node = (arguments.bootstrap_ip, int(arguments.bootstrap_port))
+
+    api = Core(arguments.ip, int(arguments.port), listener, bootstrap_node)
     api.cli()
-
     exit(0)
-    

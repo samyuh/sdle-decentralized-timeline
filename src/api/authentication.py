@@ -66,7 +66,7 @@ class Authentication:
                 raise Exception(f'Registration failed. User {username} already exists')
         except Exception as e:
             Logger.log("Register", "error", str(e))
-            exit(1)
+            return None
 
         Logger.log("Register", "success", "user registered successfully")
         return user_args
@@ -74,6 +74,8 @@ class Authentication:
     def login(self, information : MainMenuAnswer) -> Tuple[KademliaNode, str, UserData]:
         username = information['username']
         password = information['password']
+
+        user_args = None
 
         try: 
             user_info = self.node.get(username)
@@ -93,7 +95,7 @@ class Authentication:
                 
         except Exception as e:
             Logger.log("Register", "error", str(e))
-            exit(1)
+            return None
 
         Logger.log("Login", "success", "success")
         return user_args

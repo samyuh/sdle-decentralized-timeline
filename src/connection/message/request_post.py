@@ -5,6 +5,7 @@ import os
 import asyncio
 
 from src.connection.message.message import MessageInterface, MessageType
+from src.utils.logger import Logger
 
 if TYPE_CHECKING:
     from src.connection.message.message import MessageHeader
@@ -40,4 +41,4 @@ class RequestPostType(MessageInterface):
         try:
             asyncio.run(self.sender.publish_one(followed_info, msg))
         except Exception as e:
-            print(e)
+             Logger.log("RequestPost","error",str(e))

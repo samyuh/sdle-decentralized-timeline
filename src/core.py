@@ -11,13 +11,14 @@ class Core:
     user : Union[User, None]
     loop : AbstractEventLoop
     
-    def __init__(self, ip : str, port : int, init) -> None:
-        if init: 
+    def __init__(self, ip : str, port : int, listener, bootstrap_node) -> None:
+        if bootstrap_node == None: 
             self.node = KademliaNode(ip, port)
         else:
-            self.node = KademliaNode(ip, port, ("127.0.0.1", 8000))
+            self.node = KademliaNode(ip, port, bootstrap_node)
 
-        self.user = None
+        self.user = None   
+        self.listener = listener
         self.loop = self.node.run()
         self._run_kademlia_loop()
         
@@ -29,10 +30,15 @@ class Core:
 
     def cli(self) -> None:
         self.authentication = Authentication(self.node)
-
         answers = AuthMenu.menu()
-        self.user = User(*self.authentication.action(answers['method'], answers['information']))
         
+        args = self.authentication.action(answers['method'], answers['information'])
+
+        while not args:
+            answers = AuthMenu.menu()
+            args = self.authentication.action(answers['method'], answers['information'])
+
+        self.user = User(*args)
         if answers['method'] == 'login':
             self.user.update_state()
 

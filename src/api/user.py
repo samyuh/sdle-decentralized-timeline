@@ -8,6 +8,7 @@ from src.api.timeline import Timeline
 from src.connection.dispatcher import MessageDispatcher
 from src.connection.message.message import MessageType
 from src.connection.receiver import MessageReceiver
+from src.utils.logger import Logger
 
 if TYPE_CHECKING:
     from src.server.kademlia_node import KademliaNode
@@ -99,7 +100,9 @@ class User:
         hashFromSignature = pow(signature, int(user_original['public_key_e']), int(user_original['public_key_n']))
 
         signature_valid = (hash == hashFromSignature)
-        print("Signature valid:", signature_valid)
+
+
+        Logger.log("success", "success", f"Valid signature: {signature_valid}")
         return signature_valid
 
     # --------------------------
@@ -178,10 +181,10 @@ class User:
     # -------------
     def add_follower(self, user_followed):
         if user_followed == self.username:
-            print(f'You can\'t follow yourself')
+            Logger.log("Add Follower", "info", 'You can\'t follow yourself')
             return None
         elif user_followed in self.following:
-            print(f'You already follow the user {user_followed}')
+            Logger.log("Add Follower", "info", f'You already follow the user {user_followed}')
             return None
 
         ### Update following list of the current user
@@ -190,7 +193,7 @@ class User:
             user_info['following'].append(user_followed)
             self.following = user_info['following']
         except Exception as e:
-            print(f'Error: {e}')
+            Logger.log("Add Follower", "error", str(e))
             return None
 
         ### Update follower list on followed
@@ -198,7 +201,7 @@ class User:
             user_followed_info = self.get_user(user_followed)
             user_followed_info['followers'].append(self.username)
         except Exception as e:
-            print(f'Error: {e}')
+            Logger.log("Add Follower", "error", str(e))
             return None
 
         self.node.set(self.username, json.dumps(user_info))
@@ -208,7 +211,7 @@ class User:
 
     def remove_follower(self, user_unfollowed : str):
         if user_unfollowed not in self.following:
-            print(f'You don\'t follow the user {user_unfollowed}')
+            Logger.log("Remove Follower", "info",f'You don\'t follow the user {user_unfollowed}')
             return None
 
         try:
@@ -216,14 +219,15 @@ class User:
             user_info['following'].remove(user_unfollowed)
             self.following = user_info['following']
         except Exception as e:
-            print(f'Error: {e}')
+            Logger.log("Remove Follower", "error", str(e))
             return None
 
         try:
             user_unfollowed_info = self.get_user(user_unfollowed)
-            user_unfollowed_info['followers'].remove(self.username)
+            if self.username in user_unfollowed_info['followers']:
+                user_unfollowed_info['followers'].remove(self.username)
         except Exception as e:
-            print(f'Error: {e}')
+            Logger.log("Remove Follower", "error", str(e))
             return None
 
         self.node.set(self.username, json.dumps(user_info))

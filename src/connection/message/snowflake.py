@@ -31,4 +31,4 @@ class Snowflake:
         
         return int(resp.tx_time)
     
-    
+

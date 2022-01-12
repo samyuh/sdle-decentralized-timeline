@@ -2,6 +2,8 @@ from __future__ import annotations
 from typing import TypedDict, TYPE_CHECKING
 
 import inquirer
+from src.utils.logger import Logger
+
 
 if TYPE_CHECKING:
     from src.api.user import UserActionInfo
@@ -24,24 +26,24 @@ class MainMenu:
         result = {'action': action, 'information': {}}
 
         if action == 'post':
-            print('Post message')
+            Logger.log("Post","info",'Post message')
             message = input('New Post: ')
             result['information']['message'] = message
         
         elif action == 'follow':
-            print('Follow user')
+            Logger.log("Follow","info",'Follow user')
             username = input('User to follow: ')
             result['information']['username'] = username
 
         elif action == 'unfollow':
-            print('Unfollow user')
+            Logger.log("Unfollow","info",'Unfollow user')
             username = input('User to unfollow: ')
             result['information']['username'] = username
         
         elif action == 'view':
-            print('View timeline')
+            Logger.log("View","info",'View Timeline')
         
         elif action == 'logout':
-            print('Logout! See you soon on Kamellia!')
+            Logger.log("Logout","info",'Logout! See you soon on Kamellia')
 
         return result
