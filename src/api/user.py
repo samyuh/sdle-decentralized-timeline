@@ -104,20 +104,31 @@ class User:
         if user_unfollowed != None:
             self.delete_posts(user_unfollowed)
 
-    def suggestions(self, information):
+    def suggestions(self, _):
         suggestions = set([])
     
+        print(f'FOLLOWERS: {self.followers}')
+
         for follower in self.followers:
             follower_info = self.get_user(follower)
+            print(follower_info)
             suggestions.update(follower_info['followers'])
 
+        print(f'SUGGESTIONS: {suggestions}')
+
         suggestions = tuple(suggestions)
+
+        print(f'SUGGESTIONS: {suggestions}')
+
         if len(suggestions) > 5:
             suggestions = random.sample(suggestions, 5)
         
-        print('Recommended Users:\n')
-        for user in suggestions:
-            print(f'\t{user}')
+        if len(suggestions) > 0:
+            print('Recommended Users:\n')
+            for user in suggestions:
+                print(f'\t{user}')
+        else:
+            print('No Recommendations\n')
 
     def view(self, _) -> None:
         print(self.timeline)
@@ -217,12 +228,16 @@ class User:
         try:
             user_followed_info = self.get_user(user_followed)
             user_followed_info['followers'].append(self.username)
+            print(f"AQUIII: {user_followed_info['followers']}")
         except Exception as e:
             Logger.log("Add Follower", "error", str(e))
             return None
 
         self.node.set(self.username, json.dumps(user_info))
         self.node.set(user_followed, json.dumps(user_followed_info))
+
+        print('AQUIIII ----------------------------')
+        self.node.get(user_followed) # apagar
 
         return user_followed
 
