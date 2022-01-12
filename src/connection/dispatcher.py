@@ -23,7 +23,7 @@ class MessageDispatcher:
         return message_built[1]
 
     async def publish_one(self, user : dict, message : dict) -> None:
-        self.set_port(user['ip'], user['port'] - 1000)
+        self.set_port(user['listening_ip'], user['listening_port'])
         self.send_msg(message)
 
     async def publish_many(self, users, message) -> None:

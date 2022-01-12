@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import Callable, Dict, List, TypedDict, TYPE_CHECKING
 
 import json
+import random
 from hashlib import sha512
 
 from src.api.timeline import Timeline
@@ -51,10 +52,9 @@ class User:
         self.port = data['port']
         self.followers = data['followers']
         self.following = data['following']
-
-        self.listening_ip = data['ip']
-        self.listening_port = data['port'] - 1000
-
+        self.listening_ip = data['listening_ip']
+        self.listening_port = data['listening_port']
+        
         self.public_key_n = data['public_key_n']
         self.public_key_e = data['public_key_e']
 
@@ -70,16 +70,62 @@ class User:
 
         # Actions
         self.action_list = {
-            'post': self.post,
-            'follow': self.follow,
-            'unfollow': self.unfollow,
-            'view': self.view,
-            'logout': self.logout
+            'New Post': self.post,
+            'Follow User': self.follow,
+            'Unfollow User': self.unfollow,
+            'Get Suggestions': self.suggestions,
+            'View Timeline': self.view,
+            'Logout': self.logout
         }
 
         # Timeline Module
         self.timeline = Timeline(username)
 
+
+    # --------------------------
+    #  Action Menu Command
+    # --------------------------
+    def action(self, action : str, information : UserActionInfo) -> None:
+        self.action_list[action](information)
+    
+    def post(self, information : UserActionInfo) -> None:
+        message = self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
+        self.timeline.add_message(message)
+
+    def follow(self, information : UserActionInfo) -> None:
+        user_followed = self.add_follower(information['username'])
+
+        if user_followed != None:
+            self.message_dispatcher.action(MessageType.REQUEST_POSTS, user_followed)
+
+    def unfollow(self, information : UserActionInfo) -> None:
+        user_unfollowed = self.remove_follower(information['username'])
+        
+        if user_unfollowed != None:
+            self.delete_posts(user_unfollowed)
+
+    def suggestions(self, information):
+        suggestions = set([])
+    
+        for follower in self.followers:
+            follower_info = self.get_user(follower)
+            suggestions.update(follower_info['followers'])
+
+        suggestions = tuple(suggestions)
+        if len(suggestions) > 5:
+            suggestions = random.sample(suggestions, 5)
+        
+        print('Recommended Users:\n')
+        for user in suggestions:
+            print(f'\t{user}')
+
+    def view(self, _) -> None:
+        print(self.timeline)
+
+    def logout(self, _) -> None:
+        self.node.close()
+        exit(0)
+        
     # ------------
     # Signature
     # ------------
@@ -105,35 +151,6 @@ class User:
         Logger.log("success", "success", f"Valid signature: {signature_valid}")
         return signature_valid
 
-    # --------------------------
-    #  Action Menu Command
-    # --------------------------
-    def action(self, action : str, information : UserActionInfo) -> None:
-        self.action_list[action](information)
-    
-    def post(self, information : UserActionInfo) -> None:
-        message = self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
-        self.timeline.add_message(message)
-
-    def follow(self, information : UserActionInfo) -> None:
-        user_followed = self.add_follower(information['username'])
-
-        if user_followed != None:
-            self.message_dispatcher.action(MessageType.REQUEST_POSTS, user_followed)
-
-    def unfollow(self, information : UserActionInfo) -> None:
-        user_unfollowed = self.remove_follower(information['username'])
-        
-        if user_unfollowed != None:
-            self.delete_posts(user_unfollowed)
-
-    def view(self, _) -> None:
-        print(self.timeline)
-
-    def logout(self, _) -> None:
-        self.node.close()
-        exit(0)
-        
     # --------------------------
     # -- Listener Loop Action --
     # --------------------------

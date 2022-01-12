@@ -43,11 +43,11 @@ class Validation:
         parser.add_argument("-i", "--ip", help="Ip address", type=Validation.valid_ip, default=config.get('DEFAULT', 'IP'))
         parser.add_argument("-p", "--port", help="Port number of the Peer to Peer network", type=Validation.valid_port, default=config.get('DEFAULT', 'PORT'))
         
-        parser.add_argument("-li", "--listener-ip", help="Ip to listen for new post", type=Validation.valid_ip, default=config.get('DEFAULT', 'LISTENING_IP'))
-        parser.add_argument("-lp", "--listener-port", help="Port to listen for new post", type=Validation.valid_port, default=config.get('DEFAULT', 'LISTENING_PORT'))
+        parser.add_argument("-il", "--listening-ip", help="Ip to listen for new post", type=Validation.valid_ip, default=config.get('DEFAULT', 'LISTENING_IP'))
+        parser.add_argument("-pl", "--listening-port", help="Port to listen for new post", type=Validation.valid_port, default=config.get('DEFAULT', 'LISTENING_PORT'))
         
-        parser.add_argument("-bi", "--bootstrap-ip", help="Ip address of a bootstrap node", type=Validation.valid_ip, default=config.get('BOOTSTRAP', 'IP'))
-        parser.add_argument("-bp", "--bootstrap-port", help="Port number of a bootstrap node", type=Validation.valid_port, default=config.get('BOOTSTRAP', 'PORT'))
+        parser.add_argument("-ib", "--bootstrap-ip", help="Ip address of a bootstrap node", type=Validation.valid_ip, default=config.get('BOOTSTRAP', 'IP'))
+        parser.add_argument("-pb", "--bootstrap-port", help="Port number of a bootstrap node", type=Validation.valid_port, default=config.get('BOOTSTRAP', 'PORT'))
         
         parser.add_argument('-init', '--initial-node', help="Is initial node", dest='init', action='store_true')
         parser.set_defaults(initial=False)

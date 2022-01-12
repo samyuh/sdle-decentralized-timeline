@@ -21,8 +21,9 @@ class ActionList(TypedDict):
 class Authentication:
     node : KademliaNode
     action_list : ActionList
-    def __init__(self, node : KademliaNode) -> None:
+    def __init__(self, listening : Tuple[str, int], node : KademliaNode) -> None:
         self.node = node
+        self.listening = listening
         self.action_list = {
             'register': self.register,
             'login': self.login,
@@ -49,6 +50,7 @@ class Authentication:
                 with open(f'./key/{username}.key', 'w') as storage_key:
                     storage_key.write(f"{RSA_key.n}\n{RSA_key.d}")
 
+                print(self.listening)
                 user_data = {
                     'salt': salt.hex(),
                     'hash_password': key.hex(),
@@ -58,6 +60,8 @@ class Authentication:
                     "following": [],
                     "ip": self.node.ip,
                     "port": self.node.port,
+                    'listening_ip': self.listening[0],
+                    'listening_port': self.listening[1],
                 }
 
                 self.node.set(username, json.dumps(user_data))

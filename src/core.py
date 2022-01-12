@@ -29,7 +29,7 @@ class Core:
         threading.Thread(target=self.loop.run_forever, daemon=True).start()
 
     def cli(self) -> None:
-        self.authentication = Authentication(self.node)
+        self.authentication = Authentication(self.listener, self.node)
         answers = AuthMenu.menu()
         
         args = self.authentication.action(answers['method'], answers['information'])

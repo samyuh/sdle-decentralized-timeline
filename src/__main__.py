@@ -16,16 +16,16 @@ if __name__ == "__main__":
         Logger.log('Initialization', 'error', f'Port is occupied: {arguments.port}')
         exit(1)
 
-    if Validation.open_port(arguments.listener_ip, arguments.listener_port):
-        Logger.log('Initialization', 'error', f'Listener Port is occupied: {arguments.listener_port}')
+    if Validation.open_port(arguments.listening_ip, arguments.listening_port):
+        Logger.log('Initialization', 'error', f'Listener Port is occupied: {arguments.listening_port}')
         exit(1)
 
     Logger.log('Initialization', 'info', f'Kademlia IP: {arguments.ip}')
     Logger.log('Initialization', 'info', f'Kademlia Port: {arguments.port}')
-    Logger.log('Initialization', 'info', f'Listener Port: {arguments.listener_ip}')
-    Logger.log('Initialization', 'info', f'Listener Port: {arguments.listener_port}')
+    Logger.log('Initialization', 'info', f'Listener Port: {arguments.listening_ip}')
+    Logger.log('Initialization', 'info', f'Listener Port: {arguments.listening_port}')
 
-    listener = (arguments.listener_ip, int(arguments.listener_port))
+    listener = (arguments.listening_ip, int(arguments.listening_port))
     if arguments.init:
         Logger.log('Initialization', 'info', f'Init Node')
         bootstrap_node = None
