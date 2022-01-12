@@ -11,8 +11,8 @@ class Core:
     user : Union[User, None]
     loop : AbstractEventLoop
     
-    def __init__(self, ip : str, port : int, initial) -> None:
-        if initial: 
+    def __init__(self, ip : str, port : int, init) -> None:
+        if init: 
             self.node = KademliaNode(ip, port)
         else:
             self.node = KademliaNode(ip, port, ("127.0.0.1", 8000))

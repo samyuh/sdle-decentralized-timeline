@@ -33,10 +33,12 @@ class MessageReceiver:
     # --------------------------
     def recv_msg_loop(self) -> None:
         while True:
+            print("here 2")
             message = self.socket.recv_string()
 
             msg = json.loads(message)
             Logger.log("MessageReceiver", "info", f"RECV {msg}")
 
+            print("here")
             # Parsing in a new thread?
             self.listener_action(msg['header']['type'], msg) 
