@@ -42,7 +42,6 @@ class MessageDispatcher:
         message_built = RequestPostType(user, self).build(followed_username)
 
         connection_info = self.user.get_user(followed_username, 'connections')
-        print(connection_info)
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
@@ -51,10 +50,9 @@ class MessageDispatcher:
         
         return message_built
 
-    def sendPosts(self, user, message):
-        message_built = SendPostType(user, self).build(message)
-
-        connection_info = self.user.get_user(user.username, 'connections')
+    def sendPosts(self, user, follower_user):
+        message_built = SendPostType(user, self).build(follower_user)
+        connection_info = self.user.get_user(follower_user, 'connections')
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
@@ -68,11 +66,9 @@ class MessageDispatcher:
         self.send_msg(message)
 
     async def publish_many(self, users, message) -> None:
-        for user in users.values():
-            print(user)
-        #tasks = [self.publish_one(user, message) for user in users.values()]
-        #print(tasks)
-        #await asyncio.gather(*tasks)
+        tasks = [self.publish_one(user, message) for user in users.values()]
+        print(tasks)
+        await asyncio.gather(*tasks)
     
     def set_port(self, dispatcher_ip : str, dispatcher_port : int) -> None:
         self.socket.connect(f'tcp://{dispatcher_ip}:{dispatcher_port}')
