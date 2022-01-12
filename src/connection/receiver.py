@@ -10,7 +10,7 @@ class MessageReceiver:
         self.user = user
 
         self.ctx = zmq.Context()
-        self.socket = self.ctx.socket(zmq.PAIR)
+        self.socket = self.ctx.socket(zmq.PULL)
         self.socket.linger = 0
         self.socket.bind(f'tcp://{listening_ip}:{listening_port}')
         threading.Thread(target=self.recv_msg_loop, daemon=True).start()

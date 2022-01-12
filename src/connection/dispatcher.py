@@ -7,7 +7,7 @@ from src.connection.message import MessageType, PostMessageType, RequestPostType
 class MessageDispatcher:
     def __init__(self, user) -> None:
         self.ctx = zmq.Context()
-        self.socket = self.ctx.socket(zmq.PAIR)
+        self.socket = self.ctx.socket(zmq.PUSH)
         self.socket.linger = 0
 
         self.action_dict = {
