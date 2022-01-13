@@ -19,6 +19,8 @@ class MessageReceiver:
             MessageType.REQUEST_TIMELINE.value: self.user.send_message,
             MessageType.SEND_TIMELINE.value: self.user.many_update_timeline,
         }
+        
+        self.Logger = Logger()
 
     # --------------------------
     # -- Listener Loop Action --
@@ -35,6 +37,6 @@ class MessageReceiver:
         while True:
             message = self.socket.recv_string()
             msg = json.loads(message)
-            Logger.log("MessageReceiver", "info", f"RECV {msg}")
+            self.Logger.log("MessageReceiver", "info", f"RECV {msg}")
 
             self.listener_action(msg['header']['type'], msg)

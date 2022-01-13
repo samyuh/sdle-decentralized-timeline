@@ -17,9 +17,6 @@ class SendTimelineMessage(MessageInterface):
         username = self.user.username
         snowflake_id, snowflake_time = Snowflake.get_id(username, 1)
         
-        print(f"snowflake_id. {snowflake_id}")
-        print(f"snowflake_time: {snowflake_time}")
-        
         signature = self.user.sign(message)
         msg = {
             'header': {

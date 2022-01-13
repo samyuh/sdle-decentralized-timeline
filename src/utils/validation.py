@@ -56,7 +56,8 @@ class Validation:
         try:
             arguments = parser.parse_args()
         except argparse.ArgumentTypeError as e:
-            Logger.log("ArgParser", "error", str(e))
+            logger = Logger()
+            logger.log("ArgParser", "error", str(e))
             exit(1)
 
         return arguments

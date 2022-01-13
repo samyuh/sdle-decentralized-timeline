@@ -1,0 +1,1598 @@
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8000
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7000
+[ INFO ] Initialization: Init Node
+Node 1111699784864754513684300656249338937478891865641 listening on 0.0.0.0:8000
+Node 1111699784864754513684300656249338937478891865641 listening on 0.0.0.0:8000
+Refreshing routing table
+Refreshing routing table
+Looking up key hugo:private
+Looking up key hugo:private
+Looking up key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+setting 'hugo:private' = '{"salt": "040d83330c84872dbc8c5a382c2176d28bc0efb8862ec5d418eb21d69ec0090e", "hash_password": "192934b1df73daef6810d5fdfc655b64d99098f196bf23b878bce5854254a15c", "public_key_n": 124513800393817762960926251628219681591437137404356478248297131193314812468924865988044338543096312616727729986370143452706910668846946201811505745829048898715294802373626827715084562765896777453246422762321777547023098772423814720809378274965714815514169662227800568491300511086619089576505519880340113077891, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "040d83330c84872dbc8c5a382c2176d28bc0efb8862ec5d418eb21d69ec0090e", "hash_password": "192934b1df73daef6810d5fdfc655b64d99098f196bf23b878bce5854254a15c", "public_key_n": 124513800393817762960926251628219681591437137404356478248297131193314812468924865988044338543096312616727729986370143452706910668846946201811505745829048898715294802373626827715084562765896777453246422762321777547023098772423814720809378274965714815514169662227800568491300511086619089576505519880340113077891, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "040d83330c84872dbc8c5a382c2176d28bc0efb8862ec5d418eb21d69ec0090e", "hash_password": "192934b1df73daef6810d5fdfc655b64d99098f196bf23b878bce5854254a15c", "public_key_n": 124513800393817762960926251628219681591437137404356478248297131193314812468924865988044338543096312616727729986370143452706910668846946201811505745829048898715294802373626827715084562765896777453246422762321777547023098772423814720809378274965714815514169662227800568491300511086619089576505519880340113077891, "public_key_e": 65537}' on network
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+[ DEBUG ] Kademlia: SET {"salt": "040d83330c84872dbc8c5a382c2176d28bc0efb8862ec5d418eb21d69ec0090e", "hash_password": "192934b1df73daef6810d5fdfc655b64d99098f196bf23b878bce5854254a15c", "public_key_n": 124513800393817762960926251628219681591437137404356478248297131193314812468924865988044338543096312616727729986370143452706910668846946201811505745829048898715294802373626827715084562765896777453246422762321777547023098772423814720809378274965714815514169662227800568491300511086619089576505519880340113077891, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "040d83330c84872dbc8c5a382c2176d28bc0efb8862ec5d418eb21d69ec0090e", "hash_password": "192934b1df73daef6810d5fdfc655b64d99098f196bf23b878bce5854254a15c", "public_key_n": 124513800393817762960926251628219681591437137404356478248297131193314812468924865988044338543096312616727729986370143452706910668846946201811505745829048898715294802373626827715084562765896777453246422762321777547023098772423814720809378274965714815514169662227800568491300511086619089576505519880340113077891, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "040d83330c84872dbc8c5a382c2176d28bc0efb8862ec5d418eb21d69ec0090e", "hash_password": "192934b1df73daef6810d5fdfc655b64d99098f196bf23b878bce5854254a15c", "public_key_n": 124513800393817762960926251628219681591437137404356478248297131193314812468924865988044338543096312616727729986370143452706910668846946201811505745829048898715294802373626827715084562765896777453246422762321777547023098772423814720809378274965714815514169662227800568491300511086619089576505519880340113077891, "public_key_e": 65537} 
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8000
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7000
+[ INFO ] Initialization: Init Node
+Node 165999889530028553770194553598660604388499011706 listening on 0.0.0.0:8000
+Node 165999889530028553770194553598660604388499011706 listening on 0.0.0.0:8000
+Refreshing routing table
+Refreshing routing table
+Looking up key hugo:private
+Looking up key hugo:private
+Looking up key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+setting 'hugo:private' = '{"salt": "7d4947082f215373d963095d644f3b2ee3fcd0811b4b33d9ad62f0551ae86018", "hash_password": "5b0475543db612c7d5f105d7fdcaa70f303f779faf049e5a7afbc72252ce2194", "public_key_n": 160000895650871385487379930344526095120982594495369785385164434467576705105283810553045595998961974417078335453027434309785311966755215436427165348219013479851017516113082155897266794509517910916101711730043812382289117377029807657628500232456566586519997742639077004635841010655981381312572419240118410413683, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "7d4947082f215373d963095d644f3b2ee3fcd0811b4b33d9ad62f0551ae86018", "hash_password": "5b0475543db612c7d5f105d7fdcaa70f303f779faf049e5a7afbc72252ce2194", "public_key_n": 160000895650871385487379930344526095120982594495369785385164434467576705105283810553045595998961974417078335453027434309785311966755215436427165348219013479851017516113082155897266794509517910916101711730043812382289117377029807657628500232456566586519997742639077004635841010655981381312572419240118410413683, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "7d4947082f215373d963095d644f3b2ee3fcd0811b4b33d9ad62f0551ae86018", "hash_password": "5b0475543db612c7d5f105d7fdcaa70f303f779faf049e5a7afbc72252ce2194", "public_key_n": 160000895650871385487379930344526095120982594495369785385164434467576705105283810553045595998961974417078335453027434309785311966755215436427165348219013479851017516113082155897266794509517910916101711730043812382289117377029807657628500232456566586519997742639077004635841010655981381312572419240118410413683, "public_key_e": 65537}' on network
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+[ DEBUG ] Kademlia: SET {"salt": "7d4947082f215373d963095d644f3b2ee3fcd0811b4b33d9ad62f0551ae86018", "hash_password": "5b0475543db612c7d5f105d7fdcaa70f303f779faf049e5a7afbc72252ce2194", "public_key_n": 160000895650871385487379930344526095120982594495369785385164434467576705105283810553045595998961974417078335453027434309785311966755215436427165348219013479851017516113082155897266794509517910916101711730043812382289117377029807657628500232456566586519997742639077004635841010655981381312572419240118410413683, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "7d4947082f215373d963095d644f3b2ee3fcd0811b4b33d9ad62f0551ae86018", "hash_password": "5b0475543db612c7d5f105d7fdcaa70f303f779faf049e5a7afbc72252ce2194", "public_key_n": 160000895650871385487379930344526095120982594495369785385164434467576705105283810553045595998961974417078335453027434309785311966755215436427165348219013479851017516113082155897266794509517910916101711730043812382289117377029807657628500232456566586519997742639077004635841010655981381312572419240118410413683, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "7d4947082f215373d963095d644f3b2ee3fcd0811b4b33d9ad62f0551ae86018", "hash_password": "5b0475543db612c7d5f105d7fdcaa70f303f779faf049e5a7afbc72252ce2194", "public_key_n": 160000895650871385487379930344526095120982594495369785385164434467576705105283810553045595998961974417078335453027434309785311966755215436427165348219013479851017516113082155897266794509517910916101711730043812382289117377029807657628500232456566586519997742639077004635841010655981381312572419240118410413683, "public_key_e": 65537} 
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8000
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7000
+[ INFO ] Initialization: Init Node
+Node 1207333792844006419139023476147802108686384494603 listening on 0.0.0.0:8000
+Node 1207333792844006419139023476147802108686384494603 listening on 0.0.0.0:8000
+Refreshing routing table
+Refreshing routing table
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8004
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7000
+[ INFO ] Initialization: Bootstrap IP: 127.0.0.1
+[ INFO ] Initialization: Bootstrap Port: 8000
+Node 818358119201934337218267535501871757326292116480 listening on 0.0.0.0:8004
+Node 818358119201934337218267535501871757326292116480 listening on 0.0.0.0:8004
+Refreshing routing table
+Refreshing routing table
+Attempting to bootstrap node with 1 initial contacts
+Attempting to bootstrap node with 1 initial contacts
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'Do3obgt3tZdEgGRC2ll08h8UIww=')
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'Do3obgt3tZdEgGRC2ll08h8UIww=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'Do3obgt3tZdEgGRC2ll08h8UIww=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'Do3obgt3tZdEgGRC2ll08h8UIww=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'Do3obgt3tZdEgGRC2ll08h8UIww=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for message id b'Do3obgt3tZdEgGRC2ll08h8UIww=' from ('127.0.0.1', 8000)
+received response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for message id b'Do3obgt3tZdEgGRC2ll08h8UIww=' from ('127.0.0.1', 8000)
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'HJglpupx+WRLOLlIxP8yZGozJYU=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'HJglpupx+WRLOLlIxP8yZGozJYU=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+sending response [] for msg id b'HJglpupx+WRLOLlIxP8yZGozJYU=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'HJglpupx+WRLOLlIxP8yZGozJYU=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'HJglpupx+WRLOLlIxP8yZGozJYU=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'HJglpupx+WRLOLlIxP8yZGozJYU=' from ('127.0.0.1', 8000)
+received response [] for message id b'HJglpupx+WRLOLlIxP8yZGozJYU=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+never seen 127.0.0.1:8000 before, adding to router
+never seen 127.0.0.1:8000 before, adding to router
+Looking up key hugo:private
+Looking up key hugo:private
+Looking up key hugo:private
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'e4EuPdLY4POHeMb2FYXPmheepJ4=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'e4EuPdLY4POHeMb2FYXPmheepJ4=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'e4EuPdLY4POHeMb2FYXPmheepJ4=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+sending response [] for msg id b'e4EuPdLY4POHeMb2FYXPmheepJ4=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'e4EuPdLY4POHeMb2FYXPmheepJ4=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'e4EuPdLY4POHeMb2FYXPmheepJ4=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response [] for message id b'e4EuPdLY4POHeMb2FYXPmheepJ4=' from ('127.0.0.1', 8004)
+received response [] for message id b'e4EuPdLY4POHeMb2FYXPmheepJ4=' from ('127.0.0.1', 8004)
+received response [] for message id b'e4EuPdLY4POHeMb2FYXPmheepJ4=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+setting 'hugo:private' = '{"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537}' on network
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'wpc7rM7c789sM582tF0n/Zg5p+s=')
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'wpc7rM7c789sM582tF0n/Zg5p+s=')
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'wpc7rM7c789sM582tF0n/Zg5p+s=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+sending response [] for msg id b'wpc7rM7c789sM582tF0n/Zg5p+s=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'wpc7rM7c789sM582tF0n/Zg5p+s=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'wpc7rM7c789sM582tF0n/Zg5p+s=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response [] for message id b'wpc7rM7c789sM582tF0n/Zg5p+s=' from ('127.0.0.1', 8004)
+received response [] for message id b'wpc7rM7c789sM582tF0n/Zg5p+s=' from ('127.0.0.1', 8004)
+received response [] for message id b'wpc7rM7c789sM582tF0n/Zg5p+s=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+setting '5e7b9b7275b7f50198370a10feed49d378bf09e4' on ['127.0.0.1:8004']
+setting '5e7b9b7275b7f50198370a10feed49d378bf09e4' on ['127.0.0.1:8004']
+setting '5e7b9b7275b7f50198370a10feed49d378bf09e4' on ['127.0.0.1:8004']
+calling remote function store on ('127.0.0.1', 8004) (msgid b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+got a store request from ('127.0.0.1', 8000), storing '5e7b9b7275b7f50198370a10feed49d378bf09e4'='{"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8000), storing '5e7b9b7275b7f50198370a10feed49d378bf09e4'='{"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8000), storing '5e7b9b7275b7f50198370a10feed49d378bf09e4'='{"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537}'
+sending response True for msg id b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=' to ('127.0.0.1', 8000)
+sending response True for msg id b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=' to ('127.0.0.1', 8000)
+sending response True for msg id b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response True for message id b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=' from ('127.0.0.1', 8004)
+received response True for message id b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=' from ('127.0.0.1', 8004)
+received response True for message id b'NLLuoGiA0HVlqF1fpUPaLh8RxB0=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+[ DEBUG ] Kademlia: SET {"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "642d44f6ecd3ef45129ea7cb8288f24374f119eb147f638eca49bb22461aafae", "hash_password": "a499bed569b7553f9590693be4b05b4bf3e9c3bb7e952181245f03071b6cfd29", "public_key_n": 157566873134851461356880315934546175240154996669101558513592339903006970859434332118207362432208851328139804178306576037411832360521190471909594465882029433358915708233765771623448182291652931752952362434066343346277836940269706226839385793900124578229729826890880672530643807630129152329213550780716720861919, "public_key_e": 65537} 
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=')
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=')
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+sending response [] for msg id b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response [] for message id b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=' from ('127.0.0.1', 8004)
+received response [] for message id b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=' from ('127.0.0.1', 8004)
+received response [] for message id b'kzFUxGgrsARPCOwKFQ3jMYIs2Ic=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+setting '908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd' on ['127.0.0.1:8004']
+setting '908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd' on ['127.0.0.1:8004']
+setting '908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd' on ['127.0.0.1:8004']
+calling remote function store on ('127.0.0.1', 8004) (msgid b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+got a store request from ('127.0.0.1', 8000), storing '908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8000), storing '908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8000), storing '908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd'='{"followers": [], "following": []}'
+sending response True for msg id b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=' to ('127.0.0.1', 8000)
+sending response True for msg id b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=' to ('127.0.0.1', 8000)
+sending response True for msg id b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response True for message id b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=' from ('127.0.0.1', 8004)
+received response True for message id b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=' from ('127.0.0.1', 8004)
+received response True for message id b'vH1BnTSEWsYJhVGBrMo+vtHFgGg=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004]]
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004],)
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'b8s1vwlVty+4i1tDvlHY6CaPTG8=')
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'b8s1vwlVty+4i1tDvlHY6CaPTG8=')
+calling remote function find_node on ('127.0.0.1', 8004) (msgid b'b8s1vwlVty+4i1tDvlHY6CaPTG8=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+sending response [] for msg id b'b8s1vwlVty+4i1tDvlHY6CaPTG8=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'b8s1vwlVty+4i1tDvlHY6CaPTG8=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'b8s1vwlVty+4i1tDvlHY6CaPTG8=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response [] for message id b'b8s1vwlVty+4i1tDvlHY6CaPTG8=' from ('127.0.0.1', 8004)
+received response [] for message id b'b8s1vwlVty+4i1tDvlHY6CaPTG8=' from ('127.0.0.1', 8004)
+received response [] for message id b'b8s1vwlVty+4i1tDvlHY6CaPTG8=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+setting '11d9dd48a8640320295898807221d984394bfe59' on ['127.0.0.1:8004']
+setting '11d9dd48a8640320295898807221d984394bfe59' on ['127.0.0.1:8004']
+setting '11d9dd48a8640320295898807221d984394bfe59' on ['127.0.0.1:8004']
+calling remote function store on ('127.0.0.1', 8004) (msgid b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+got a store request from ('127.0.0.1', 8000), storing '11d9dd48a8640320295898807221d984394bfe59'='{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8000), storing '11d9dd48a8640320295898807221d984394bfe59'='{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8000), storing '11d9dd48a8640320295898807221d984394bfe59'='{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+sending response True for msg id b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=' to ('127.0.0.1', 8000)
+sending response True for msg id b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=' to ('127.0.0.1', 8000)
+sending response True for msg id b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response True for message id b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=' from ('127.0.0.1', 8004)
+received response True for message id b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=' from ('127.0.0.1', 8004)
+received response True for message id b'UXSpgM0DQcKBkRoNJcENNqUn/Uc=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+Looking up key carlos:private
+Looking up key carlos:private
+Looking up key carlos:private
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_value on ('127.0.0.1', 8000) (msgid b'TORW4bnYF/+nXvTiPdRSjn1lzZk=')
+calling remote function find_value on ('127.0.0.1', 8000) (msgid b'TORW4bnYF/+nXvTiPdRSjn1lzZk=')
+calling remote function find_value on ('127.0.0.1', 8000) (msgid b'TORW4bnYF/+nXvTiPdRSjn1lzZk=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' from ('127.0.0.1', 8000)
+received response [] for message id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' from ('127.0.0.1', 8000)
+received response [] for message id b'TORW4bnYF/+nXvTiPdRSjn1lzZk=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting 'carlos:private' = '{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}' on network
+setting 'carlos:private' = '{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}' on network
+setting 'carlos:private' = '{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}' on network
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' from ('127.0.0.1', 8000)
+received response [] for message id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' from ('127.0.0.1', 8000)
+received response [] for message id b'o/PK+pQKfDI0Uatg9+Vs/sbJZOo=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082' on ['127.0.0.1:8000']
+setting 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082' on ['127.0.0.1:8000']
+setting 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082' on ['127.0.0.1:8000']
+calling remote function store on ('127.0.0.1', 8000) (msgid b'TXUxo41i8kDgiT6eU/EibiNdGmE=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'TXUxo41i8kDgiT6eU/EibiNdGmE=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'TXUxo41i8kDgiT6eU/EibiNdGmE=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+sending response True for msg id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response True for message id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' from ('127.0.0.1', 8000)
+received response True for message id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' from ('127.0.0.1', 8000)
+received response True for message id b'TXUxo41i8kDgiT6eU/EibiNdGmE=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+[ DEBUG ] Kademlia: SET {"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537} 
+setting 'carlos:public' = '{"followers": [], "following": []}' on network
+setting 'carlos:public' = '{"followers": [], "following": []}' on network
+setting 'carlos:public' = '{"followers": [], "following": []}' on network
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'zL51BkcmOmDLMvrw+1T1P+gH5u0=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'zL51BkcmOmDLMvrw+1T1P+gH5u0=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'zL51BkcmOmDLMvrw+1T1P+gH5u0=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' from ('127.0.0.1', 8000)
+received response [] for message id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' from ('127.0.0.1', 8000)
+received response [] for message id b'zL51BkcmOmDLMvrw+1T1P+gH5u0=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204' on ['127.0.0.1:8000']
+setting '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204' on ['127.0.0.1:8000']
+setting '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204' on ['127.0.0.1:8000']
+calling remote function store on ('127.0.0.1', 8000) (msgid b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+sending response True for msg id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response True for message id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' from ('127.0.0.1', 8000)
+received response True for message id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' from ('127.0.0.1', 8000)
+received response True for message id b'w/jhaRvQFDQVR7nMmyxfsTo/Eqw=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'carlos:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'carlos:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'carlos:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+finding neighbors of 818358119201934337218267535501871757326292116480 in local table
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' from ('127.0.0.1', 8000)
+received response [] for message id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' from ('127.0.0.1', 8000)
+received response [] for message id b'Ilc8LJ0ZTfM+W4HN5Myo4lP/5xA=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting '04cc748fa09e316a195719f1ae5876bd2fd3dc7b' on ['127.0.0.1:8000']
+setting '04cc748fa09e316a195719f1ae5876bd2fd3dc7b' on ['127.0.0.1:8000']
+setting '04cc748fa09e316a195719f1ae5876bd2fd3dc7b' on ['127.0.0.1:8000']
+calling remote function store on ('127.0.0.1', 8000) (msgid b'wQUIMum/7K6O+ToohRciVwbns/U=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'wQUIMum/7K6O+ToohRciVwbns/U=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'wQUIMum/7K6O+ToohRciVwbns/U=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+got a store request from ('127.0.0.1', 8004), storing '04cc748fa09e316a195719f1ae5876bd2fd3dc7b'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000}'
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+sending response True for msg id b'wQUIMum/7K6O+ToohRciVwbns/U=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response True for message id b'wQUIMum/7K6O+ToohRciVwbns/U=' from ('127.0.0.1', 8000)
+received response True for message id b'wQUIMum/7K6O+ToohRciVwbns/U=' from ('127.0.0.1', 8000)
+received response True for message id b'wQUIMum/7K6O+ToohRciVwbns/U=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8004
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7004
+[ INFO ] Initialization: Bootstrap IP: 127.0.0.1
+[ INFO ] Initialization: Bootstrap Port: 8000
+Node 570547158358873159807860240882017800248231887514 listening on 0.0.0.0:8004
+Node 570547158358873159807860240882017800248231887514 listening on 0.0.0.0:8004
+Refreshing routing table
+Refreshing routing table
+Attempting to bootstrap node with 1 initial contacts
+Attempting to bootstrap node with 1 initial contacts
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'NbzoZr9NyLtafj+v7QXZyr7WdA8=')
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'NbzoZr9NyLtafj+v7QXZyr7WdA8=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+never seen 127.0.0.1:8004 before, adding to router
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+sending response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for msg id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for message id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' from ('127.0.0.1', 8000)
+received response b'\xd3z\xb8<\x9c\xc8\xc8\x0e\xb3\xa9\xd4\x05\xd3_:z\xfa\x1f\xf8\x0b' for message id b'NbzoZr9NyLtafj+v7QXZyr7WdA8=' from ('127.0.0.1', 8000)
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'w29H89QpLqgmEsh2alYLrLY1MNA=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'w29H89QpLqgmEsh2alYLrLY1MNA=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'1/hMSZHaZGRSa4kkftB5RnSEHKY=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+calling remote function store on ('127.0.0.1', 8004) (msgid b'pnmKfsDgS6CKzud6yXw0KUDHx5g=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+never seen 127.0.0.1:8000 before, adding to router
+never seen 127.0.0.1:8000 before, adding to router
+got a store request from ('127.0.0.1', 8000), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8000), storing 'ef0ad37aa0294139a59d8d32dd1f6ac93c5d3082'='{"salt": "d604cc065aa1a0c59318a91dea827a5f77aa3b4e3e4be38f5f6edb3300bafdd0", "hash_password": "28ef2666c50efcda2198b094117455efe7d97069c5fa19871576f61d90260d7e", "public_key_n": 99937884505182086847324600487474856408276673650243226239643215079719054287490139425118730413143505862025867295859088214238844391929677009026878337893456338371366917840278365980198507249238521549812365838181566975768038631955427387439711872353130293375733397982205402034657990433173080573369239834446386456301, "public_key_e": 65537}'
+sending response True for msg id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' to ('127.0.0.1', 8000)
+sending response True for msg id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+got a store request from ('127.0.0.1', 8000), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8000), storing '91e5b21003d55b8b6b54cb3aad4ecc1c2a0d3204'='{"followers": [], "following": []}'
+sending response True for msg id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' to ('127.0.0.1', 8000)
+sending response True for msg id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+received response True for message id b'1/hMSZHaZGRSa4kkftB5RnSEHKY=' from ('127.0.0.1', 8004)
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'w29H89QpLqgmEsh2alYLrLY1MNA=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'w29H89QpLqgmEsh2alYLrLY1MNA=' from ('127.0.0.1', 8000)
+received response [] for message id b'w29H89QpLqgmEsh2alYLrLY1MNA=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+received response True for message id b'pnmKfsDgS6CKzud6yXw0KUDHx5g=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+Looking up key telmo:private
+Looking up key telmo:private
+Looking up key telmo:private
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_value on ('127.0.0.1', 8000) (msgid b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=')
+calling remote function find_value on ('127.0.0.1', 8000) (msgid b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=')
+calling remote function find_value on ('127.0.0.1', 8000) (msgid b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' from ('127.0.0.1', 8000)
+received response [] for message id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' from ('127.0.0.1', 8000)
+received response [] for message id b'NO2IBX3DcmA+MjhhDGrSjYJTsQE=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting 'telmo:private' = '{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}' on network
+setting 'telmo:private' = '{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}' on network
+setting 'telmo:private' = '{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}' on network
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'gaQBkAEJC9MgavjTlIaatDHdBo8=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'gaQBkAEJC9MgavjTlIaatDHdBo8=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'gaQBkAEJC9MgavjTlIaatDHdBo8=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' from ('127.0.0.1', 8000)
+received response [] for message id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' from ('127.0.0.1', 8000)
+received response [] for message id b'gaQBkAEJC9MgavjTlIaatDHdBo8=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting '9fa06320e464f95194b943b01a04e54072db5a1a' on ['127.0.0.1:8000']
+setting '9fa06320e464f95194b943b01a04e54072db5a1a' on ['127.0.0.1:8000']
+setting '9fa06320e464f95194b943b01a04e54072db5a1a' on ['127.0.0.1:8000']
+calling remote function store on ('127.0.0.1', 8000) (msgid b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+got a store request from ('127.0.0.1', 8004), storing '9fa06320e464f95194b943b01a04e54072db5a1a'='{"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537}'
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+sending response True for msg id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response True for message id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' from ('127.0.0.1', 8000)
+received response True for message id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' from ('127.0.0.1', 8000)
+received response True for message id b'fdcQ30wkwlbpDYfr+4qCGpe5/nQ=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+[ DEBUG ] Kademlia: SET {"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "f80b28d631b00ba2212ca5bf0d3689b6dbf02ba8143325d3fe67d6d3d3ac19a1", "hash_password": "c42194c225c81cd56711183570215249f847b5bbb4b72fd4acfd22b41fa50c45", "public_key_n": 146316881190648786654529081960958439925361891426265805603523441338647991371717966144721067631565522244464650704885838859063420932211857664389283045474776662485719062221619115884142065055226569124062409694530408015387859797165707661956084212415563950181553229267235595439688384158680348349914523126914798285769, "public_key_e": 65537} 
+setting 'telmo:public' = '{"followers": [], "following": []}' on network
+setting 'telmo:public' = '{"followers": [], "following": []}' on network
+setting 'telmo:public' = '{"followers": [], "following": []}' on network
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'Se2kolqsb8ghzvbWE4VAkEkFsKE=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'Se2kolqsb8ghzvbWE4VAkEkFsKE=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'Se2kolqsb8ghzvbWE4VAkEkFsKE=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' from ('127.0.0.1', 8000)
+received response [] for message id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' from ('127.0.0.1', 8000)
+received response [] for message id b'Se2kolqsb8ghzvbWE4VAkEkFsKE=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting '896253579201e876ba1a32228bb37f8bf5eb733e' on ['127.0.0.1:8000']
+setting '896253579201e876ba1a32228bb37f8bf5eb733e' on ['127.0.0.1:8000']
+setting '896253579201e876ba1a32228bb37f8bf5eb733e' on ['127.0.0.1:8000']
+calling remote function store on ('127.0.0.1', 8000) (msgid b'AvAT5VyRgulAluOd+H3RsAv4Zjs=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'AvAT5VyRgulAluOd+H3RsAv4Zjs=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'AvAT5VyRgulAluOd+H3RsAv4Zjs=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+got a store request from ('127.0.0.1', 8004), storing '896253579201e876ba1a32228bb37f8bf5eb733e'='{"followers": [], "following": []}'
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+sending response True for msg id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response True for message id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' from ('127.0.0.1', 8000)
+received response True for message id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' from ('127.0.0.1', 8000)
+received response True for message id b'AvAT5VyRgulAluOd+H3RsAv4Zjs=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'telmo:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+setting 'telmo:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+setting 'telmo:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+creating spider with peers: [[1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000]]
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+crawling network with nearest: ([1207333792844006419139023476147802108686384494603, '127.0.0.1', 8000],)
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'lBE6Dz5DMDqo2YHO+RogwFJixmY=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'lBE6Dz5DMDqo2YHO+RogwFJixmY=')
+calling remote function find_node on ('127.0.0.1', 8000) (msgid b'lBE6Dz5DMDqo2YHO+RogwFJixmY=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+finding neighbors of 570547158358873159807860240882017800248231887514 in local table
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+sending response [] for msg id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response [] for message id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' from ('127.0.0.1', 8000)
+received response [] for message id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' from ('127.0.0.1', 8000)
+received response [] for message id b'lBE6Dz5DMDqo2YHO+RogwFJixmY=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+setting '6e4d44461b0688c930ca7c80bea2fa86fc469de7' on ['127.0.0.1:8000']
+setting '6e4d44461b0688c930ca7c80bea2fa86fc469de7' on ['127.0.0.1:8000']
+setting '6e4d44461b0688c930ca7c80bea2fa86fc469de7' on ['127.0.0.1:8000']
+calling remote function store on ('127.0.0.1', 8000) (msgid b'qMi0KNSwEW5g5H8rvKPBArJmMg4=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'qMi0KNSwEW5g5H8rvKPBArJmMg4=')
+calling remote function store on ('127.0.0.1', 8000) (msgid b'qMi0KNSwEW5g5H8rvKPBArJmMg4=')
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+got a store request from ('127.0.0.1', 8004), storing '6e4d44461b0688c930ca7c80bea2fa86fc469de7'='{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}'
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+sending response True for msg id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' to ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received response True for message id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' from ('127.0.0.1', 8000)
+received response True for message id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' from ('127.0.0.1', 8000)
+received response True for message id b'qMi0KNSwEW5g5H8rvKPBArJmMg4=' from ('127.0.0.1', 8000)
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+got successful response from 127.0.0.1:8000
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+creating spider with peers: [[818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004]]
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+crawling network with nearest: ([818358119201934337218267535501871757326292116480, '127.0.0.1', 8004], [570547158358873159807860240882017800248231887514, '127.0.0.1', 8004])
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ZKqd/D6eR2m/utSdZ9lltm7KY40=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+calling remote function find_value on ('127.0.0.1', 8004) (msgid b'ETWY/+xOofYg7ZiYufpkEBp9ywk=')
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8000)
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+received response [] for message id b'ZKqd/D6eR2m/utSdZ9lltm7KY40=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+finding neighbors of 1207333792844006419139023476147802108686384494603 in local table
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+sending response [] for msg id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' to ('127.0.0.1', 8000)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received datagram from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+received response [] for message id b'ETWY/+xOofYg7ZiYufpkEBp9ywk=' from ('127.0.0.1', 8004)
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+got successful response from 127.0.0.1:8004
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8004
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7004
+[ INFO ] Initialization: Bootstrap IP: 127.0.0.1
+[ INFO ] Initialization: Bootstrap Port: 8000
+Node 548791576013940757448457081235359306144180061007 listening on 0.0.0.0:8004
+Node 548791576013940757448457081235359306144180061007 listening on 0.0.0.0:8004
+Refreshing routing table
+Refreshing routing table
+Attempting to bootstrap node with 1 initial contacts
+Attempting to bootstrap node with 1 initial contacts
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'F+HQ/mxhF8LSz0CNvyJD2VKuR5E=')
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'F+HQ/mxhF8LSz0CNvyJD2VKuR5E=')
+Did not receive reply for msg id b'F+HQ/mxhF8LSz0CNvyJD2VKuR5E=' within 5 seconds
+Did not receive reply for msg id b'F+HQ/mxhF8LSz0CNvyJD2VKuR5E=' within 5 seconds
+creating spider with peers: []
+creating spider with peers: []
+crawling network with nearest: ()
+crawling network with nearest: ()
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8000
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7000
+[ INFO ] Initialization: Init Node
+Node 363671492435996590303859135860447890304488263322 listening on 0.0.0.0:8000
+Node 363671492435996590303859135860447890304488263322 listening on 0.0.0.0:8000
+Refreshing routing table
+Refreshing routing table
+Looking up key hugo:private
+Looking up key hugo:private
+Looking up key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+setting 'hugo:private' = '{"salt": "c9e0e4531b7e47ab7f418e4dc93342644199982803f03bdc6aa02c5df800e39c", "hash_password": "822a18e1acd8cd3677db8d6567c8030e2a00f68aa8766f455774faa2c1cf43c9", "public_key_n": 134178525831316357922528793084694524858265707645278000679859913856229789502970982244081397491920299343400995613388569035591844500046738451228401286051094490633742246455359133167110971326381747868252641207360609648417736459335744367664960536782002340890120997746008191109217188148655128097247195583741341557157, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "c9e0e4531b7e47ab7f418e4dc93342644199982803f03bdc6aa02c5df800e39c", "hash_password": "822a18e1acd8cd3677db8d6567c8030e2a00f68aa8766f455774faa2c1cf43c9", "public_key_n": 134178525831316357922528793084694524858265707645278000679859913856229789502970982244081397491920299343400995613388569035591844500046738451228401286051094490633742246455359133167110971326381747868252641207360609648417736459335744367664960536782002340890120997746008191109217188148655128097247195583741341557157, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "c9e0e4531b7e47ab7f418e4dc93342644199982803f03bdc6aa02c5df800e39c", "hash_password": "822a18e1acd8cd3677db8d6567c8030e2a00f68aa8766f455774faa2c1cf43c9", "public_key_n": 134178525831316357922528793084694524858265707645278000679859913856229789502970982244081397491920299343400995613388569035591844500046738451228401286051094490633742246455359133167110971326381747868252641207360609648417736459335744367664960536782002340890120997746008191109217188148655128097247195583741341557157, "public_key_e": 65537}' on network
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+[ DEBUG ] Kademlia: SET {"salt": "c9e0e4531b7e47ab7f418e4dc93342644199982803f03bdc6aa02c5df800e39c", "hash_password": "822a18e1acd8cd3677db8d6567c8030e2a00f68aa8766f455774faa2c1cf43c9", "public_key_n": 134178525831316357922528793084694524858265707645278000679859913856229789502970982244081397491920299343400995613388569035591844500046738451228401286051094490633742246455359133167110971326381747868252641207360609648417736459335744367664960536782002340890120997746008191109217188148655128097247195583741341557157, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "c9e0e4531b7e47ab7f418e4dc93342644199982803f03bdc6aa02c5df800e39c", "hash_password": "822a18e1acd8cd3677db8d6567c8030e2a00f68aa8766f455774faa2c1cf43c9", "public_key_n": 134178525831316357922528793084694524858265707645278000679859913856229789502970982244081397491920299343400995613388569035591844500046738451228401286051094490633742246455359133167110971326381747868252641207360609648417736459335744367664960536782002340890120997746008191109217188148655128097247195583741341557157, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "c9e0e4531b7e47ab7f418e4dc93342644199982803f03bdc6aa02c5df800e39c", "hash_password": "822a18e1acd8cd3677db8d6567c8030e2a00f68aa8766f455774faa2c1cf43c9", "public_key_n": 134178525831316357922528793084694524858265707645278000679859913856229789502970982244081397491920299343400995613388569035591844500046738451228401286051094490633742246455359133167110971326381747868252641207360609648417736459335744367664960536782002340890120997746008191109217188148655128097247195583741341557157, "public_key_e": 65537} 
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+Looking up key rui:private
+Looking up key rui:private
+Looking up key rui:private
+There are no known neighbors to get key rui:private
+There are no known neighbors to get key rui:private
+There are no known neighbors to get key rui:private
+setting 'rui:private' = '{"salt": "bf01ac301f34fe299e9d30bb1d988ff6158d124216b91ca5a00bf74de21c4573", "hash_password": "32e7f78979a90b481baed6fdd26884fd67f7e9bb9f39185d8bcd4db0b79e0cb1", "public_key_n": 98074235122132687391752867544166825462741754694271204548045044761554129810990357010552836519925768057500558261823199080339411103919360197070580474875942956125598293791979211038798268340836486536835554956345194872330344541178847082781582734259099250544702229086210331497573724355388740399591977829760275776619, "public_key_e": 65537}' on network
+setting 'rui:private' = '{"salt": "bf01ac301f34fe299e9d30bb1d988ff6158d124216b91ca5a00bf74de21c4573", "hash_password": "32e7f78979a90b481baed6fdd26884fd67f7e9bb9f39185d8bcd4db0b79e0cb1", "public_key_n": 98074235122132687391752867544166825462741754694271204548045044761554129810990357010552836519925768057500558261823199080339411103919360197070580474875942956125598293791979211038798268340836486536835554956345194872330344541178847082781582734259099250544702229086210331497573724355388740399591977829760275776619, "public_key_e": 65537}' on network
+setting 'rui:private' = '{"salt": "bf01ac301f34fe299e9d30bb1d988ff6158d124216b91ca5a00bf74de21c4573", "hash_password": "32e7f78979a90b481baed6fdd26884fd67f7e9bb9f39185d8bcd4db0b79e0cb1", "public_key_n": 98074235122132687391752867544166825462741754694271204548045044761554129810990357010552836519925768057500558261823199080339411103919360197070580474875942956125598293791979211038798268340836486536835554956345194872330344541178847082781582734259099250544702229086210331497573724355388740399591977829760275776619, "public_key_e": 65537}' on network
+There are no known neighbors to set key 4e2b7995ef2cdbf6387130c728ed059421cd47dc
+There are no known neighbors to set key 4e2b7995ef2cdbf6387130c728ed059421cd47dc
+There are no known neighbors to set key 4e2b7995ef2cdbf6387130c728ed059421cd47dc
+[ DEBUG ] Kademlia: SET {"salt": "bf01ac301f34fe299e9d30bb1d988ff6158d124216b91ca5a00bf74de21c4573", "hash_password": "32e7f78979a90b481baed6fdd26884fd67f7e9bb9f39185d8bcd4db0b79e0cb1", "public_key_n": 98074235122132687391752867544166825462741754694271204548045044761554129810990357010552836519925768057500558261823199080339411103919360197070580474875942956125598293791979211038798268340836486536835554956345194872330344541178847082781582734259099250544702229086210331497573724355388740399591977829760275776619, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "bf01ac301f34fe299e9d30bb1d988ff6158d124216b91ca5a00bf74de21c4573", "hash_password": "32e7f78979a90b481baed6fdd26884fd67f7e9bb9f39185d8bcd4db0b79e0cb1", "public_key_n": 98074235122132687391752867544166825462741754694271204548045044761554129810990357010552836519925768057500558261823199080339411103919360197070580474875942956125598293791979211038798268340836486536835554956345194872330344541178847082781582734259099250544702229086210331497573724355388740399591977829760275776619, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "bf01ac301f34fe299e9d30bb1d988ff6158d124216b91ca5a00bf74de21c4573", "hash_password": "32e7f78979a90b481baed6fdd26884fd67f7e9bb9f39185d8bcd4db0b79e0cb1", "public_key_n": 98074235122132687391752867544166825462741754694271204548045044761554129810990357010552836519925768057500558261823199080339411103919360197070580474875942956125598293791979211038798268340836486536835554956345194872330344541178847082781582734259099250544702229086210331497573724355388740399591977829760275776619, "public_key_e": 65537} 
+setting 'rui:public' = '{"followers": [], "following": []}' on network
+setting 'rui:public' = '{"followers": [], "following": []}' on network
+setting 'rui:public' = '{"followers": [], "following": []}' on network
+There are no known neighbors to set key df0730b1506f87eb9fb78ecce86e4751dc4e5492
+There are no known neighbors to set key df0730b1506f87eb9fb78ecce86e4751dc4e5492
+There are no known neighbors to set key df0730b1506f87eb9fb78ecce86e4751dc4e5492
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'rui:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+setting 'rui:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+setting 'rui:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+There are no known neighbors to set key 3445859555f33a287b7856531df4bf77b62635e3
+There are no known neighbors to set key 3445859555f33a287b7856531df4bf77b62635e3
+There are no known neighbors to set key 3445859555f33a287b7856531df4bf77b62635e3
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8004
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7004
+[ INFO ] Initialization: Bootstrap IP: 127.0.0.1
+[ INFO ] Initialization: Bootstrap Port: 8000
+Node 519092105340155410056425878822750422342631815048 listening on 0.0.0.0:8004
+Node 519092105340155410056425878822750422342631815048 listening on 0.0.0.0:8004
+Refreshing routing table
+Refreshing routing table
+Attempting to bootstrap node with 1 initial contacts
+Attempting to bootstrap node with 1 initial contacts
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'rliXzNXEK+WaA4tGdmeh9xAEkdQ=')
+calling remote function ping on ('127.0.0.1', 8000) (msgid b'rliXzNXEK+WaA4tGdmeh9xAEkdQ=')
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8000
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7000
+[ INFO ] Initialization: Init Node
+Node 1149613682794055123633450445376450727715721715117 listening on 0.0.0.0:8000
+Node 1149613682794055123633450445376450727715721715117 listening on 0.0.0.0:8000
+Refreshing routing table
+Refreshing routing table
+Did not receive reply for msg id b'rliXzNXEK+WaA4tGdmeh9xAEkdQ=' within 5 seconds
+Did not receive reply for msg id b'rliXzNXEK+WaA4tGdmeh9xAEkdQ=' within 5 seconds
+creating spider with peers: []
+creating spider with peers: []
+crawling network with nearest: ()
+crawling network with nearest: ()
+Looking up key 123:private
+Looking up key 123:private
+Looking up key 123:private
+There are no known neighbors to get key 123:private
+There are no known neighbors to get key 123:private
+There are no known neighbors to get key 123:private
+setting '123:private' = '{"salt": "e267160fefa1f15baa036674459d9e803bc08673294a58bd57b445e88539ea0b", "hash_password": "f652a3ae516ad1eca246bd756b72485c627222018dfbcc5a0d8367aa13d9d6a9", "public_key_n": 152345157833091048082040512815767310972136999413489347877386567961383946708922049366174266033116737551354979199839739114122525676121975310840626003351918488231109538599333970413708735631930768874269409938446509030655811534581280717223206249918930516613371522457730037969984682677175373047422218180566494116351, "public_key_e": 65537}' on network
+setting '123:private' = '{"salt": "e267160fefa1f15baa036674459d9e803bc08673294a58bd57b445e88539ea0b", "hash_password": "f652a3ae516ad1eca246bd756b72485c627222018dfbcc5a0d8367aa13d9d6a9", "public_key_n": 152345157833091048082040512815767310972136999413489347877386567961383946708922049366174266033116737551354979199839739114122525676121975310840626003351918488231109538599333970413708735631930768874269409938446509030655811534581280717223206249918930516613371522457730037969984682677175373047422218180566494116351, "public_key_e": 65537}' on network
+setting '123:private' = '{"salt": "e267160fefa1f15baa036674459d9e803bc08673294a58bd57b445e88539ea0b", "hash_password": "f652a3ae516ad1eca246bd756b72485c627222018dfbcc5a0d8367aa13d9d6a9", "public_key_n": 152345157833091048082040512815767310972136999413489347877386567961383946708922049366174266033116737551354979199839739114122525676121975310840626003351918488231109538599333970413708735631930768874269409938446509030655811534581280717223206249918930516613371522457730037969984682677175373047422218180566494116351, "public_key_e": 65537}' on network
+There are no known neighbors to set key db4eac50e6999659e5c22fd4850c161ad3685122
+There are no known neighbors to set key db4eac50e6999659e5c22fd4850c161ad3685122
+There are no known neighbors to set key db4eac50e6999659e5c22fd4850c161ad3685122
+[ DEBUG ] Kademlia: SET {"salt": "e267160fefa1f15baa036674459d9e803bc08673294a58bd57b445e88539ea0b", "hash_password": "f652a3ae516ad1eca246bd756b72485c627222018dfbcc5a0d8367aa13d9d6a9", "public_key_n": 152345157833091048082040512815767310972136999413489347877386567961383946708922049366174266033116737551354979199839739114122525676121975310840626003351918488231109538599333970413708735631930768874269409938446509030655811534581280717223206249918930516613371522457730037969984682677175373047422218180566494116351, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "e267160fefa1f15baa036674459d9e803bc08673294a58bd57b445e88539ea0b", "hash_password": "f652a3ae516ad1eca246bd756b72485c627222018dfbcc5a0d8367aa13d9d6a9", "public_key_n": 152345157833091048082040512815767310972136999413489347877386567961383946708922049366174266033116737551354979199839739114122525676121975310840626003351918488231109538599333970413708735631930768874269409938446509030655811534581280717223206249918930516613371522457730037969984682677175373047422218180566494116351, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "e267160fefa1f15baa036674459d9e803bc08673294a58bd57b445e88539ea0b", "hash_password": "f652a3ae516ad1eca246bd756b72485c627222018dfbcc5a0d8367aa13d9d6a9", "public_key_n": 152345157833091048082040512815767310972136999413489347877386567961383946708922049366174266033116737551354979199839739114122525676121975310840626003351918488231109538599333970413708735631930768874269409938446509030655811534581280717223206249918930516613371522457730037969984682677175373047422218180566494116351, "public_key_e": 65537} 
+setting '123:public' = '{"followers": [], "following": []}' on network
+setting '123:public' = '{"followers": [], "following": []}' on network
+setting '123:public' = '{"followers": [], "following": []}' on network
+There are no known neighbors to set key d16c673520c37163e29ea4dca234fc6fcfd97dcc
+There are no known neighbors to set key d16c673520c37163e29ea4dca234fc6fcfd97dcc
+There are no known neighbors to set key d16c673520c37163e29ea4dca234fc6fcfd97dcc
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting '123:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting '123:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting '123:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+There are no known neighbors to set key a37018eb81d2cea0102f979f496fcf69c8fa1af8
+There are no known neighbors to set key a37018eb81d2cea0102f979f496fcf69c8fa1af8
+There are no known neighbors to set key a37018eb81d2cea0102f979f496fcf69c8fa1af8
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ INFO ] Initialization: Kademlia IP: 127.0.0.1
+[ INFO ] Initialization: Kademlia Port: 8000
+[ INFO ] Initialization: Listener Port: 127.0.0.1
+[ INFO ] Initialization: Listener Port: 7000
+[ INFO ] Initialization: Init Node
+Node 188628410884260798958534906167478192960504761001 listening on 0.0.0.0:8000
+Node 188628410884260798958534906167478192960504761001 listening on 0.0.0.0:8000
+Refreshing routing table
+Refreshing routing table
+Looking up key hugo:private
+Looking up key hugo:private
+Looking up key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+There are no known neighbors to get key hugo:private
+setting 'hugo:private' = '{"salt": "842fade9f1fa470825b40359129beed075b8d2fcbe4fdc34a3b0cd386f7b7405", "hash_password": "1db4a0ef441425e53f86b228d01c2077c49403c9853ce9da84391636957fef34", "public_key_n": 100884419464036748849309845273837148694701689590694095250528667835078830357664473807627949282159384291388612656657409392591512382336717325678190138490645275026773078289847413996752332804958525547456243979689835481543318086045357020109082275860363403688472479982620023834768317110594278466764591645193798786809, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "842fade9f1fa470825b40359129beed075b8d2fcbe4fdc34a3b0cd386f7b7405", "hash_password": "1db4a0ef441425e53f86b228d01c2077c49403c9853ce9da84391636957fef34", "public_key_n": 100884419464036748849309845273837148694701689590694095250528667835078830357664473807627949282159384291388612656657409392591512382336717325678190138490645275026773078289847413996752332804958525547456243979689835481543318086045357020109082275860363403688472479982620023834768317110594278466764591645193798786809, "public_key_e": 65537}' on network
+setting 'hugo:private' = '{"salt": "842fade9f1fa470825b40359129beed075b8d2fcbe4fdc34a3b0cd386f7b7405", "hash_password": "1db4a0ef441425e53f86b228d01c2077c49403c9853ce9da84391636957fef34", "public_key_n": 100884419464036748849309845273837148694701689590694095250528667835078830357664473807627949282159384291388612656657409392591512382336717325678190138490645275026773078289847413996752332804958525547456243979689835481543318086045357020109082275860363403688472479982620023834768317110594278466764591645193798786809, "public_key_e": 65537}' on network
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+There are no known neighbors to set key 5e7b9b7275b7f50198370a10feed49d378bf09e4
+[ DEBUG ] Kademlia: SET {"salt": "842fade9f1fa470825b40359129beed075b8d2fcbe4fdc34a3b0cd386f7b7405", "hash_password": "1db4a0ef441425e53f86b228d01c2077c49403c9853ce9da84391636957fef34", "public_key_n": 100884419464036748849309845273837148694701689590694095250528667835078830357664473807627949282159384291388612656657409392591512382336717325678190138490645275026773078289847413996752332804958525547456243979689835481543318086045357020109082275860363403688472479982620023834768317110594278466764591645193798786809, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "842fade9f1fa470825b40359129beed075b8d2fcbe4fdc34a3b0cd386f7b7405", "hash_password": "1db4a0ef441425e53f86b228d01c2077c49403c9853ce9da84391636957fef34", "public_key_n": 100884419464036748849309845273837148694701689590694095250528667835078830357664473807627949282159384291388612656657409392591512382336717325678190138490645275026773078289847413996752332804958525547456243979689835481543318086045357020109082275860363403688472479982620023834768317110594278466764591645193798786809, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "842fade9f1fa470825b40359129beed075b8d2fcbe4fdc34a3b0cd386f7b7405", "hash_password": "1db4a0ef441425e53f86b228d01c2077c49403c9853ce9da84391636957fef34", "public_key_n": 100884419464036748849309845273837148694701689590694095250528667835078830357664473807627949282159384291388612656657409392591512382336717325678190138490645275026773078289847413996752332804958525547456243979689835481543318086045357020109082275860363403688472479982620023834768317110594278466764591645193798786809, "public_key_e": 65537} 
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+setting 'hugo:public' = '{"followers": [], "following": []}' on network
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+There are no known neighbors to set key 908ecf4fafaa564dbf879f8c4a4cda2aaefa6bdd
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+setting 'hugo:connections' = '{"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000}' on network
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+There are no known neighbors to set key 11d9dd48a8640320295898807221d984394bfe59
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8000, "listening_ip": "127.0.0.1", "listening_port": 7000} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+[ INFO ] Post: Post message
+Looking up key rui:private
+Looking up key rui:private
+Looking up key rui:private
+There are no known neighbors to get key rui:private
+There are no known neighbors to get key rui:private
+There are no known neighbors to get key rui:private
+setting 'rui:private' = '{"salt": "ceb8efa9002e4a7fcc053f276236fb3518cb3a61a9bfcdc11165ad87add1d3e8", "hash_password": "6e25869529d6c6a1028b8f92e4832eeb2899a6d01a7eeee3bf8661991c0f5a78", "public_key_n": 131128055935488623198248968827237525850113671467820590980432075495391080176183836765065837062078130695774298353941100786093212495742285697503406629173608673049471123420570126635840596834945930027347182048790099380557135707764112245415253526654228067745715567767796336687002261338996487572877465774893832039723, "public_key_e": 65537}' on network
+setting 'rui:private' = '{"salt": "ceb8efa9002e4a7fcc053f276236fb3518cb3a61a9bfcdc11165ad87add1d3e8", "hash_password": "6e25869529d6c6a1028b8f92e4832eeb2899a6d01a7eeee3bf8661991c0f5a78", "public_key_n": 131128055935488623198248968827237525850113671467820590980432075495391080176183836765065837062078130695774298353941100786093212495742285697503406629173608673049471123420570126635840596834945930027347182048790099380557135707764112245415253526654228067745715567767796336687002261338996487572877465774893832039723, "public_key_e": 65537}' on network
+setting 'rui:private' = '{"salt": "ceb8efa9002e4a7fcc053f276236fb3518cb3a61a9bfcdc11165ad87add1d3e8", "hash_password": "6e25869529d6c6a1028b8f92e4832eeb2899a6d01a7eeee3bf8661991c0f5a78", "public_key_n": 131128055935488623198248968827237525850113671467820590980432075495391080176183836765065837062078130695774298353941100786093212495742285697503406629173608673049471123420570126635840596834945930027347182048790099380557135707764112245415253526654228067745715567767796336687002261338996487572877465774893832039723, "public_key_e": 65537}' on network
+There are no known neighbors to set key 4e2b7995ef2cdbf6387130c728ed059421cd47dc
+There are no known neighbors to set key 4e2b7995ef2cdbf6387130c728ed059421cd47dc
+There are no known neighbors to set key 4e2b7995ef2cdbf6387130c728ed059421cd47dc
+[ DEBUG ] Kademlia: SET {"salt": "ceb8efa9002e4a7fcc053f276236fb3518cb3a61a9bfcdc11165ad87add1d3e8", "hash_password": "6e25869529d6c6a1028b8f92e4832eeb2899a6d01a7eeee3bf8661991c0f5a78", "public_key_n": 131128055935488623198248968827237525850113671467820590980432075495391080176183836765065837062078130695774298353941100786093212495742285697503406629173608673049471123420570126635840596834945930027347182048790099380557135707764112245415253526654228067745715567767796336687002261338996487572877465774893832039723, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "ceb8efa9002e4a7fcc053f276236fb3518cb3a61a9bfcdc11165ad87add1d3e8", "hash_password": "6e25869529d6c6a1028b8f92e4832eeb2899a6d01a7eeee3bf8661991c0f5a78", "public_key_n": 131128055935488623198248968827237525850113671467820590980432075495391080176183836765065837062078130695774298353941100786093212495742285697503406629173608673049471123420570126635840596834945930027347182048790099380557135707764112245415253526654228067745715567767796336687002261338996487572877465774893832039723, "public_key_e": 65537} 
+[ DEBUG ] Kademlia: SET {"salt": "ceb8efa9002e4a7fcc053f276236fb3518cb3a61a9bfcdc11165ad87add1d3e8", "hash_password": "6e25869529d6c6a1028b8f92e4832eeb2899a6d01a7eeee3bf8661991c0f5a78", "public_key_n": 131128055935488623198248968827237525850113671467820590980432075495391080176183836765065837062078130695774298353941100786093212495742285697503406629173608673049471123420570126635840596834945930027347182048790099380557135707764112245415253526654228067745715567767796336687002261338996487572877465774893832039723, "public_key_e": 65537} 
+setting 'rui:public' = '{"followers": [], "following": []}' on network
+setting 'rui:public' = '{"followers": [], "following": []}' on network
+setting 'rui:public' = '{"followers": [], "following": []}' on network
+There are no known neighbors to set key df0730b1506f87eb9fb78ecce86e4751dc4e5492
+There are no known neighbors to set key df0730b1506f87eb9fb78ecce86e4751dc4e5492
+There are no known neighbors to set key df0730b1506f87eb9fb78ecce86e4751dc4e5492
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+[ DEBUG ] Kademlia: SET {"followers": [], "following": []} 
+setting 'rui:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+setting 'rui:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+setting 'rui:connections' = '{"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004}' on network
+There are no known neighbors to set key 3445859555f33a287b7856531df4bf77b62635e3
+There are no known neighbors to set key 3445859555f33a287b7856531df4bf77b62635e3
+There are no known neighbors to set key 3445859555f33a287b7856531df4bf77b62635e3
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ DEBUG ] Kademlia: SET {"ip": "127.0.0.1", "port": 8004, "listening_ip": "127.0.0.1", "listening_port": 7004} 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+[ SUCCESS ] Register: user registered successfully 
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+Looking up key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public
+There are no known neighbors to get key hugo:public

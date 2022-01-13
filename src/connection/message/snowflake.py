@@ -5,10 +5,6 @@ import time
 import ntplib
 from datetime import datetime
 
-
-
-
-
 class Snowflake:
     """
     Snowflake IDs, or snowflakes, are a form of unique identifier used in distributed computing. 

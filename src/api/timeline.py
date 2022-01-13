@@ -51,6 +51,8 @@ class Timeline:
 
         self.periodic_callback = PeriodicCallback(self.save_messages, 1000)
         self.periodic_callback.start()
+        
+        self.logger = Logger()
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
         messages = []
@@ -119,7 +121,7 @@ class Timeline:
             self.messages = timeline_state['timeline']
             output_file.close()
         except Exception:
-            Logger.log("Timeline", "warning", "No previous state. New state initialized")
+            self.logger.log("Timeline", "warning", "No previous state. New state initialized")
             Path("./storage").mkdir(parents=True, exist_ok=True)
         
         self.mutex.release()

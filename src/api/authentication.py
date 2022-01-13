@@ -28,6 +28,7 @@ class Authentication:
             'register': self.register,
             'login': self.login,
         }
+        self.logger = Logger()
 
     def action(self, action : str, information : MainMenuAnswer) -> Callable[[dict], Tuple[KademliaNode, str, UserData]]:
         return self.action_list[action](information)
@@ -79,10 +80,11 @@ class Authentication:
             else:
                 raise Exception(f'Registration failed. User {username} already exists')
         except Exception as e:
-            Logger.log("Register", "error", str(e))
+            self.logger.log("Register", "error", str(e))
             return None
 
-        Logger.log("Register", "success", "user registered successfully")
+        self.logger.log("Register", "success", "user registered successfully")
+        
         return user_args
 
     def login(self, information : MainMenuAnswer) -> Tuple[KademliaNode, str, UserData]:
@@ -108,8 +110,8 @@ class Authentication:
                 raise Exception(f"Login failed. User {username} doesn't exist")
                 
         except Exception as e:
-            Logger.log("Register", "error", str(e))
+            self.logger.log("Register", "error", str(e))
             return None
 
-        Logger.log("Login", "success", "success")
+        self.logger.log("Login", "success", "success")
         return user_args

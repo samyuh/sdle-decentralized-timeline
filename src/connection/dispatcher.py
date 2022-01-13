@@ -15,6 +15,8 @@ class MessageDispatcher:
             MessageType.REQUEST_TIMELINE: self.requestTimeline,
             MessageType.SEND_TIMELINE: self.sendTimeline,
         }
+        
+        self.logger = Logger()
 
     def action(self, action : int, arg : str):
         message_built = self.action_dict[action](self.user, arg)
@@ -30,7 +32,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_many(connections_info, message_built))
         except Exception as e:
-            Logger.log("SendPost", "error", str(e))
+            self.logger.log("SendPost", "error", str(e))
             exit(-1)
 
         return message_built
@@ -42,7 +44,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            Logger.log("RequestPost", "error", str(e))
+            self.logger.log("RequestPost", "error", str(e))
             exit(-1)
         
         return message_built
@@ -54,7 +56,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            Logger.log("SendPost RequestPost", "error", str(e))
+            self.logger.log("SendPost RequestPost", "error", str(e))
             exit(-1)
         
         return message_built
