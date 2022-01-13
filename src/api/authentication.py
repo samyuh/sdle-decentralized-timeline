@@ -75,7 +75,7 @@ class Authentication:
                 self.node.set(username + ':private', json.dumps(user_private))
                 self.node.set(username + ':public', json.dumps(user_public))
                 self.node.set(username + ':connections', json.dumps(user_connections))
-                user_args = (self.node, username, user_private, user_public, user_connections)
+                user_args = (self.node, username, user_private, user_connections)
             else:
                 raise Exception(f'Registration failed. User {username} already exists')
         except Exception as e:

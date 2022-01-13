@@ -22,11 +22,7 @@ class UserPrivateData(TypedDict):
     public_key_n: int
     public_key_e: int
 
-class UserPublicData(TypedDict):
-    followers: List[str]
-
 class UserConnectionsData(TypedDict):
-    following: List[str]
     ip : str
     port : int
     listening_ip : str
@@ -51,7 +47,7 @@ class User:
     action_list: Dict[str, Callable[[UserActionInfo], None]]
     timeline: Timeline
 
-    def __init__(self, node, username, private: UserPrivateData, public: UserPublicData, connection: UserConnectionsData):
+    def __init__(self, node, username, private: UserPrivateData, connection: UserConnectionsData):
         self.node = node
         self.username = username
 
@@ -198,7 +194,7 @@ class User:
     def get_own_timeline(self):
         return self.timeline.get_messages_from_user(self.username)
         
-    def update_state(self) -> None:
+    def update_timeline(self) -> None:
         user_following = self.get_user(self.username, 'public')['following']
 
         for followed_user in user_following:

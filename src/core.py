@@ -39,8 +39,7 @@ class Core:
             args = self.authentication.action(answers['method'], answers['information'])
 
         self.user = User(*args)
-        if answers['method'] == 'login':
-            self.user.update_state()
+        self.user.update_timeline()
 
         while True:
             answers = MainMenu().menu()
