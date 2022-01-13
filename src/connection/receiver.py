@@ -25,7 +25,6 @@ class MessageReceiver:
     # --------------------------
     def listener_action(self, action : int, message) -> None:
         if self.user.verify_signature(message['content'], message['header']['user'], message['header']['signature']):
-            print(action)
             self.listener_action_list[action](message)
 
     # --------------------------

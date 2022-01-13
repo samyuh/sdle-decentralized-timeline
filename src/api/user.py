@@ -10,7 +10,7 @@ from src.connection.dispatcher import MessageDispatcher
 from src.connection.message.message import MessageType
 from src.connection.receiver import MessageReceiver
 from src.utils.logger import Logger
-
+import threading
 if TYPE_CHECKING:
     from src.server.kademlia_node import KademliaNode
     from src.api.timeline import TimelineMessage
@@ -69,6 +69,7 @@ class User:
 
         # Listener Module
         self.message_receiver = MessageReceiver(self, self.listening_ip, self.listening_port)
+        self.timeouts = {}
 
         # Actions
         self.action_list = {
@@ -99,7 +100,7 @@ class User:
         user_followed = self.add_follower(information['username'])
 
         if user_followed != None:
-            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, user_followed)
+            self.update_timeline_follower(user_followed)
 
     def unfollow(self, information : UserActionInfo) -> None:
         user_unfollowed = self.remove_follower(information['username'])
@@ -146,19 +147,22 @@ class User:
         self.timeline.add_message(message)
 
     def send_timeline(self, message):
-        self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'])
+        self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'], message['header']['timeline_owner'])
 
     def receive_timeline(self, messages : SendPostMessage):
+        timeline_owner = messages['header']['timeline_owner']
+        
+        self.timeouts[timeline_owner].cancel()
+
         valid_messages = []
-        sender_username = messages['header']['user']
         
         ### Verify if all messages are from the sender user
         for message in messages['content']:
-            if sender_username == message['header']['user']:
+            if timeline_owner == message['header']['user']:
                 valid_messages.append(message)
 
         ### Delete all previous messages we had from that user from the timeline
-        self.timeline.delete_posts(sender_username) # TODO: verify key signature
+        self.timeline.delete_posts(timeline_owner) # TODO: verify key signature
 
         ### Add the received messages to our timeline
         for message in valid_messages:
@@ -191,14 +195,38 @@ class User:
     # ------------
     # - TimeLine -
     # ------------
-    def get_own_timeline(self):
-        return self.timeline.get_messages_from_user(self.username)
-        
+    def get_timeline(self, username):
+        return self.timeline.get_messages_from_user(username)
+    
+    def update_timeline_follower(self, username : str):
+        self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, username, username)
+
+        follower_list = self.get_user(username, 'public')['followers']
+        if self.username in follower_list:
+            follower_list.remove(self.username)
+
+        self.timeouts[username] = threading.Timer(1, self.__ask_next, args=[follower_list, username])
+        self.timeouts[username].start()
+
+    def __ask_next(self, follower_list, timeline_owner):
+        if follower_list:
+            request_user = follower_list.pop()
+
+            print(follower_list)
+            print(timeline_owner)
+
+            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, request_user, timeline_owner)
+            self.timeouts[timeline_owner] = threading.Timer(5, self.__ask_next, args=[follower_list, timeline_owner])
+            self.timeouts[timeline_owner].start()
+        else:
+            Logger.log("UpdateTimeline", "error", f"Could not fetch {timeline_owner}'s timeline")
+
     def update_timeline(self) -> None:
         user_following = self.get_user(self.username, 'public')['following']
 
         for followed_user in user_following:
-            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, followed_user)
+            self.update_timeline_follower(followed_user)
+
 
     # -------------
     # - Followers -

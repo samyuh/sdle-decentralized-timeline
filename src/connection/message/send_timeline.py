@@ -16,14 +16,15 @@ class SendTimeline(MessageInterface):
     def __init__(self, user : User):
         super().__init__(user)
 
-    def build(self) -> Tuple[any, SendPostMessage]:
+    def build(self, timeline_owner : str) -> Tuple[any, SendPostMessage]:
         username = self.user.username
-        timeline = self.user.get_own_timeline()
+        timeline = self.user.get_timeline(timeline_owner)
         signature = self.user.sign(timeline)
 
         message = {
             'header': {
                 'user': username,
+                'timeline_owner': timeline_owner,
                 'signature': signature,
                 'type': MessageType.SEND_TIMELINE.value,
             },

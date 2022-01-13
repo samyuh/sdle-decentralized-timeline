@@ -16,14 +16,14 @@ class MessageDispatcher:
             MessageType.SEND_TIMELINE: self.sendTimeline,
         }
 
-    def action(self, action : int, arg : str):
-        message_built = self.action_dict[action](self.user, arg)
+    def action(self, action : int, arg : str, arg1=None):
+        message_built = self.action_dict[action](self.user, arg, arg1)
         return message_built
     
     #
     # Commands
     #
-    def sendTimelineMessage(self, user, message):
+    def sendTimelineMessage(self, user, message, _):
         message_built = SendTimelineMessage(user).build(message)
         connections_info = self.user.get_followers_information('connections')
 
@@ -35,10 +35,9 @@ class MessageDispatcher:
 
         return message_built
 
-    def requestTimeline(self, user, followed_username):
-        message_built = RequestTimeline(user).build(followed_username)
-        connection_info = self.user.get_user(followed_username, 'connections')
-
+    def requestTimeline(self, user, request_to_user, timeline_owner):
+        message_built = RequestTimeline(user).build(timeline_owner)
+        connection_info = self.user.get_user(request_to_user, 'connections')
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
@@ -47,10 +46,9 @@ class MessageDispatcher:
         
         return message_built
 
-    def sendTimeline(self, user, follower_user):
-        message_built = SendTimeline(user).build()
-        connection_info = self.user.get_user(follower_user, 'connections')
-
+    def sendTimeline(self, user, origin_user, timeline_owner):
+        message_built = SendTimeline(user).build(timeline_owner)
+        connection_info = self.user.get_user(origin_user, 'connections')
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
