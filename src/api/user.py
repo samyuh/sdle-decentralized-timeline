@@ -146,6 +146,31 @@ class User:
     def logout(self, _) -> None:
         self.node.close()
         exit(0)
+
+    # --------------------------
+    # -- Listener Loop Action --
+    # --------------------------
+    def receive_timeline_message(self, message : TimelineMessage) -> None:
+        self.timeline.add_message(message)
+
+    def send_timeline(self, message):
+        self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'])
+
+    def receive_timeline(self, messages : SendPostMessage):
+        valid_messages = []
+        sender_username = messages['header']['user']
+        
+        ### Verify if all messages are from the sender user
+        for message in messages['content']:
+            if sender_username == message['header']['user']:
+                valid_messages.append(message)
+
+        ### Delete all previous messages we had from that user from the timeline
+        self.timeline.delete_posts(sender_username) # TODO: verify key signature
+
+        ### Add the received messages to our timeline
+        for message in valid_messages:
+            self.timeline.add_message(message)
         
     # ------------
     # Signature
@@ -170,32 +195,6 @@ class User:
 
         Logger.log("success", "success", f"Valid signature: {signature_valid}")
         return signature_valid
-    
-    # --------------------------
-    # -- Listener Loop Action --
-    # --------------------------
-    def update_timeline(self, message : TimelineMessage) -> None:
-        self.timeline.add_message(message)
-
-    def many_update_timeline(self, messages : SendPostMessage):
-        valid_messages = []
-        sender_username = messages['header']['user']
-        
-        ### Verify if all messages are from the sender user
-        for message in messages['content']:
-            if sender_username == message['header']['user']:
-                valid_messages.append(message)
-
-        ### Delete all previous messages we had from that user from the timeline
-        self.timeline.delete_posts(sender_username) # TODO: verify key signature
-
-        ### Add the received messages to our timeline
-        for message in valid_messages:
-            self.timeline.add_message(message)
-
-    def send_message(self, message : RequestPostMessage):
-        print(message['header']['user'])
-        self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'])
 
     # ------------
     # - TimeLine -
@@ -277,6 +276,9 @@ class User:
         return user_unfollowed
 
     def get_user(self, username : str, scope : str):
+        """
+        Return information of a user
+        """
         user_info = self.node.get(username + ':' + scope)
         if user_info is None:
             raise Exception(f'User {username} doesn\'t exist')
@@ -284,7 +286,10 @@ class User:
         user_info = json.loads(user_info)
         return user_info
 
-    def get_followers(self, scope):
+    def get_followers_information(self, scope):
+        """
+        Return information of the followers
+        """
         self.followers = self.get_user(self.username, 'public')['followers']
 
         followers_info = []

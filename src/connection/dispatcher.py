@@ -25,12 +25,12 @@ class MessageDispatcher:
     #
     def sendTimelineMessage(self, user, message):
         message_built = SendTimelineMessage(user).build(message)
-        connections_info = self.user.get_followers('connections')
+        connections_info = self.user.get_followers_information('connections')
 
         try:
             asyncio.run(self.publish_many(connections_info, message_built))
         except Exception as e:
-            Logger.log("SendPost", "error", str(e))
+            Logger.log("SendTimelineMessage", "error", str(e))
             exit(-1)
 
         return message_built
@@ -42,7 +42,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            Logger.log("RequestPost", "error", str(e))
+            Logger.log("RequestTimeline", "error", str(e))
             exit(-1)
         
         return message_built
@@ -54,7 +54,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            Logger.log("SendPost RequestPost", "error", str(e))
+            Logger.log("SendTimeline", "error", str(e))
             exit(-1)
         
         return message_built

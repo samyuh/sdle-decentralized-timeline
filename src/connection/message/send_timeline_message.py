@@ -3,7 +3,6 @@ from typing import Dict, Tuple, TYPE_CHECKING
 
 from src.connection.message.message import MessageInterface, MessageType
 from src.connection.message.snowflake import Snowflake
-from src.utils.logger import Logger
 
 if TYPE_CHECKING:
     from src.api.user import User, UserData

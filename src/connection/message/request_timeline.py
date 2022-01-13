@@ -2,10 +2,8 @@ from __future__ import annotations
 from typing import Tuple, TypedDict, TYPE_CHECKING
 
 import os
-import asyncio
 
 from src.connection.message.message import MessageInterface, MessageType
-from src.utils.logger import Logger
 
 if TYPE_CHECKING:
     from src.connection.message.message import MessageHeader

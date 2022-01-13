@@ -6,7 +6,6 @@ from enum import Enum
 
 if TYPE_CHECKING:
     from src.api.user import User
-    from src.connection.dispatcher import MessageDispatcher
 
 class MessageType(Enum):
     TIMELINE_MESSAGE = 1
@@ -22,7 +21,6 @@ class MessageHeader(TypedDict, total=False):
 
 class MessageInterface(abc.ABC):
     user: User 
-    sender: MessageDispatcher
 
     def __init__(self, user : User) -> None:
         self.user = user

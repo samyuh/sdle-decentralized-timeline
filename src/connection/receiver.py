@@ -15,9 +15,9 @@ class MessageReceiver:
         threading.Thread(target=self.recv_msg_loop, daemon=True).start()
 
         self.listener_action_list = {
-            MessageType.TIMELINE_MESSAGE.value: self.user.update_timeline,
-            MessageType.REQUEST_TIMELINE.value: self.user.send_message,
-            MessageType.SEND_TIMELINE.value: self.user.many_update_timeline,
+            MessageType.TIMELINE_MESSAGE.value: self.user.receive_timeline_message,
+            MessageType.REQUEST_TIMELINE.value: self.user.send_timeline,
+            MessageType.SEND_TIMELINE.value: self.user.receive_timeline,
         }
 
     # --------------------------
