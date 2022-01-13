@@ -62,10 +62,6 @@ class User:
         self.public_key_e = private['public_key_e']
         self.__read_private_keys()
 
-        # Public Fields
-        self.followers = public['followers']
-        self.following = public['following']
-
         # Connection Fields
         self.ip = connection['ip']
         self.port = connection['port']
@@ -113,13 +109,13 @@ class User:
         user_unfollowed = self.remove_follower(information['username'])
         
         if user_unfollowed != None:
-            self.delete_posts(user_unfollowed)
+            self.timeline.delete_posts(user_unfollowed)
 
     def suggestions(self, _):
         suggestions = set([])
-        self.followers = self.get_user(self.username, 'public')['followers']
+        user_followers = self.get_user(self.username, 'public')['followers']
 
-        for follower in self.followers:
+        for follower in user_followers:
             follower_info = self.get_user(follower, 'public')
             print(follower_info)
             suggestions.update(follower_info['followers'])
@@ -201,64 +197,57 @@ class User:
     # ------------
     def get_own_timeline(self):
         return self.timeline.get_messages_from_user(self.username)
-
-    def delete_posts(self, user_unfollowed):
-        self.timeline.delete_posts(user_unfollowed)
-
+        
     def update_state(self) -> None:
-        user_info = self.get_user(self.username, 'public')
-        self.followers = user_info['followers']
-        self.following = user_info['following']
+        user_following = self.get_user(self.username, 'public')['following']
 
-        for followed_user in self.following:
+        for followed_user in user_following:
             self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, followed_user)
 
     # -------------
     # - Followers -
     # -------------
-    def add_follower(self, user_followed):
-        if user_followed == self.username:
+    def add_follower(self, username_followed):
+        user_following = self.get_user(self.username, 'public')['following']
+
+        if username_followed == self.username:
             Logger.log("Add Follower", "info", 'You can\'t follow yourself')
             return None
-        elif user_followed in self.following:
-            Logger.log("Add Follower", "info", f'You already follow the user {user_followed}')
+        elif username_followed in user_following:
+            Logger.log("Add Follower", "info", f'You already follow the user {username_followed}')
             return None
 
         ### Update following list of the current user
         try:
             user_info = self.get_user(self.username, 'public')
-            user_info['following'].append(user_followed)
-            self.following = user_info['following']
+            user_info['following'].append(username_followed)
         except Exception as e:
             Logger.log("Add Follower", "error", str(e))
             return None
 
         ### Update follower list on followed
         try:
-            user_followed_info = self.get_user(user_followed, 'public')
+            user_followed_info = self.get_user(username_followed, 'public')
             user_followed_info['followers'].append(self.username)
-            print(f"AQUIII: {user_followed_info['followers']}")
         except Exception as e:
             Logger.log("Add Follower", "error", str(e))
             return None
 
         self.node.set(self.username + ':public', json.dumps(user_info))
-        self.node.set(user_followed + ':public', json.dumps(user_followed_info))
+        self.node.set(username_followed + ':public', json.dumps(user_followed_info))
 
-        print('AQUIIII ----------------------------')
-        self.node.get(user_followed + ':public') # apagar
-
-        return user_followed
+        return username_followed
 
     def remove_follower(self, user_unfollowed : str):
-        if user_unfollowed not in self.following:
+        user_following = self.get_user(self.username, 'public')['following']
+
+        if user_unfollowed not in user_following:
             Logger.log("Remove Follower", "info",f'You don\'t follow the user {user_unfollowed}')
             return None
 
         try:
             user_info = self.get_user(self.username, 'public')
             user_info['following'].remove(user_unfollowed)
-            self.following = user_info['following']
         except Exception as e:
             Logger.log("Remove Follower", "error", str(e))
             return None
@@ -290,10 +279,10 @@ class User:
         """
         Return information of the followers
         """
-        self.followers = self.get_user(self.username, 'public')['followers']
+        user_followers = self.get_user(self.username, 'public')['followers']
 
         followers_info = []
-        for username in self.followers:
+        for username in user_followers:
             followers_info.append(self.get_user(username, scope))
 
         return followers_info
@@ -302,12 +291,16 @@ class User:
     # - Special -
     # -----------
     def __str__(self) -> str:
+        user_public = self.get_user(self.username, 'public')
+
+        user_followers = user_public['followers']
+        user_following = user_public['following']
         res = f'User {self.username}:\n'
         res += f'\tKey: {self.hash_password}\n'
         res += f'\tFollowers:\n'
-        for username in self.followers:
+        for username in user_followers:
             res += f'\t\t> {username}'
         res += f'\tFollowing:\n'
-        for username in self.following:
+        for username in user_following:
             res += f'\t\t> {username}'
         return res
