@@ -118,8 +118,7 @@ class User:
 
     def suggestions(self, _):
         suggestions = set([])
-    
-        print(f'FOLLOWERS: {self.followers}')
+        self.followers = self.get_user(self.username, 'public')['followers']
 
         for follower in self.followers:
             follower_info = self.get_user(follower, 'public')
@@ -196,6 +195,7 @@ class User:
             self.timeline.add_message(message)
 
     def send_message(self, message : RequestPostMessage):
+        print(message['header']['user'])
         self.message_dispatcher.action(MessageType.SEND_POSTS, message['header']['user'])
 
     # ------------
@@ -288,10 +288,9 @@ class User:
     def get_followers(self, scope):
         self.followers = self.get_user(self.username, 'public')['followers']
 
-        followers_info = {}
+        followers_info = []
         for username in self.followers:
-            print(username)
-            followers_info[username] = self.get_user(username, scope)
+            followers_info.append(self.get_user(username, scope))
 
         return followers_info
     

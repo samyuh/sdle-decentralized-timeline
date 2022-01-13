@@ -17,8 +17,8 @@ class MessageReceiver:
 
         self.listener_action_list = {
             MessageType.POST_MESSAGE.value: self.user.update_timeline,
-            MessageType.SEND_POSTS.value: self.user.many_update_timeline,
             MessageType.REQUEST_POSTS.value: self.user.send_message,
+            MessageType.SEND_POSTS.value: self.user.many_update_timeline,
         }
 
     # --------------------------
@@ -26,6 +26,7 @@ class MessageReceiver:
     # --------------------------
     def listener_action(self, action : int, message) -> None:
         if self.user.verify_signature(message['content'], message['header']['user'], message['header']['signature']):
+            print(action)
             self.listener_action_list[action](message)
 
     # --------------------------
@@ -36,7 +37,7 @@ class MessageReceiver:
             message = self.socket.recv_string()
 
             msg = json.loads(message)
-            Logger.log("MessageReceiver", "info", f"RECV {msg}")
+            #Logger.log("MessageReceiver", "info", f"RECV {msg}")
 
             # Parsing in a new thread?
             self.listener_action(msg['header']['type'], msg)

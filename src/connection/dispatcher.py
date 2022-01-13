@@ -7,9 +7,6 @@ from src.connection.message import MessageType, PostMessageType, RequestPostType
 
 class MessageDispatcher:
     def __init__(self, user) -> None:
-        self.ctx = zmq.Context()
-        self.socket = self.ctx.socket(zmq.PUSH)
-        self.socket.linger = 0
         self.user = user
 
         self.action_dict = {
@@ -26,10 +23,8 @@ class MessageDispatcher:
         print("HERE 1")
         message_built = PostMessageType(user, self).build(message)
 
-        #users = self.user.get_followers()
         connections_info = self.user.get_followers('connections')
         try:
-            print("here: " + str(connections_info))
             asyncio.run(self.publish_many(connections_info, message_built))
         except Exception as e:
             Logger.log("SendPost", "error", str(e))
@@ -53,6 +48,8 @@ class MessageDispatcher:
     def sendPosts(self, user, follower_user):
         message_built = SendPostType(user, self).build(follower_user)
         connection_info = self.user.get_user(follower_user, 'connections')
+        print(follower_user)
+        print(connection_info)
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
@@ -66,11 +63,15 @@ class MessageDispatcher:
         self.send_msg(message)
 
     async def publish_many(self, users, message) -> None:
-        tasks = [self.publish_one(user, message) for user in users.values()]
+        tasks = [self.publish_one(user, message) for user in users]
         print(tasks)
         await asyncio.gather(*tasks)
     
     def set_port(self, dispatcher_ip : str, dispatcher_port : int) -> None:
+        self.ctx = zmq.Context()
+        self.socket = self.ctx.socket(zmq.PUSH)
+        self.socket.linger = 0
+
         self.socket.connect(f'tcp://{dispatcher_ip}:{dispatcher_port}')
 
     def send_msg(self, message) -> None:
