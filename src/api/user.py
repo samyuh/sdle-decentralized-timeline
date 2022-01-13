@@ -78,6 +78,7 @@ class User:
             'Unfollow User': self.unfollow,
             'Get Suggestions': self.suggestions,
             'View Timeline': self.view,
+            'View Profile': self.profile,
             'Logout': self.logout
         }
 
@@ -108,6 +109,13 @@ class User:
         if user_unfollowed != None:
             self.timeline.delete_posts(user_unfollowed)
 
+    def view(self, _) -> None:
+        print(self.timeline)
+
+    def profile(self, _) -> None:
+        print(f"\t{self.username}'s profile\n")
+        print(self)
+
     def suggestions(self, _):
         suggestions = set([])
         user_followers = self.get_user(self.username, 'public')['followers']
@@ -117,11 +125,7 @@ class User:
             print(follower_info)
             suggestions.update(follower_info['followers'])
 
-        print(f'SUGGESTIONS: {suggestions}')
-
         suggestions = tuple(suggestions)
-
-        print(f'SUGGESTIONS: {suggestions}')
 
         if len(suggestions) > 5:
             suggestions = random.sample(suggestions, 5)
@@ -129,12 +133,9 @@ class User:
         if len(suggestions) > 0:
             print('Recommended Users:\n')
             for user in suggestions:
-                print(f'\t{user}')
+                print(f'\t> {user}')
         else:
             print('No Recommendations\n')
-
-    def view(self, _) -> None:
-        print(self.timeline)
 
     def logout(self, _) -> None:
         self.node.close()
@@ -266,7 +267,7 @@ class User:
         user_following = self.get_user(self.username, 'public')['following']
 
         if user_unfollowed not in user_following:
-            Logger.log("Remove Follower", "info",f'You don\'t follow the user {user_unfollowed}')
+            Logger.log("Remove Follower", "info", f'You don\'t follow the user {user_unfollowed}')
             return None
 
         try:
@@ -317,14 +318,16 @@ class User:
     def __str__(self) -> str:
         user_public = self.get_user(self.username, 'public')
 
-        user_followers = user_public['followers']
-        user_following = user_public['following']
-        res = f'User {self.username}:\n'
-        res += f'\tKey: {self.hash_password}\n'
-        res += f'\tFollowers:\n'
-        for username in user_followers:
-            res += f'\t\t> {username}'
-        res += f'\tFollowing:\n'
-        for username in user_following:
-            res += f'\t\t> {username}'
+        followers = user_public['followers']
+        following = user_public['following']
+        total_posts = len(self.timeline.get_messages_from_user(self.username))
+        res = f'Number of posts: {total_posts}\n'
+        res += f'Followers ({len(followers)})'
+        res += ':\n' if followers else ''
+        for username in followers:
+            res += f'\t> {username}'
+        res += f'\nFollowing ({len(following)})'
+        res += ':\n' if following else ''
+        for username in following:
+            res += f'\t> {username}'
         return res
