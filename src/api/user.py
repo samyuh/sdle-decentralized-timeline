@@ -323,11 +323,11 @@ class User:
         total_posts = len(self.timeline.get_messages_from_user(self.username))
         res = f'Number of posts: {total_posts}\n'
         res += f'Followers ({len(followers)})'
-        res += ':\n' if followers else ''
+        res += ':\n' if followers else '\n'
         for username in followers:
-            res += f'\t> {username}'
-        res += f'\nFollowing ({len(following)})'
-        res += ':\n' if following else ''
+            res += f'\t> {username}\n'
+        res += f'Following ({len(following)})'
+        res += ':\n' if following else '\n'
         for username in following:
-            res += f'\t> {username}'
+            res += f'\t> {username}\n'
         return res
