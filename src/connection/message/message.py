@@ -9,9 +9,9 @@ if TYPE_CHECKING:
     from src.connection.dispatcher import MessageDispatcher
 
 class MessageType(Enum):
-    POST_MESSAGE = 1
-    REQUEST_POSTS = 2
-    SEND_POSTS = 3
+    TIMELINE_MESSAGE = 1
+    REQUEST_TIMELINE = 2
+    SEND_TIMELINE = 3
 
 class MessageHeader(TypedDict, total=False):
     id: int
@@ -24,9 +24,8 @@ class MessageInterface(abc.ABC):
     user: User 
     sender: MessageDispatcher
 
-    def __init__(self, user : User, sender : MessageDispatcher) -> None:
+    def __init__(self, user : User) -> None:
         self.user = user
-        self.sender = sender
 
     @abc.abstractclassmethod
     def build(self, info):

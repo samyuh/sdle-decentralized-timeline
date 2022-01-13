@@ -16,11 +16,11 @@ class SendPostMessage(TypedDict):
     header: MessageHeader
     content: List[TimelineMessage]
 
-class SendPostType(MessageInterface):
-    def __init__(self, user : User, sender : MessageDispatcher) -> None:
-        super().__init__(user, sender)
+class SendTimeline(MessageInterface):
+    def __init__(self, user : User) -> None:
+        super().__init__(user)
 
-    def build(self, follower_user : str) -> Tuple[any, SendPostMessage]:
+    def build(self, _) -> Tuple[any, SendPostMessage]:
         username = self.user.username
         timeline = self.user.get_own_timeline()
         signature = self.user.sign(timeline)
@@ -29,7 +29,7 @@ class SendPostType(MessageInterface):
             'header': {
                 'user': username,
                 'signature': signature,
-                'type': MessageType.SEND_POSTS.value,
+                'type': MessageType.SEND_TIMELINE.value,
             },
             'content': timeline
         }

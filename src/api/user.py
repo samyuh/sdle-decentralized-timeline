@@ -14,8 +14,7 @@ from src.utils.logger import Logger
 if TYPE_CHECKING:
     from src.server.kademlia_node import KademliaNode
     from src.api.timeline import TimelineMessage
-    from src.connection.message.send_post import SendPostMessage
-    from src.connection.message.request_post import RequestPostMessage
+    from src.connection.message.send_timeline import SendPostMessage
 
 class UserPrivateData(TypedDict):
     salt: int
@@ -100,7 +99,7 @@ class User:
         self.action_list[action](information)
     
     def post(self, information : UserActionInfo) -> None:
-        message = self.message_dispatcher.action(MessageType.POST_MESSAGE, information['message'])
+        message = self.message_dispatcher.action(MessageType.TIMELINE_MESSAGE, information['message'])
 
         self.timeline.add_message(message)
 
@@ -108,7 +107,7 @@ class User:
         user_followed = self.add_follower(information['username'])
 
         if user_followed != None:
-            self.message_dispatcher.action(MessageType.REQUEST_POSTS, user_followed)
+            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, user_followed)
 
     def unfollow(self, information : UserActionInfo) -> None:
         user_unfollowed = self.remove_follower(information['username'])
@@ -171,7 +170,7 @@ class User:
 
         Logger.log("success", "success", f"Valid signature: {signature_valid}")
         return signature_valid
-
+    
     # --------------------------
     # -- Listener Loop Action --
     # --------------------------
@@ -196,7 +195,7 @@ class User:
 
     def send_message(self, message : RequestPostMessage):
         print(message['header']['user'])
-        self.message_dispatcher.action(MessageType.SEND_POSTS, message['header']['user'])
+        self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'])
 
     # ------------
     # - TimeLine -
@@ -213,7 +212,7 @@ class User:
         self.following = user_info['following']
 
         for followed_user in self.following:
-            self.message_dispatcher.action(MessageType.REQUEST_POSTS, followed_user)
+            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, followed_user)
 
     # -------------
     # - Followers -

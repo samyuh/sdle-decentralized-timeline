@@ -9,15 +9,14 @@ from src.utils.logger import Logger
 
 if TYPE_CHECKING:
     from src.connection.message.message import MessageHeader
-    from src.connection.dispatcher import MessageDispatcher
     from src.api.user import User, UserData
 
 class RequestPostMessage(TypedDict):
     header: MessageHeader
 
-class RequestPostType(MessageInterface):
-    def __init__(self, user : User, sender : MessageDispatcher) -> None:
-        super().__init__(user, sender)
+class RequestTimeline(MessageInterface):
+    def __init__(self, user : User) -> None:
+        super().__init__(user)
 
     def build(self, followed_user : str) -> Tuple[UserData, RequestPostMessage]:
         username = self.user.username
@@ -29,7 +28,7 @@ class RequestPostType(MessageInterface):
                 'user': username,
                 'signature': signature,
                 'followed': followed_user,
-                'type': MessageType.REQUEST_POSTS.value
+                'type': MessageType.REQUEST_TIMELINE.value
             },
             'content': random_check,
         }
