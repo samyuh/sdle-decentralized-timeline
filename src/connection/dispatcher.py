@@ -3,7 +3,7 @@ import zmq
 import json
 from src.utils import Logger
 
-from src.connection.message import MessageType
+from src.connection.message import MessageType, Snowflake
 from src.connection.message import SendTimelineMessage, RequestTimeline, SendTimeline
 
 class MessageDispatcher:
@@ -16,6 +16,8 @@ class MessageDispatcher:
             MessageType.SEND_TIMELINE: self.sendTimeline,
         }
 
+        self.snowflake = Snowflake()
+
     def action(self, action : int, arg : str, arg1=None):
         message_built = self.action_dict[action](self.user, arg, arg1)
         return message_built
@@ -24,7 +26,7 @@ class MessageDispatcher:
     # Commands
     #
     def sendTimelineMessage(self, user, message, _):
-        message_built = SendTimelineMessage(user).build(message)
+        message_built = SendTimelineMessage(user).build(message, self.snowflake)
         connections_info = self.user.get_followers_information('connections')
 
         try:
