@@ -146,6 +146,7 @@ class Timeline:
         messages = sorted(self.messages, key=lambda msg: msg['header']['time'], reverse=True)
         messages_str = ""
         for message in messages:
-            messages_str += f"\n{message['header']['user']} \u00b7 {message['header']['time']}\n" + f"> {message['content']}\n"
+            date = datetime.fromtimestamp(message['header']['time']).strftime('%d-%m-%Y %H:%M:%S')
+            messages_str += f"\n{message['header']['user']} \u00b7 {date}\n" + f"> {message['content']}\n"
 
         return f"{self.username}'s timeline\n{messages_str}"
