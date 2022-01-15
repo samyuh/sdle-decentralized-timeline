@@ -34,6 +34,8 @@ class Timeline:
     def __init__(self, username: str, message_lifespan: Optional[MessageLifespan] = {}) -> None:
         self.username: str = username
         self.messages: List[TimelineMessage] = []
+
+        self.logger = Logger()
         
         self.message_lifespan = { "years": 0, "months": 0, "days": 0, "hours": 0, "minutes": 0, "seconds": 0 }
         if message_lifespan:
@@ -52,7 +54,7 @@ class Timeline:
         self.periodic_callback = PeriodicCallback(self.save_messages, 1000)
         self.periodic_callback.start()
         
-        self.logger = Logger()
+        
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
         messages = []

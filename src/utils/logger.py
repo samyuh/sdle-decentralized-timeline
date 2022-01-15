@@ -5,16 +5,19 @@ class Logger(object):
 
     def __init__(self):
         root_logger = logging.getLogger()
-        root_logger.setLevel(logging.NOTSET) # Replce this for INFO to hide debug messages from logger
-        # root_logger.setLevel(logging.DEBUG) # Replce this for INFO to hide debug messages from logger
-        handler = logging.FileHandler('logger.log', 'a', 'utf-8')
-        root_logger.addHandler(handler)
-        
-        ### Add success as a level
-        try:
-            addLoggingLevel('SUCCESS',logging.INFO)
-        except AttributeError:
-            pass
+
+        if not root_logger.hasHandlers():
+            
+            root_logger.setLevel(logging.NOTSET) # Replce this for INFO to hide debug messages from logger
+            
+            handler = logging.FileHandler('logger.log', 'a', 'utf-8')
+            root_logger.addHandler(handler)
+            
+            ### Add success as a level
+            try:
+                addLoggingLevel('SUCCESS',logging.INFO)
+            except AttributeError:
+                pass
         
     
     def log(self, origin : str, type_message : str, message : str) -> None:
@@ -29,7 +32,7 @@ class Logger(object):
             logging.info(f"[ INFO ] {msg}")
         elif (type_message == "warning"):
             print(f"{Fore.YELLOW}[ WARN ] {msg} {Style.RESET_ALL}")
-            logging.warning(f"{Fore.YELLOW}[ WARN ] {msg} ")
+            logging.warning(f"[ WARN ] {msg} ")
         elif (type_message == "error"):
             print(f"{Fore.RED}[ ERROR ] {msg} {Style.RESET_ALL}")
             logging.error(f"[ ERROR ] {msg} ")

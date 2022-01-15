@@ -47,7 +47,7 @@ class MainMenu:
             logger.log("View","info",'View Timeline')
 
         elif action == 'View Profile':
-            Logger.log("Profile","info",'View Profile')
+            logger.log("Profile","info",'View Profile')
 
         elif action == 'Get Suggestions':
             logger.log("Suggestions","info",'Get Suggestions')
