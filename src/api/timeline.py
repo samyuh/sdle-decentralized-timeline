@@ -30,13 +30,16 @@ class Timeline:
     messages: List[TimelineMessage]
     mutex: Type[threading._RLock]
     message_lifespan: MessageLifespan
+    prune_old_messages: bool
 
     def __init__(self, username: str, message_lifespan: Optional[MessageLifespan] = {}) -> None:
         self.username: str = username
         self.messages: List[TimelineMessage] = []
         
         self.message_lifespan = { "years": 0, "months": 0, "days": 0, "hours": 0, "minutes": 0, "seconds": 0 }
+        self.prune_old_messages = False
         if message_lifespan:
+            self.prune_old_messages = message_lifespan.get('active', False)
             self.message_lifespan['years'] = message_lifespan.get('years', 0)
             self.message_lifespan['months'] = message_lifespan.get('months', 0)
             self.message_lifespan['days'] = message_lifespan.get('days', 0)
@@ -77,7 +80,10 @@ class Timeline:
         self.messages.append(newMessage)
         self.mutex.release()
 
+    # TODO: callback message
     def prune_messages(self) -> None:
+        if not self.prune_old_messages: return
+
         expire_date = datetime.now() - relativedelta(years=self.message_lifespan['years'],
                                                     months=self.message_lifespan['months'],
                                                     days=self.message_lifespan['days'],

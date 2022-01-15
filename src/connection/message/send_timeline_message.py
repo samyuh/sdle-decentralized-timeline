@@ -14,11 +14,7 @@ class SendTimelineMessage(MessageInterface):
 
     def build(self, message : str, snowflake : Snowflake) -> Tuple[Dict[str, UserData], TimelineMessage]:
         username = self.user.username
-        # TODO: Alterar o 1 aqui?
-        snowflake_id, snowflake_time = snowflake.get_id(username, 1)
-        
-        print(f"snowflake_id. {snowflake_id}")
-        print(f"snowflake_time: {snowflake_time}")
+        snowflake_id, snowflake_time = snowflake.get_id(username, self.user.get_number_posts())
         
         signature = self.user.sign(message)
         msg = {

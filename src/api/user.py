@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Callable, Dict, List, TypedDict, TYPE_CHECKING
+from typing import Callable, Dict, List, TypedDict, Optional, TYPE_CHECKING
 
 import json
 import random
@@ -13,7 +13,7 @@ from src.utils.logger import Logger
 import threading
 if TYPE_CHECKING:
     from src.server.kademlia_node import KademliaNode
-    from src.api.timeline import TimelineMessage
+    from src.api.timeline import TimelineMessage, MessageLifespan
     from src.connection.message.send_timeline import SendPostMessage
 
 class UserPrivateData(TypedDict):
@@ -47,7 +47,7 @@ class User:
     action_list: Dict[str, Callable[[UserActionInfo], None]]
     timeline: Timeline
 
-    def __init__(self, node, username, private: UserPrivateData, connection: UserConnectionsData):
+    def __init__(self, node, username, private: UserPrivateData, connection: UserConnectionsData, timelineMessageLifespan : Optional[MessageLifespan] = {}):
         self.node = node
         self.username = username
 
@@ -59,8 +59,6 @@ class User:
         self.__read_private_keys()
 
         # Connection Fields
-        self.ip = connection['ip']
-        self.port = connection['port']
         self.listening_ip = connection['listening_ip']
         self.listening_port = connection['listening_port']
         
@@ -83,7 +81,7 @@ class User:
         }
 
         # Timeline Module
-        self.timeline = Timeline(username)
+        self.timeline = Timeline(username, message_lifespan=timelineMessageLifespan)
 
 
     # --------------------------
@@ -196,6 +194,9 @@ class User:
     # ------------
     # - TimeLine -
     # ------------
+    def get_number_posts(self):
+        return len(self.timeline.get_messages_from_user(self.username))
+        
     def get_timeline(self, username):
         return self.timeline.get_messages_from_user(username)
     
