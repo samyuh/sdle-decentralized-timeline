@@ -73,9 +73,12 @@ class MessageDispatcher:
     def set_port(self, dispatcher_ip : str, dispatcher_port : int) -> None:
         self.ctx = zmq.Context()
         self.socket = self.ctx.socket(zmq.PUSH)
-        self.socket.linger = 0
         self.socket.connect(f'tcp://{dispatcher_ip}:{dispatcher_port}')
+        
 
     def send_msg(self, message) -> None:
         json_message = json.dumps(message)
         self.socket.send_string(json_message)
+
+        self.socket.linger = 1000
+        self.socket.close()

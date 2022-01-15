@@ -41,7 +41,7 @@ class KademliaNode:
         Returns:
             EventLoop
         """
-        asyncio.set_event_loop(self.loop)
+        #asyncio.set_event_loop(self.loop)
         self.loop.run_until_complete(self.server.listen(self.port))
         
         if self.bootstrap_node != None:

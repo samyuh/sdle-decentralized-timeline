@@ -67,6 +67,8 @@ class User:
 
         # Listener Module
         self.message_receiver = MessageReceiver(self, self.listening_ip, self.listening_port)
+        self.message_receiver.start_listener()
+        #threading.Thread(target=self.message_receiver.start_listener, daemon=True).start()
         self.timeouts = {}
 
         # Actions
@@ -182,12 +184,10 @@ class User:
 
     def verify_signature(self, message, user, signature):
         user_original = self.get_user(user, 'private')
-
         hash = int.from_bytes(sha512(str(message).encode('utf-8')).digest(), byteorder='big')
         hashFromSignature = pow(signature, int(user_original['public_key_e']), int(user_original['public_key_n']))
 
         signature_valid = (hash == hashFromSignature)
-
         Logger.log("success", "success", f"Valid signature: {signature_valid}")
         return signature_valid
 
