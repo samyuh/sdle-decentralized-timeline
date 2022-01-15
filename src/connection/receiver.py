@@ -6,12 +6,12 @@ from src.connection.message import MessageType
 from src.utils.logger import Logger
 
 class MessageReceiver:
-    def __init__(self, user, ip : str, port : int) -> None:
+    def __init__(self, user, listening_ip : str, listening_port : int) -> None:
         self.user = user
         self.ctx = zmq.Context()
         self.socket = self.ctx.socket(zmq.PULL)
         self.socket.linger = 0
-        self.socket.bind(f'tcp://{ip}:{port}')
+        self.socket.bind(f'tcp://{listening_ip}:{listening_port}')
         threading.Thread(target=self.recv_msg_loop, daemon=True).start()
 
         self.listener_action_list = {

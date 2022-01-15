@@ -16,8 +16,8 @@ class Core:
     user : Union[User, None]
     loop : AbstractEventLoop
     timelineMessageLifespan : MessageLifespan
-    def __init__(self, ip, port, listener, bootstrap_node : Tuple[str, int], timelineMessageLifespan : Optional[MessageLifespan] = {}) -> None:
-        if bootstrap_node == None: 
+    def __init__(self, ip : str, port : int, listener, bootstrap_node : Tuple[str, int], timelineMessageLifespan : Optional[MessageLifespan] = {}) -> None:
+        if bootstrap_node == None:
             self.node = KademliaNode(ip, port)
         else:
             self.node = KademliaNode(ip, port, bootstrap_node)
