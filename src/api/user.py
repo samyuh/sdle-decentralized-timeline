@@ -224,11 +224,15 @@ class User:
             Logger.log("UpdateTimeline", "error", f"Could not fetch {timeline_owner}'s timeline")
 
     def update_timeline(self) -> None:
-        user_following = self.get_user(self.username, 'public')['following']
+        user_info = self.get_user(self.username, 'public')
+        following = user_info['following']
+        followers = user_info['followers']
 
-        for followed_user in user_following:
+        for followed_user in following:
             self.update_timeline_follower(followed_user)
 
+        for follower in followers:
+            self.message_dispatcher.action(MessageType.SEND_TIMELINE, follower, self.username)
 
     # -------------
     # - Followers -

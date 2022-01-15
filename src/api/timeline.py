@@ -6,7 +6,6 @@ import threading
 import time
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from zmq.eventloop.ioloop import PeriodicCallback
 from pathlib import Path
 from src.utils.logger import Logger
 
@@ -52,8 +51,8 @@ class Timeline:
 
         self.__load_messages()
 
-        self.periodic_callback = PeriodicCallback(self.save_messages, 1000)
-        self.periodic_callback.start()
+        thread = threading.Thread(target = self.save_messages_periodically, daemon=True)
+        thread.start()
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
         messages = []
@@ -105,6 +104,10 @@ class Timeline:
         self.save_messages()
         self.mutex.release()
 
+    def save_messages_periodically(self):
+        self.save_messages()
+        threading.Timer(1,self.save_messages_periodically).start()
+
     def save_messages(self) -> None:
         self.mutex.acquire()
         with open(f'{self.storage_path}/{self.username}.pickle', 'wb') as storage:
@@ -121,7 +124,6 @@ class Timeline:
         try:
             output_file = open(f"{self.storage_path}/{self.username}.pickle", 'rb')
             timeline_state = pickle.load(output_file)
-            # self.__dict__.update(pickle.load(timeline_state))
             self.messages = timeline_state['timeline']
             output_file.close()
         except Exception:
