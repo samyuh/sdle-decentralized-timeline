@@ -15,9 +15,9 @@ class MessageReceiver:
         threading.Thread(target=self.recv_msg_loop, daemon=True).start()
 
         self.listener_action_list = {
-            MessageType.TIMELINE_MESSAGE.value: self.user.update_timeline,
-            MessageType.REQUEST_TIMELINE.value: self.user.send_message,
-            MessageType.SEND_TIMELINE.value: self.user.many_update_timeline,
+            MessageType.TIMELINE_MESSAGE.value: self.user.receive_timeline_message,
+            MessageType.REQUEST_TIMELINE.value: self.user.send_timeline,
+            MessageType.SEND_TIMELINE.value: self.user.receive_timeline,
         }
         
         self.Logger = Logger()
@@ -27,7 +27,6 @@ class MessageReceiver:
     # --------------------------
     def listener_action(self, action : int, message) -> None:
         if self.user.verify_signature(message['content'], message['header']['user'], message['header']['signature']):
-            print(action)
             self.listener_action_list[action](message)
 
     # --------------------------

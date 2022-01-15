@@ -76,7 +76,7 @@ class Authentication:
                 self.node.set(username + ':private', json.dumps(user_private))
                 self.node.set(username + ':public', json.dumps(user_public))
                 self.node.set(username + ':connections', json.dumps(user_connections))
-                user_args = (self.node, username, user_private, user_public, user_connections)
+                user_args = (self.node, username, user_private, user_connections)
             else:
                 raise Exception(f'Registration failed. User {username} already exists')
         except Exception as e:
@@ -94,10 +94,10 @@ class Authentication:
         user_args = None
 
         try: 
-            user_info = self.node.get(username + ':private')
-
-            if user_info is not None:
-                user_info = json.loads(user_info)
+            user_private = self.node.get(username + ':private')
+            user_connections = self.node.get(username + ':connections')
+            if user_private is not None:
+                user_info = json.loads(user_private)
                 salt = bytes.fromhex(user_info['salt'])
                 key = bytes.fromhex(user_info['hash_password'])
                 new_key = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
@@ -105,7 +105,7 @@ class Authentication:
                 if key != new_key:
                     raise Exception(f"Login failed. Password is wrong!")
                 
-                user_args = (self.node, username, user_info)
+                user_args = (self.node, username, user_info, json.loads(user_connections))
             else:
                 raise Exception(f"Login failed. User {username} doesn't exist")
                 

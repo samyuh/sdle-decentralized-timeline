@@ -10,7 +10,7 @@ from src.connection.dispatcher import MessageDispatcher
 from src.connection.message.message import MessageType
 from src.connection.receiver import MessageReceiver
 from src.utils.logger import Logger
-
+import threading
 if TYPE_CHECKING:
     from src.server.kademlia_node import KademliaNode
     from src.api.timeline import TimelineMessage
@@ -22,11 +22,7 @@ class UserPrivateData(TypedDict):
     public_key_n: int
     public_key_e: int
 
-class UserPublicData(TypedDict):
-    followers: List[str]
-
 class UserConnectionsData(TypedDict):
-    following: List[str]
     ip : str
     port : int
     listening_ip : str
@@ -51,7 +47,7 @@ class User:
     action_list: Dict[str, Callable[[UserActionInfo], None]]
     timeline: Timeline
 
-    def __init__(self, node, username, private: UserPrivateData, public: UserPublicData, connection: UserConnectionsData):
+    def __init__(self, node, username, private: UserPrivateData, connection: UserConnectionsData):
         self.node = node
         self.username = username
 
@@ -61,10 +57,6 @@ class User:
         self.public_key_n = private['public_key_n']
         self.public_key_e = private['public_key_e']
         self.__read_private_keys()
-
-        # Public Fields
-        self.followers = public['followers']
-        self.following = public['following']
 
         # Connection Fields
         self.ip = connection['ip']
@@ -77,6 +69,7 @@ class User:
 
         # Listener Module
         self.message_receiver = MessageReceiver(self, self.listening_ip, self.listening_port)
+        self.timeouts = {}
 
         # Actions
         self.action_list = {
@@ -85,6 +78,7 @@ class User:
             'Unfollow User': self.unfollow,
             'Get Suggestions': self.suggestions,
             'View Timeline': self.view,
+            'View Profile': self.profile,
             'Logout': self.logout
         }
 
@@ -108,28 +102,31 @@ class User:
         user_followed = self.add_follower(information['username'])
 
         if user_followed != None:
-            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, user_followed)
+            self.update_timeline_follower(user_followed)
 
     def unfollow(self, information : UserActionInfo) -> None:
         user_unfollowed = self.remove_follower(information['username'])
         
         if user_unfollowed != None:
-            self.delete_posts(user_unfollowed)
+            self.timeline.delete_posts(user_unfollowed)
+
+    def view(self, _) -> None:
+        print(self.timeline)
+
+    def profile(self, _) -> None:
+        print(f"\t{self.username}'s profile\n")
+        print(self)
 
     def suggestions(self, _):
         suggestions = set([])
-        self.followers = self.get_user(self.username, 'public')['followers']
+        user_followers = self.get_user(self.username, 'public')['followers']
 
-        for follower in self.followers:
+        for follower in user_followers:
             follower_info = self.get_user(follower, 'public')
             print(follower_info)
             suggestions.update(follower_info['followers'])
 
-        print(f'SUGGESTIONS: {suggestions}')
-
         suggestions = tuple(suggestions)
-
-        print(f'SUGGESTIONS: {suggestions}')
 
         if len(suggestions) > 5:
             suggestions = random.sample(suggestions, 5)
@@ -137,16 +134,41 @@ class User:
         if len(suggestions) > 0:
             print('Recommended Users:\n')
             for user in suggestions:
-                print(f'\t{user}')
+                print(f'\t> {user}')
         else:
             print('No Recommendations\n')
-
-    def view(self, _) -> None:
-        print(self.timeline)
 
     def logout(self, _) -> None:
         self.node.close()
         exit(0)
+
+    # --------------------------
+    # -- Listener Loop Action --
+    # --------------------------
+    def receive_timeline_message(self, message : TimelineMessage) -> None:
+        self.timeline.add_message(message)
+
+    def send_timeline(self, message):
+        self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'], message['header']['timeline_owner'])
+
+    def receive_timeline(self, messages : SendPostMessage):
+        timeline_owner = messages['header']['timeline_owner']
+        
+        self.timeouts[timeline_owner].cancel()
+
+        valid_messages = []
+        
+        ### Verify if all messages are from the sender user
+        for message in messages['content']:
+            if timeline_owner == message['header']['user']:
+                valid_messages.append(message)
+
+        ### Delete all previous messages we had from that user from the timeline
+        self.timeline.delete_posts(timeline_owner) # TODO: verify key signature
+
+        ### Add the received messages to our timeline
+        for message in valid_messages:
+            self.timeline.add_message(message)
         
     # ------------
     # Signature
@@ -171,96 +193,87 @@ class User:
 
         self.logger.log("success", "success", f"Valid signature: {signature_valid}")
         return signature_valid
-    
-    # --------------------------
-    # -- Listener Loop Action --
-    # --------------------------
-    def update_timeline(self, message : TimelineMessage) -> None:
-        self.timeline.add_message(message)
-
-    def many_update_timeline(self, messages : SendPostMessage):
-        valid_messages = []
-        sender_username = messages['header']['user']
-        
-        ### Verify if all messages are from the sender user
-        for message in messages['content']:
-            if sender_username == message['header']['user']:
-                valid_messages.append(message)
-
-        ### Delete all previous messages we had from that user from the timeline
-        self.timeline.delete_posts(sender_username) # TODO: verify key signature
-
-        ### Add the received messages to our timeline
-        for message in valid_messages:
-            self.timeline.add_message(message)
-
-    def send_message(self, message : RequestPostMessage):
-        print(message['header']['user'])
-        self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'])
 
     # ------------
     # - TimeLine -
     # ------------
-    def get_own_timeline(self):
-        return self.timeline.get_messages_from_user(self.username)
+    def get_timeline(self, username):
+        return self.timeline.get_messages_from_user(username)
+    
+    def update_timeline_follower(self, username : str):
+        self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, username, username)
 
-    def delete_posts(self, user_unfollowed):
-        self.timeline.delete_posts(user_unfollowed)
+        follower_list = self.get_user(username, 'public')['followers']
+        if self.username in follower_list:
+            follower_list.remove(self.username)
 
-    def update_state(self) -> None:
-        user_info = self.get_user(self.username, 'public')
-        self.followers = user_info['followers']
-        self.following = user_info['following']
+        self.timeouts[username] = threading.Timer(1, self.__ask_next, args=[follower_list, username])
+        self.timeouts[username].start()
 
-        for followed_user in self.following:
-            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, followed_user)
+    def __ask_next(self, follower_list, timeline_owner):
+        if follower_list:
+            request_user = follower_list.pop()
+
+            print(follower_list)
+            print(timeline_owner)
+
+            self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, request_user, timeline_owner)
+            self.timeouts[timeline_owner] = threading.Timer(5, self.__ask_next, args=[follower_list, timeline_owner])
+            self.timeouts[timeline_owner].start()
+        else:
+            self.logger.log("UpdateTimeline", "error", f"Could not fetch {timeline_owner}'s timeline")
+
+    def update_timeline(self) -> None:
+        user_following = self.get_user(self.username, 'public')['following']
+
+        for followed_user in user_following:
+            self.update_timeline_follower(followed_user)
+
 
     # -------------
     # - Followers -
     # -------------
-    def add_follower(self, user_followed):
-        if user_followed == self.username:
+    def add_follower(self, username_followed):
+        user_following = self.get_user(self.username, 'public')['following']
+
+        if username_followed == self.username:
             self.logger.log("Add Follower", "info", 'You can\'t follow yourself')
             return None
-        elif user_followed in self.following:
-            self.logger.log("Add Follower", "info", f'You already follow the user {user_followed}')
+        elif username_followed in user_following:
+            self.logger.log("Add Follower", "info", f'You already follow the user {username_followed}')
             return None
 
         ### Update following list of the current user
         try:
             user_info = self.get_user(self.username, 'public')
-            user_info['following'].append(user_followed)
-            self.following = user_info['following']
+            user_info['following'].append(username_followed)
         except Exception as e:
             self.logger.log("Add Follower", "error", str(e))
             return None
 
         ### Update follower list on followed
         try:
-            user_followed_info = self.get_user(user_followed, 'public')
+            user_followed_info = self.get_user(username_followed, 'public')
             user_followed_info['followers'].append(self.username)
-            print(f"AQUIII: {user_followed_info['followers']}")
         except Exception as e:
             self.logger.log("Add Follower", "error", str(e))
             return None
 
         self.node.set(self.username + ':public', json.dumps(user_info))
-        self.node.set(user_followed + ':public', json.dumps(user_followed_info))
+        self.node.set(username_followed + ':public', json.dumps(user_followed_info))
 
-        print('AQUIIII ----------------------------')
-        self.node.get(user_followed + ':public') # apagar
-
-        return user_followed
+        return username_followed
 
     def remove_follower(self, user_unfollowed : str):
-        if user_unfollowed not in self.following:
-            self.logger.log("Remove Follower", "info",f'You don\'t follow the user {user_unfollowed}')
+        user_following = self.get_user(self.username, 'public')['following']
+
+        if user_unfollowed not in user_following:
+            self.logger.log("Remove Follower", "info", f'You don\'t follow the user {user_unfollowed}')
             return None
 
         try:
             user_info = self.get_user(self.username, 'public')
             user_info['following'].remove(user_unfollowed)
-            self.following = user_info['following']
         except Exception as e:
             self.logger.log("Remove Follower", "error", str(e))
             return None
@@ -278,6 +291,9 @@ class User:
         return user_unfollowed
 
     def get_user(self, username : str, scope : str):
+        """
+        Return information of a user
+        """
         user_info = self.node.get(username + ':' + scope)
         if user_info is None:
             raise Exception(f'User {username} doesn\'t exist')
@@ -285,11 +301,14 @@ class User:
         user_info = json.loads(user_info)
         return user_info
 
-    def get_followers(self, scope):
-        self.followers = self.get_user(self.username, 'public')['followers']
+    def get_followers_information(self, scope):
+        """
+        Return information of the followers
+        """
+        user_followers = self.get_user(self.username, 'public')['followers']
 
         followers_info = []
-        for username in self.followers:
+        for username in user_followers:
             followers_info.append(self.get_user(username, scope))
 
         return followers_info
@@ -298,12 +317,18 @@ class User:
     # - Special -
     # -----------
     def __str__(self) -> str:
-        res = f'User {self.username}:\n'
-        res += f'\tKey: {self.hash_password}\n'
-        res += f'\tFollowers:\n'
-        for username in self.followers:
-            res += f'\t\t> {username}'
-        res += f'\tFollowing:\n'
-        for username in self.following:
-            res += f'\t\t> {username}'
+        user_public = self.get_user(self.username, 'public')
+
+        followers = user_public['followers']
+        following = user_public['following']
+        total_posts = len(self.timeline.get_messages_from_user(self.username))
+        res = f'Number of posts: {total_posts}\n'
+        res += f'Followers ({len(followers)})'
+        res += ':\n' if followers else '\n'
+        for username in followers:
+            res += f'\t> {username}\n'
+        res += f'Following ({len(following)})'
+        res += ':\n' if following else '\n'
+        for username in following:
+            res += f'\t> {username}\n'
         return res

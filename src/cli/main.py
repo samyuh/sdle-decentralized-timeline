@@ -20,7 +20,7 @@ class MainMenu:
         
         print('\n--- Main Menu ---')
         questions = [
-            inquirer.List('action', message="Please choose an action", choices=['New Post', 'Follow User', 'Unfollow User', 'View Timeline', 'Get Suggestions', 'Logout'],),
+            inquirer.List('action', message="Please choose an action", choices=['New Post', 'Follow User', 'Unfollow User', 'View Timeline', 'View Profile', 'Get Suggestions', 'Logout'],),
         ]
 
         answers = inquirer.prompt(questions)
@@ -45,6 +45,9 @@ class MainMenu:
 
         elif action == 'View Timeline':
             logger.log("View","info",'View Timeline')
+
+        elif action == 'View Profile':
+            Logger.log("Profile","info",'View Profile')
 
         elif action == 'Get Suggestions':
             logger.log("Suggestions","info",'Get Suggestions')

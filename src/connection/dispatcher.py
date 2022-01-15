@@ -3,7 +3,7 @@ import zmq
 import json
 from src.utils import Logger
 
-from src.connection.message import MessageType
+from src.connection.message import MessageType, Snowflake
 from src.connection.message import SendTimelineMessage, RequestTimeline, SendTimeline
 
 class MessageDispatcher:
@@ -18,45 +18,45 @@ class MessageDispatcher:
         
         self.logger = Logger()
 
-    def action(self, action : int, arg : str):
-        message_built = self.action_dict[action](self.user, arg)
+        self.snowflake = Snowflake()
+
+    def action(self, action : int, arg : str, arg1=None):
+        message_built = self.action_dict[action](self.user, arg, arg1)
         return message_built
     
     #
     # Commands
     #
-    def sendTimelineMessage(self, user, message):
-        message_built = SendTimelineMessage(user).build(message)
-        connections_info = self.user.get_followers('connections')
+    def sendTimelineMessage(self, user, message, _):
+        message_built = SendTimelineMessage(user).build(message, self.snowflake)
+        connections_info = self.user.get_followers_information('connections')
 
         try:
             asyncio.run(self.publish_many(connections_info, message_built))
         except Exception as e:
-            self.logger.log("SendPost", "error", str(e))
+            self.logger.log("SendTimelineMessage", "error", str(e))
             exit(-1)
 
         return message_built
 
-    def requestTimeline(self, user, followed_username):
-        message_built = RequestTimeline(user).build(followed_username)
-        connection_info = self.user.get_user(followed_username, 'connections')
-
+    def requestTimeline(self, user, request_to_user, timeline_owner):
+        message_built = RequestTimeline(user).build(timeline_owner)
+        connection_info = self.user.get_user(request_to_user, 'connections')
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            self.logger.log("RequestPost", "error", str(e))
+            self.logger.log("RequestTimeline", "error", str(e))
             exit(-1)
         
         return message_built
 
-    def sendTimeline(self, user, follower_user):
-        message_built = SendTimeline(user).build()
-        connection_info = self.user.get_user(follower_user, 'connections')
-
+    def sendTimeline(self, user, origin_user, timeline_owner):
+        message_built = SendTimeline(user).build(timeline_owner)
+        connection_info = self.user.get_user(origin_user, 'connections')
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            self.logger.log("SendPost RequestPost", "error", str(e))
+            self.logger.log("SendTimeline", "error", str(e))
             exit(-1)
         
         return message_built

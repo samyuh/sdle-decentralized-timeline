@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import Tuple, TypedDict, TYPE_CHECKING
 
 import os
-import asyncio
 
 from src.connection.message.message import MessageInterface, MessageType
 
@@ -17,7 +16,7 @@ class RequestTimeline(MessageInterface):
     def __init__(self, user : User) -> None:
         super().__init__(user)
 
-    def build(self, followed_user : str) -> Tuple[UserData, RequestPostMessage]:
+    def build(self, timeline_owner : str) -> Tuple[UserData, RequestPostMessage]:
         username = self.user.username
         random_check = str(os.urandom(32))
         signature = self.user.sign(random_check)
@@ -26,7 +25,7 @@ class RequestTimeline(MessageInterface):
             'header': {
                 'user': username,
                 'signature': signature,
-                'followed': followed_user,
+                'timeline_owner': timeline_owner,
                 'type': MessageType.REQUEST_TIMELINE.value
             },
             'content': random_check,
