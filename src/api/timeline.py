@@ -6,7 +6,6 @@ import threading
 import time
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from zmq.eventloop.ioloop import PeriodicCallback
 from pathlib import Path
 from src.utils.logger import Logger
 
@@ -30,6 +29,7 @@ class Timeline:
     messages: List[TimelineMessage]
     mutex: Type[threading._RLock]
     message_lifespan: MessageLifespan
+    prune_old_messages: bool
 
     def __init__(self, username: str, message_lifespan: Optional[MessageLifespan] = {}) -> None:
         self.username: str = username
@@ -38,7 +38,9 @@ class Timeline:
         self.logger = Logger()
         
         self.message_lifespan = { "years": 0, "months": 0, "days": 0, "hours": 0, "minutes": 0, "seconds": 0 }
+        self.prune_old_messages = False
         if message_lifespan:
+            self.prune_old_messages = message_lifespan.get('active', False)
             self.message_lifespan['years'] = message_lifespan.get('years', 0)
             self.message_lifespan['months'] = message_lifespan.get('months', 0)
             self.message_lifespan['days'] = message_lifespan.get('days', 0)
@@ -51,10 +53,8 @@ class Timeline:
 
         self.__load_messages()
 
-        self.periodic_callback = PeriodicCallback(self.save_messages, 1000)
-        self.periodic_callback.start()
-        
-        
+        thread = threading.Thread(target = self.save_messages_periodically, daemon=True)
+        thread.start()
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
         messages = []
@@ -81,7 +81,10 @@ class Timeline:
         self.messages.append(newMessage)
         self.mutex.release()
 
+    # TODO: callback message
     def prune_messages(self) -> None:
+        if not self.prune_old_messages: return
+
         expire_date = datetime.now() - relativedelta(years=self.message_lifespan['years'],
                                                     months=self.message_lifespan['months'],
                                                     days=self.message_lifespan['days'],
@@ -103,6 +106,10 @@ class Timeline:
         self.save_messages()
         self.mutex.release()
 
+    def save_messages_periodically(self):
+        self.save_messages()
+        threading.Timer(1,self.save_messages_periodically).start()
+
     def save_messages(self) -> None:
         self.mutex.acquire()
         with open(f'{self.storage_path}/{self.username}.pickle', 'wb') as storage:
@@ -119,7 +126,6 @@ class Timeline:
         try:
             output_file = open(f"{self.storage_path}/{self.username}.pickle", 'rb')
             timeline_state = pickle.load(output_file)
-            # self.__dict__.update(pickle.load(timeline_state))
             self.messages = timeline_state['timeline']
             output_file.close()
         except Exception:
@@ -142,6 +148,7 @@ class Timeline:
         messages = sorted(self.messages, key=lambda msg: msg['header']['time'], reverse=True)
         messages_str = ""
         for message in messages:
-            messages_str += f"\n{message['header']['user']} \u00b7 {message['header']['time']}\n" + f"> {message['content']}\n"
+            date = datetime.fromtimestamp(message['header']['time']).strftime('%d-%m-%Y %H:%M:%S')
+            messages_str += f"\n{message['header']['user']} \u00b7 {date}\n" + f"> {message['content']}\n"
 
         return f"{self.username}'s timeline\n{messages_str}"

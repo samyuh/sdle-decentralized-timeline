@@ -67,8 +67,6 @@ class Authentication:
 
                 # key = 'user:connections', content = user open ports
                 user_connections = {
-                    "ip": self.node.ip,
-                    "port": self.node.port,
                     'listening_ip': self.listening[0],
                     'listening_port': self.listening[1],
                 }

@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Callable, Dict, List, TypedDict, TYPE_CHECKING
+from typing import Callable, Dict, List, TypedDict, Optional, TYPE_CHECKING
 
 import json
 import random
@@ -13,7 +13,7 @@ from src.utils.logger import Logger
 import threading
 if TYPE_CHECKING:
     from src.server.kademlia_node import KademliaNode
-    from src.api.timeline import TimelineMessage
+    from src.api.timeline import TimelineMessage, MessageLifespan
     from src.connection.message.send_timeline import SendPostMessage
 
 class UserPrivateData(TypedDict):
@@ -47,7 +47,7 @@ class User:
     action_list: Dict[str, Callable[[UserActionInfo], None]]
     timeline: Timeline
 
-    def __init__(self, node, username, private: UserPrivateData, connection: UserConnectionsData):
+    def __init__(self, node, username, private: UserPrivateData, connection: UserConnectionsData, timelineMessageLifespan : Optional[MessageLifespan] = {}):
         self.node = node
         self.username = username
 
@@ -59,8 +59,6 @@ class User:
         self.__read_private_keys()
 
         # Connection Fields
-        self.ip = connection['ip']
-        self.port = connection['port']
         self.listening_ip = connection['listening_ip']
         self.listening_port = connection['listening_port']
         
@@ -69,6 +67,8 @@ class User:
 
         # Listener Module
         self.message_receiver = MessageReceiver(self, self.listening_ip, self.listening_port)
+        self.message_receiver.start_listener()
+        #threading.Thread(target=self.message_receiver.start_listener, daemon=True).start()
         self.timeouts = {}
 
         # Actions
@@ -83,7 +83,7 @@ class User:
         }
 
         # Timeline Module
-        self.timeline = Timeline(username)
+        self.timeline = Timeline(username, message_lifespan=timelineMessageLifespan)
         self.logger = Logger()
 
 
@@ -185,18 +185,20 @@ class User:
 
     def verify_signature(self, message, user, signature):
         user_original = self.get_user(user, 'private')
-
         hash = int.from_bytes(sha512(str(message).encode('utf-8')).digest(), byteorder='big')
         hashFromSignature = pow(signature, int(user_original['public_key_e']), int(user_original['public_key_n']))
 
         signature_valid = (hash == hashFromSignature)
-
         self.logger.log("success", "success", f"Valid signature: {signature_valid}")
+        
         return signature_valid
 
     # ------------
     # - TimeLine -
     # ------------
+    def get_number_posts(self):
+        return len(self.timeline.get_messages_from_user(self.username))
+        
     def get_timeline(self, username):
         return self.timeline.get_messages_from_user(username)
     
@@ -224,11 +226,15 @@ class User:
             self.logger.log("UpdateTimeline", "error", f"Could not fetch {timeline_owner}'s timeline")
 
     def update_timeline(self) -> None:
-        user_following = self.get_user(self.username, 'public')['following']
+        user_info = self.get_user(self.username, 'public')
+        following = user_info['following']
+        followers = user_info['followers']
 
-        for followed_user in user_following:
+        for followed_user in following:
             self.update_timeline_follower(followed_user)
 
+        for follower in followers:
+            self.message_dispatcher.action(MessageType.SEND_TIMELINE, follower, self.username)
 
     # -------------
     # - Followers -
