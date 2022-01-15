@@ -84,6 +84,7 @@ class User:
 
         # Timeline Module
         self.timeline = Timeline(username, message_lifespan=timelineMessageLifespan)
+        self.logger = Logger()
 
 
     # --------------------------
@@ -188,7 +189,8 @@ class User:
         hashFromSignature = pow(signature, int(user_original['public_key_e']), int(user_original['public_key_n']))
 
         signature_valid = (hash == hashFromSignature)
-        Logger.log("success", "success", f"Valid signature: {signature_valid}")
+        self.logger.log("success", "success", f"Valid signature: {signature_valid}")
+        
         return signature_valid
 
     # ------------
@@ -221,7 +223,7 @@ class User:
             self.timeouts[timeline_owner] = threading.Timer(5, self.__ask_next, args=[follower_list, timeline_owner])
             self.timeouts[timeline_owner].start()
         else:
-            Logger.log("UpdateTimeline", "error", f"Could not fetch {timeline_owner}'s timeline")
+            self.logger.log("UpdateTimeline", "error", f"Could not fetch {timeline_owner}'s timeline")
 
     def update_timeline(self) -> None:
         user_info = self.get_user(self.username, 'public')
@@ -241,10 +243,10 @@ class User:
         user_following = self.get_user(self.username, 'public')['following']
 
         if username_followed == self.username:
-            Logger.log("Add Follower", "info", 'You can\'t follow yourself')
+            self.logger.log("Add Follower", "info", 'You can\'t follow yourself')
             return None
         elif username_followed in user_following:
-            Logger.log("Add Follower", "info", f'You already follow the user {username_followed}')
+            self.logger.log("Add Follower", "info", f'You already follow the user {username_followed}')
             return None
 
         ### Update following list of the current user
@@ -252,7 +254,7 @@ class User:
             user_info = self.get_user(self.username, 'public')
             user_info['following'].append(username_followed)
         except Exception as e:
-            Logger.log("Add Follower", "error", str(e))
+            self.logger.log("Add Follower", "error", str(e))
             return None
 
         ### Update follower list on followed
@@ -260,7 +262,7 @@ class User:
             user_followed_info = self.get_user(username_followed, 'public')
             user_followed_info['followers'].append(self.username)
         except Exception as e:
-            Logger.log("Add Follower", "error", str(e))
+            self.logger.log("Add Follower", "error", str(e))
             return None
 
         self.node.set(self.username + ':public', json.dumps(user_info))
@@ -272,14 +274,14 @@ class User:
         user_following = self.get_user(self.username, 'public')['following']
 
         if user_unfollowed not in user_following:
-            Logger.log("Remove Follower", "info", f'You don\'t follow the user {user_unfollowed}')
+            self.logger.log("Remove Follower", "info", f'You don\'t follow the user {user_unfollowed}')
             return None
 
         try:
             user_info = self.get_user(self.username, 'public')
             user_info['following'].remove(user_unfollowed)
         except Exception as e:
-            Logger.log("Remove Follower", "error", str(e))
+            self.logger.log("Remove Follower", "error", str(e))
             return None
 
         try:
@@ -287,7 +289,7 @@ class User:
             if self.username in user_unfollowed_info['followers']:
                 user_unfollowed_info['followers'].remove(self.username)
         except Exception as e:
-            Logger.log("Remove Follower", "error", str(e))
+            self.logger.log("Remove Follower", "error", str(e))
             return None
 
         self.node.set(self.username + ':public', json.dumps(user_info))

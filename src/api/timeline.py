@@ -34,6 +34,8 @@ class Timeline:
     def __init__(self, username: str, message_lifespan: Optional[MessageLifespan] = {}) -> None:
         self.username: str = username
         self.messages: List[TimelineMessage] = []
+
+        self.logger = Logger()
         
         self.message_lifespan = { "years": 0, "months": 0, "days": 0, "hours": 0, "minutes": 0, "seconds": 0 }
         self.prune_old_messages = False
@@ -127,7 +129,7 @@ class Timeline:
             self.messages = timeline_state['timeline']
             output_file.close()
         except Exception:
-            Logger.log("Timeline", "warning", "No previous state. New state initialized")
+            self.logger.log("Timeline", "warning", "No previous state. New state initialized")
             Path("./storage").mkdir(parents=True, exist_ok=True)
         
         self.mutex.release()

@@ -2,46 +2,46 @@ from colorama import Fore, Style
 import logging
 
 class Logger(object):
-    @staticmethod
-    def log(origin : str, type_message : str, message : str) -> None:
-        msg = f'{origin}: {message}'
 
-        if (type_message == "info"):
-            print(f"{Fore.CYAN}[ INFO ] {msg} {Style.RESET_ALL}")
-        elif (type_message == "warning"):
-            print(f"{Fore.YELLOW}[ WARN ] {msg} {Style.RESET_ALL}")
-        elif (type_message == "error"):
-            print(f"{Fore.RED}[ ERROR ] {msg} {Style.RESET_ALL}")
-        elif (type_message == "success"):
-            print(f"{Fore.GREEN}[ SUCCESS ] {msg} {Style.RESET_ALL}")
-        elif (type_message == "debug"):
-            print(f"{Fore.MAGENTA}[ DEBUG ] {msg} {Style.RESET_ALL}")
-
-    @staticmethod
-    def log2(origin : str, type_message : str, message : str) -> None:
-
-        ### Opens the log file
+    def __init__(self):
         root_logger = logging.getLogger()
-        root_logger.setLevel(logging.DEBUG) # Replce this for INFO to hide debug messages from logger
-        handler = logging.FileHandler('logger.log', 'a', 'utf-8')
-        root_logger.addHandler(handler)
+
+        if not root_logger.hasHandlers():
+            
+            root_logger.setLevel(logging.WARNING) # Replace this for INFO to hide debug messages from logger
+            
+            handler = logging.FileHandler('logger.log', 'a', 'utf-8')
+            root_logger.addHandler(handler)
+            
+            ### Add success as a level
+            try:
+                addLoggingLevel('SUCCESS', logging.INFO)
+            except AttributeError:
+                pass
+        
+    
+    def log(self, origin : str, type_message : str, message : str) -> None:
 
         ### Falta dar add a um logging level para o success (se ainda quiseres usar isso, senão usamos o default)
         ### Tem código para como fazer isso em baixo da classe
 
-
         msg = f'{origin}: {message}'
-
+        
         if (type_message == "info"):
-            logging.info(f"{Fore.CYAN}[ INFO ] {msg} {Style.RESET_ALL}")
+            # print(f"{Fore.CYAN}[ INFO ] {msg} {Style.RESET_ALL}")
+            logging.info(f"[ INFO ] {msg}")
         elif (type_message == "warning"):
-            logging.warning(f"{Fore.YELLOW}[ WARN ] {msg} {Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}[ WARN ] {msg} {Style.RESET_ALL}")
+            logging.warning(f"[ WARN ] {msg} ")
         elif (type_message == "error"):
-            logging.error(f"{Fore.RED}[ ERROR ] {msg} {Style.RESET_ALL}")
+            print(f"{Fore.RED}[ ERROR ] {msg} {Style.RESET_ALL}")
+            logging.error(f"[ ERROR ] {msg} ")
         elif (type_message == "success"):
-            print(f"{Fore.GREEN}[ SUCCESS ] {msg} {Style.RESET_ALL}")
+            # print(f"{Fore.GREEN}[ SUCCESS ] {msg} {Style.RESET_ALL}")
+            logging.success(f"[ SUCCESS ] {msg} ")
         elif (type_message == "debug"):
-            logging.debug(f"{Fore.MAGENTA}[ DEBUG ] {msg} {Style.RESET_ALL}")
+            # print(f"{Fore.MAGENTA}[ DEBUG ] {msg} {Style.RESET_ALL}")
+            logging.debug(f"[ DEBUG ] {msg} ")
         
 
 ### Link: https://stackoverflow.com/a/35804945/1691778

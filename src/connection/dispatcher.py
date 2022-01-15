@@ -15,6 +15,8 @@ class MessageDispatcher:
             MessageType.REQUEST_TIMELINE: self.requestTimeline,
             MessageType.SEND_TIMELINE: self.sendTimeline,
         }
+        
+        self.logger = Logger()
 
         self.snowflake = Snowflake()
 
@@ -32,7 +34,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_many(connections_info, message_built))
         except Exception as e:
-            Logger.log("SendTimelineMessage", "error", str(e))
+            self.logger.log("SendTimelineMessage", "error", str(e))
             exit(-1)
 
         return message_built
@@ -43,7 +45,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            Logger.log("RequestTimeline", "error", str(e))
+            self.logger.log("RequestTimeline", "error", str(e))
             exit(-1)
         
         return message_built
@@ -54,7 +56,7 @@ class MessageDispatcher:
         try:
             asyncio.run(self.publish_one(connection_info, message_built))
         except Exception as e:
-            Logger.log("SendTimeline", "error", str(e))
+            self.logger.log("SendTimeline", "error", str(e))
             exit(-1)
         
         return message_built

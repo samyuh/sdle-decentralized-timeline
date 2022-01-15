@@ -32,6 +32,7 @@ class KademliaNode:
         self.ip = ip
         self.port = port
         self.bootstrap_node = bootstrap_node
+        self.logger = Logger()
 
     def run(self) -> asyncio.AbstractEventLoop:
         """
@@ -80,11 +81,11 @@ class KademliaNode:
 
     async def __set(self, key: str, value: str) -> None:
         await self.server.set(key, value)
-        Logger.log("Kademlia", "debug", f"SET {value}")
+        self.logger.log("Kademlia", "debug", f"SET {value}")
 
     async def __get(self, key: str) -> Union[str, None]:
         result = await self.server.get(key)
-        Logger.log("Kademlia", "deb", f"GET {result}")
+        self.logger.log("Kademlia", "deb", f"GET {result}")
         return result
     
     async def __close(self) -> None:

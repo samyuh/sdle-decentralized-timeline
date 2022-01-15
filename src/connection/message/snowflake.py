@@ -25,6 +25,7 @@ class Snowflake:
     def __set_drift_periodically(self):
         self.__set_drift()
         threading.Timer(3600, self.__set_drift_periodically).start()
+        self.logger = Logger()
 
     def __set_drift(self):
         self.clock_drift = self.__get_ntp_time() - (int(time.time()))
@@ -36,7 +37,7 @@ class Snowflake:
                 resp = client.request(server)
                 return int(resp.tx_time)
             except Exception:
-                Logger.log("Snowflake", "warning", f"Could not fetch time from NTP server ({server}).")
+                self.logger.log("Snowflake", "error", f"Could not fetch time from NTP server ({server}).")
 
         return int(time.time())
 

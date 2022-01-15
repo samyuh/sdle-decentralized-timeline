@@ -31,6 +31,8 @@ class MessageReceiver:
             MessageType.REQUEST_TIMELINE.value: self.user.send_timeline,
             MessageType.SEND_TIMELINE.value: self.user.receive_timeline,
         }
+        
+        self.logger = Logger()
 
         self.loop = IOLoop.instance()
         threading.Thread(target=self.loop.start, daemon=True).start()
@@ -49,6 +51,6 @@ class MessageReceiver:
     def recv_msg_loop(self, message) -> None:
         message = message[0].decode('utf-8')
         msg = json.loads(message)
-        Logger.log("MessageReceiver", "info", f"RECV {msg}")
+        self.logger.log("MessageReceiver", "info", f"RECV {msg}")
 
         self.thread_pool.submit(self.listener_action, action=msg['header']['type'], message=msg)
