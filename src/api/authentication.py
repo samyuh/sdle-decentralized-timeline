@@ -93,7 +93,6 @@ class Authentication:
 
         try: 
             user_private = self.node.get(username + ':private')
-            user_connections = self.node.get(username + ':connections')
             if user_private is not None:
                 user_info = json.loads(user_private)
                 salt = bytes.fromhex(user_info['salt'])
@@ -103,7 +102,13 @@ class Authentication:
                 if key != new_key:
                     raise Exception(f"Login failed. Password is wrong!")
                 
-                user_args = (self.node, username, user_info, json.loads(user_connections))
+                user_connections = {
+                    'listening_ip': self.listening[0],
+                    'listening_port': self.listening[1],
+                }
+
+                self.node.set(username + ':connections', json.dumps(user_connections))
+                user_args = (self.node, username, user_info, user_connections)
             else:
                 raise Exception(f"Login failed. User {username} doesn't exist")
                 
