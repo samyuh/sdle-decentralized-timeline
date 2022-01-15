@@ -1,9 +1,8 @@
 from __future__ import annotations
 from typing import TypedDict, TYPE_CHECKING
 
-import inquirer
 from src.utils.logger import Logger
-
+from simple_term_menu import TerminalMenu    
 
 if TYPE_CHECKING:
     from src.api.user import UserActionInfo
@@ -15,16 +14,16 @@ class MainMenuAnswer(TypedDict):
 class MainMenu:
     @staticmethod
     def menu() -> MainMenuAnswer:
-
         logger = Logger()
-        
-        print('\n--- Main Menu ---')
-        questions = [
-            inquirer.List('action', message="Please choose an action", choices=['New Post', 'Follow User', 'Unfollow User', 'View Timeline', 'View Profile', 'Get Suggestions', 'Logout'],),
-        ]
-
-        answers = inquirer.prompt(questions)
-        action = answers['action']
+        print("-----------------")
+        print("--- Main Menu ---")
+        print("-----------------")
+        choices=['New Post', 'Follow User', 'Unfollow User', 'View Timeline', 'View Profile', 'Get Suggestions', 'Logout']
+        terminal_menu = TerminalMenu(choices, 
+        menu_highlight_style=("fg_blue",),
+        menu_cursor_style=("fg_blue", "bold"))
+        menu_entry_index = terminal_menu.show()
+        action = choices[menu_entry_index]
 
         result = {'action': action, 'information': {}}
 
@@ -34,7 +33,7 @@ class MainMenu:
             result['information']['message'] = message
         
         elif action == 'Follow User':
-            logger.log("Follow","info",'Follow user')
+            logger.log("Follow","info", 'Follow user')
             username = input('User to follow: ')
             result['information']['username'] = username
 

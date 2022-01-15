@@ -81,7 +81,7 @@ class Authentication:
             self.logger.log("Register", "error", str(e))
             return None
 
-        self.logger.log("Register", "success", "user registered successfully")
+        self.logger.log("Register", "success", "User registered successfully")
         
         return user_args
 
@@ -116,5 +116,5 @@ class Authentication:
             self.logger.log("Register", "error", str(e))
             return None
 
-        self.logger.log("Login", "success", "success")
+        self.logger.log("Login", "success", "User logged in successfully")
         return user_args

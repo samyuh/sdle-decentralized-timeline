@@ -43,7 +43,6 @@ class MessageReceiver:
     def listener_action(self, action : int, message) -> None:
         if self.user.verify_signature(message['content'], message['header']['user'], message['header']['signature']):
             self.listener_action_list[action](message)
-            return "true"
 
     # --------------------------
     # -- Listener Loop 
@@ -51,6 +50,6 @@ class MessageReceiver:
     def recv_msg_loop(self, message) -> None:
         message = message[0].decode('utf-8')
         msg = json.loads(message)
-        self.logger.log("MessageReceiver", "info", f"RECV {msg}")
+        self.logger.log("MessageReceiver", "debug", f"RECV {msg}")
 
         self.thread_pool.submit(self.listener_action, action=msg['header']['type'], message=msg)
