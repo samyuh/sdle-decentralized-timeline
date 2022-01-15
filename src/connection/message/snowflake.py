@@ -19,13 +19,14 @@ class Snowflake:
                     '2.pool.ntp.org',
                     '3.pool.ntp.org']
 
+        self.logger = Logger()
+
         ### Sets clock time drift using NTP once every hour
         threading.Thread(target = self.__set_drift_periodically, daemon=True).start()
         
     def __set_drift_periodically(self):
         self.__set_drift()
         threading.Timer(3600, self.__set_drift_periodically).start()
-        self.logger = Logger()
 
     def __set_drift(self):
         self.clock_drift = self.__get_ntp_time() - (int(time.time()))
