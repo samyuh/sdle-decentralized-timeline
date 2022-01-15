@@ -8,14 +8,14 @@ class Logger(object):
 
         if not root_logger.hasHandlers():
             
-            root_logger.setLevel(logging.NOTSET) # Replce this for INFO to hide debug messages from logger
+            root_logger.setLevel(logging.WARNING) # Replace this for INFO to hide debug messages from logger
             
             handler = logging.FileHandler('logger.log', 'a', 'utf-8')
             root_logger.addHandler(handler)
             
             ### Add success as a level
             try:
-                addLoggingLevel('SUCCESS',logging.INFO)
+                addLoggingLevel('SUCCESS', logging.INFO)
             except AttributeError:
                 pass
         
@@ -28,7 +28,7 @@ class Logger(object):
         msg = f'{origin}: {message}'
         
         if (type_message == "info"):
-            print(f"{Fore.CYAN}[ INFO ] {msg} {Style.RESET_ALL}")
+            # print(f"{Fore.CYAN}[ INFO ] {msg} {Style.RESET_ALL}")
             logging.info(f"[ INFO ] {msg}")
         elif (type_message == "warning"):
             print(f"{Fore.YELLOW}[ WARN ] {msg} {Style.RESET_ALL}")
@@ -37,10 +37,10 @@ class Logger(object):
             print(f"{Fore.RED}[ ERROR ] {msg} {Style.RESET_ALL}")
             logging.error(f"[ ERROR ] {msg} ")
         elif (type_message == "success"):
-            print(f"{Fore.GREEN}[ SUCCESS ] {msg} {Style.RESET_ALL}")
+            # print(f"{Fore.GREEN}[ SUCCESS ] {msg} {Style.RESET_ALL}")
             logging.success(f"[ SUCCESS ] {msg} ")
         elif (type_message == "debug"):
-            print(f"{Fore.MAGENTA}[ DEBUG ] {msg} {Style.RESET_ALL}")
+            # print(f"{Fore.MAGENTA}[ DEBUG ] {msg} {Style.RESET_ALL}")
             logging.debug(f"[ DEBUG ] {msg} ")
         
 
