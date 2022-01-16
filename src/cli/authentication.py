@@ -1,6 +1,6 @@
 from typing import TypedDict
 
-import inquirer
+from simple_term_menu import TerminalMenu  
 
 class AuthMenuUserInfo(TypedDict):
     username: str
@@ -14,12 +14,15 @@ class AuthMenu:
     @staticmethod
     def menu() -> AuthMenuAnswer:
         print('\n--- Authentication Menu ---')
-        questions = [
-            inquirer.List('authentication', message="Please sign in", choices=['register', 'login'],),
-        ]
+ 
+        choices=['register', 'login']
+        terminal_menu = TerminalMenu(choices, 
+            menu_highlight_style=("fg_blue",),
+            menu_cursor_style=("fg_blue", "bold"),
+            title="Authentication")
+        menu_entry_index = terminal_menu.show()
+        action = choices[menu_entry_index]
 
-        answers = inquirer.prompt(questions)
-        method = answers['authentication']
         username = input('Enter your username: ')
         password = input('Enter your password: ')
-        return {'method': method, 'information': {'username': username, 'password': password}}
+        return {'method': action, 'information': {'username': username, 'password': password}}

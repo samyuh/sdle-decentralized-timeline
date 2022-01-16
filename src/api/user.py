@@ -54,11 +54,11 @@ class User:
         # Private Fields
         self.hash_password = private['hash_password']
         self.salt = private['salt']
-        self.public_key_n = private['public_key_n']
-        self.public_key_e = private['public_key_e']
         self.__read_private_keys()
 
         # Connection Fields
+        self.public_key_n = connection['public_key_n']
+        self.public_key_e = connection['public_key_e']
         self.listening_ip = connection['listening_ip']
         self.listening_port = connection['listening_port']
         
@@ -157,12 +157,15 @@ class User:
     # -- Listener Loop Action --
     # --------------------------
     def receive_timeline_message(self, message : TimelineMessage) -> None:
+        self.logger.log("Message", "success", f"Received a new Timeline Post!")
         self.timeline.add_message(message)
 
     def send_timeline(self, message):
+        self.logger.log("Message", "success", f"Sending timeline messages {message['header']['timeline_owner']} to {message['header']['user']}")
         self.message_dispatcher.action(MessageType.SEND_TIMELINE, message['header']['user'], message['header']['timeline_owner'])
 
     def receive_timeline(self, messages : SendPostMessage):
+        self.logger.log("Message", "success", f"Received the timeline of {messages['header']['timeline_owner']}")
         timeline_owner = messages['header']['timeline_owner']
         
         self.timeouts[timeline_owner].cancel()
@@ -195,12 +198,12 @@ class User:
         return signature
 
     def verify_signature(self, message, user, signature):
-        user_original = self.get_user(user, 'private')
+        user_original = self.get_user(user, 'connections')
         hash = int.from_bytes(sha512(str(message).encode('utf-8')).digest(), byteorder='big')
         hashFromSignature = pow(signature, int(user_original['public_key_e']), int(user_original['public_key_n']))
 
         signature_valid = (hash == hashFromSignature)
-        self.logger.log("success", "success", f"Valid signature: {signature_valid}")
+        self.logger.log("signature", "debug", f"Valid signature: {signature_valid}")
         
         return signature_valid
 
@@ -254,10 +257,10 @@ class User:
         user_following = self.get_user(self.username, 'public')['following']
 
         if username_followed == self.username:
-            self.logger.log("Add Follower", "info", 'You can\'t follow yourself')
+            self.logger.log("Add Follower", "error", 'You can\'t follow yourself')
             return None
         elif username_followed in user_following:
-            self.logger.log("Add Follower", "info", f'You already follow the user {username_followed}')
+            self.logger.log("Add Follower", "error", f'You already follow the user {username_followed}')
             return None
 
         ### Update following list of the current user
@@ -285,7 +288,7 @@ class User:
         user_following = self.get_user(self.username, 'public')['following']
 
         if user_unfollowed not in user_following:
-            self.logger.log("Remove Follower", "info", f'You don\'t follow the user {user_unfollowed}')
+            self.logger.log("Remove Follower", "error", f'You don\'t follow the user {user_unfollowed}')
             return None
 
         try:

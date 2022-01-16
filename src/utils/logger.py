@@ -1,6 +1,7 @@
 from colorama import Fore, Style
 import logging
-
+import sys
+import os
 class Logger(object):
 
     def __init__(self):
@@ -28,7 +29,7 @@ class Logger(object):
         msg = f'{origin}: {message}'
         
         if (type_message == "info"):
-            # print(f"{Fore.CYAN}[ INFO ] {msg} {Style.RESET_ALL}")
+            print(f"{Fore.CYAN}[ INFO ] {msg} {Style.RESET_ALL}")
             logging.info(f"[ INFO ] {msg}")
         elif (type_message == "warning"):
             print(f"{Fore.YELLOW}[ WARN ] {msg} {Style.RESET_ALL}")
@@ -37,7 +38,7 @@ class Logger(object):
             print(f"{Fore.RED}[ ERROR ] {msg} {Style.RESET_ALL}")
             logging.error(f"[ ERROR ] {msg} ")
         elif (type_message == "success"):
-            # print(f"{Fore.GREEN}[ SUCCESS ] {msg} {Style.RESET_ALL}")
+            print(f"{Fore.GREEN}[ SUCCESS ] {msg} {Style.RESET_ALL}")
             logging.success(f"[ SUCCESS ] {msg} ")
         elif (type_message == "debug"):
             # print(f"{Fore.MAGENTA}[ DEBUG ] {msg} {Style.RESET_ALL}")
@@ -93,25 +94,3 @@ def addLoggingLevel(levelName, levelNum, methodName=None):
     setattr(logging, levelName, levelNum)
     setattr(logging.getLoggerClass(), methodName, logForLevel)
     setattr(logging, methodName, logToRoot)
-
-
-### Code for last project which requires the creation of a LOG object (non-static)
-# def __init__(self):
-#         # Opens the log file
-#         root_logger = logging.getLogger()
-#         root_logger.setLevel(logging.DEBUG)
-#         handler = logging.FileHandler('logger.log', 'a', 'utf-8')
-#         root_logger.addHandler(handler)
-    
-#     def log(self, origin, type_message, message):
-#         log_message = f'{origin}: {message}'
-
-#         print(log_message)
-#         if (type_message == "debug"):
-#             logging.debug(log_message)
-#         elif (type_message == "info"):
-#             logging.info(log_message)
-#         elif (type_message == "warning"):
-#             logging.warning(log_message)
-#         elif (type_message == "error"):
-#             logging.error(log_message)

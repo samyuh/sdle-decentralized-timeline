@@ -55,8 +55,6 @@ class Authentication:
                 user_private = {
                     'salt': salt.hex(),
                     'hash_password': key.hex(),
-                    'public_key_n': RSA_key.n,
-                    'public_key_e': RSA_key.e,
                 }
 
                 # key = 'user:public', content = everything that can be changed by other users
@@ -67,6 +65,8 @@ class Authentication:
 
                 # key = 'user:connections', content = user open ports
                 user_connections = {
+                    'public_key_n': RSA_key.n,
+                    'public_key_e': RSA_key.e,
                     'listening_ip': self.listening[0],
                     'listening_port': self.listening[1],
                 }
@@ -81,7 +81,7 @@ class Authentication:
             self.logger.log("Register", "error", str(e))
             return None
 
-        self.logger.log("Register", "success", "user registered successfully")
+        self.logger.log("Register", "success", "User registered successfully")
         
         return user_args
 
@@ -94,6 +94,8 @@ class Authentication:
         try: 
             user_private = self.node.get(username + ':private')
             if user_private is not None:
+                user_old_connections = json.loads(self.node.get(username + ':connections'))
+
                 user_info = json.loads(user_private)
                 salt = bytes.fromhex(user_info['salt'])
                 key = bytes.fromhex(user_info['hash_password'])
@@ -103,6 +105,8 @@ class Authentication:
                     raise Exception(f"Login failed. Password is wrong!")
                 
                 user_connections = {
+                    'public_key_n': user_old_connections['public_key_n'],
+                    'public_key_e': user_old_connections['public_key_e'],
                     'listening_ip': self.listening[0],
                     'listening_port': self.listening[1],
                 }
@@ -116,5 +120,5 @@ class Authentication:
             self.logger.log("Register", "error", str(e))
             return None
 
-        self.logger.log("Login", "success", "success")
+        self.logger.log("Login", "success", "User logged in successfully")
         return user_args
