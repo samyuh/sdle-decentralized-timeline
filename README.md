@@ -1,13 +1,15 @@
 # SDLE Project - Group T3G13
 
-### Group Members
+## Group Members
 1. Diogo Samuel Fernandes (up201806250@up.pt)
 2. Hugo Guimarães  (up201806490@up.pt)
 3. Paulo Ribeiro (up201806505@up.pt)
 4. Telmo Baptista (up201806554@up.pt)
 
-## Instructions
+## Description
+Peer to peer Timeline built with Kademlia.
 
+## Instructions
 1. Clone this repository:
 ```properties
 git clone https://git.fe.up.pt/sdle/2021/t3/g13/proj2.git
@@ -31,8 +33,12 @@ For example, running a bootstrap node with the default values would be achieved 
 ```properties
 python -m src -init
 ```
-
 Running a new user using the port 8003 for the network and the port 7003 for the direct connections between the peers is achieved using the following command:
 ```properties
 python -m src -p 8003 -pl 7003
 ```
+
+If values aren't specified, the default ones that are in the config.ini file will be used.
+
+## Documents
+A presentation and a video demonstration of this project can be found in the folder `doc`.
