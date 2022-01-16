@@ -119,14 +119,11 @@ class User:
 
     def suggestions(self, _):
         suggestions = set([])
-        user_info = self.get_user(self.username, 'public')
-        user_followers = user_info['followers']
-        user_following = user_info['following']
+        user_following = self.get_user(self.username, 'public')['following']
 
-
-        for follower in user_followers:
-            follower_info = self.get_user(follower, 'public')
-            suggestions.update(follower_info['followers'])
+        for followed in user_following:
+            followed_info = self.get_user(followed, 'public')
+            suggestions.update(followed_info['followers'])
 
         if self.username in suggestions:
             suggestions.remove(self.username)
