@@ -119,13 +119,24 @@ class User:
 
     def suggestions(self, _):
         suggestions = set([])
-        user_followers = self.get_user(self.username, 'public')['followers']
+        user_info = self.get_user(self.username, 'public')
+        user_followers = user_info['followers']
+        user_following = user_info['following']
+
 
         for follower in user_followers:
             follower_info = self.get_user(follower, 'public')
-            print(follower_info)
             suggestions.update(follower_info['followers'])
 
+        if self.username in suggestions:
+            suggestions.remove(self.username)
+        
+        repeated = []
+        for suggestion in suggestions:
+            if suggestion in user_following:
+                repeated.append(suggestion)
+        
+        suggestions.difference_update(repeated)
         suggestions = tuple(suggestions)
 
         if len(suggestions) > 5:
