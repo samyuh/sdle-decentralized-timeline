@@ -16,7 +16,7 @@ class MainMenu:
     def menu() -> MainMenuAnswer:
         logger = Logger()
         print("-----------------")
-        print("--- Main Menu ---")
+        print("---- Actions ----")
         print("-----------------")
         choices=['New Post', 'Follow User', 'Unfollow User', 'View Timeline', 'View Profile', 'Get Suggestions', 'Logout']
         terminal_menu = TerminalMenu(choices, 

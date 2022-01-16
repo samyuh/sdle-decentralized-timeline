@@ -13,7 +13,11 @@ class AuthMenuAnswer(TypedDict):
 class AuthMenu:
     @staticmethod
     def menu() -> AuthMenuAnswer:
-        print('\n--- Authentication Menu ---')
+        print("\n")
+        print("---------------------------")
+        print('--- Authentication Menu ---')
+        print("---------------------------")
+        
  
         choices=['register', 'login']
         terminal_menu = TerminalMenu(choices, 

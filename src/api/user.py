@@ -227,14 +227,11 @@ class User:
         if follower_list:
             request_user = follower_list.pop()
 
-            print(follower_list)
-            print(timeline_owner)
-
             self.message_dispatcher.action(MessageType.REQUEST_TIMELINE, request_user, timeline_owner)
-            self.timeouts[timeline_owner] = threading.Timer(5, self.__ask_next, args=[follower_list, timeline_owner])
+            self.timeouts[timeline_owner] = threading.Timer(1, self.__ask_next, args=[follower_list, timeline_owner])
             self.timeouts[timeline_owner].start()
         else:
-            self.logger.log("UpdateTimeline", "error", f"Could not fetch {timeline_owner}'s timeline")
+            self.logger.log("UpdateTimeline", "debug", f"Could not fetch {timeline_owner}'s timeline")
 
     def update_timeline(self) -> None:
         user_info = self.get_user(self.username, 'public')
