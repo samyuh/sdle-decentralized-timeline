@@ -145,7 +145,7 @@ class Timeline:
 
     def __repr__(self) -> str:
         self.mark_messages_as_seen()
-        messages = sorted(self.messages, key=lambda msg: msg['header']['time'], reverse=True)
+        messages = sorted(self.messages, key=lambda msg: msg['header']['time'], reverse=False)
         messages_str = ""
         for message in messages:
             date = datetime.fromtimestamp(message['header']['time']).strftime('%d-%m-%Y %H:%M:%S')
