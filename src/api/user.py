@@ -54,11 +54,11 @@ class User:
         # Private Fields
         self.hash_password = private['hash_password']
         self.salt = private['salt']
-        self.public_key_n = private['public_key_n']
-        self.public_key_e = private['public_key_e']
         self.__read_private_keys()
 
         # Connection Fields
+        self.public_key_n = connection['public_key_n']
+        self.public_key_e = connection['public_key_e']
         self.listening_ip = connection['listening_ip']
         self.listening_port = connection['listening_port']
         
@@ -187,7 +187,7 @@ class User:
         return signature
 
     def verify_signature(self, message, user, signature):
-        user_original = self.get_user(user, 'private')
+        user_original = self.get_user(user, 'connections')
         hash = int.from_bytes(sha512(str(message).encode('utf-8')).digest(), byteorder='big')
         hashFromSignature = pow(signature, int(user_original['public_key_e']), int(user_original['public_key_n']))
 
