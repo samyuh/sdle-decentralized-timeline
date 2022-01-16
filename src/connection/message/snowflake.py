@@ -38,7 +38,7 @@ class Snowflake:
                 resp = client.request(server)
                 return int(resp.tx_time)
             except Exception:
-                self.logger.log("Snowflake", "error", f"Could not fetch time from NTP server ({server}).")
+                self.logger.log("Snowflake", "warning", f"Could not fetch time from NTP server ({server}).")
 
         return int(time.time())
 
