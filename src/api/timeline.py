@@ -38,15 +38,16 @@ class Timeline:
         self.logger = Logger()
         
         self.message_lifespan = { "years": 0, "months": 0, "days": 0, "hours": 0, "minutes": 0, "seconds": 0 }
-        self.prune_old_messages = False
+        
+        self.prune_old_messages = 0
         if message_lifespan:
-            self.prune_old_messages = message_lifespan.get('active', False)
-            self.message_lifespan['years'] = message_lifespan.get('years', 0)
-            self.message_lifespan['months'] = message_lifespan.get('months', 0)
-            self.message_lifespan['days'] = message_lifespan.get('days', 0)
-            self.message_lifespan['hours'] = message_lifespan.get('hours', 0)
-            self.message_lifespan['minutes'] = message_lifespan.get('minutes', 0)
-            self.message_lifespan['seconds'] = message_lifespan.get('seconds', 0)
+            self.prune_old_messages = int(message_lifespan.get('active', 0))
+            self.message_lifespan['years'] = int(message_lifespan.get('years', 0))
+            self.message_lifespan['months'] = int(message_lifespan.get('months', 0))
+            self.message_lifespan['days'] = int(message_lifespan.get('days', 0))
+            self.message_lifespan['hours'] = int(message_lifespan.get('hours', 0))
+            self.message_lifespan['minutes'] = int(message_lifespan.get('minutes', 0))
+            self.message_lifespan['seconds'] = int(message_lifespan.get('seconds', 0))
 
         self.mutex : Type[threading._RLock] = threading.RLock()
         self.storage_path : str = './storage'
@@ -55,6 +56,8 @@ class Timeline:
 
         thread = threading.Thread(target = self.save_messages_periodically, daemon=True)
         thread.start()
+         
+        self.prune_messages()
 
     def get_messages_from_user(self, user : str) -> List[TimelineMessage]:
         messages = []
@@ -78,10 +81,20 @@ class Timeline:
         newMessage = message.copy()
         newMessage['header']['seen'] = False
 
-        self.messages.append(newMessage)
+        if self.prune_old_messages:
+            expire_date = datetime.now() - relativedelta(years=self.message_lifespan['years'],
+                                                        months=self.message_lifespan['months'],
+                                                        days=self.message_lifespan['days'],
+                                                        hours=self.message_lifespan['hours'],
+                                                        minutes=self.message_lifespan['minutes'],
+                                                        seconds=self.message_lifespan['seconds'])
+            if (newMessage['header']['time'] > time.mktime(expire_date.timetuple())):
+                self.messages.append(newMessage)
+        else:
+            self.messages.append(newMessage)
+
         self.mutex.release()
 
-    # TODO: callback message
     def prune_messages(self) -> None:
         if not self.prune_old_messages: return
 
@@ -98,7 +111,6 @@ class Timeline:
             if message['header']['user'] == self.username:
                 messages.append(message)
             else:
-                # TODO: check if message was seen already? No fim
                 if (message['header']['time'] > time.mktime(expire_date.timetuple())):
                     messages.append(message)
         
@@ -106,9 +118,13 @@ class Timeline:
         self.save_messages()
         self.mutex.release()
 
+        prune_timer = threading.Timer(60, self.prune_messages)
+        prune_timer.daemon = True
+        prune_timer.start()
+
     def save_messages_periodically(self):
         self.save_messages()
-        threading.Timer(1,self.save_messages_periodically).start()
+        threading.Timer(2, self.save_messages_periodically).start()
 
     def save_messages(self) -> None:
         self.mutex.acquire()

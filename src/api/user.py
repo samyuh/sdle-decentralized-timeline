@@ -175,7 +175,7 @@ class User:
                 valid_messages.append(message)
 
         ### Delete all previous messages we had from that user from the timeline
-        self.timeline.delete_posts(timeline_owner) # TODO: verify key signature
+        self.timeline.delete_posts(timeline_owner)
 
         ### Add the received messages to our timeline
         for message in valid_messages:
