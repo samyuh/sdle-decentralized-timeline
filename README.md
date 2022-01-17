@@ -10,6 +10,9 @@
 Peer to peer Timeline built with Kademlia.
 
 ## Instructions
+
+NOTE: Our project only works in the *Linux* environment
+
 1. Clone this repository:
 ```properties
 git clone https://git.fe.up.pt/sdle/2021/t3/g13/proj2.git
@@ -42,3 +45,21 @@ If values aren't specified, the default ones that are in the config.ini file wil
 
 ## Documents
 A presentation and a video demonstration of this project can be found in the folder `doc`.
+
+*Config.ini* specifications:
+1. **[DEFAULT]** - Default values used in the communication with the network and between users
+    - IP - Ip for the kademlia network communication 
+    - PORT - Port for the kademlia network commucation 
+    - LISTENING IP - Ip for the TCP communication between users
+    - LISTENING PORT - Port for the TCP communication between users
+2. **[BOOTSTRAP]** - Bootstrap node used to connect to the network through an existing peer
+    - IP = 127.0.0.1 - Ip for the kademlia network communication of the bootstrap node
+    - PORT = 8000 - Port for the kademlia network communication of the bootstrap node
+3. **[MESSAGE_LIFESPAN]** - Maximum time a post stays in the timeline after its publishing date
+    - ACTIVE = 1 - Boolean Value that indicates whether the message lifespan is being checked
+    - YEARS = 0 - number of years to wait before post removal
+    - MONTHS = 0 - number of months to wait before post removal
+    - DAYS = 0 - number of days to wait before post removal
+    - HOURS = 0 - number of hours to wait before post removal
+    - MINUTES = 3 - number of minutes to wait before post removal
+    - SECONDS = 0 - number of seconds to wait before post removal
